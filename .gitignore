@@ -1,0 +1,10 @@
+﻿web/node_modules/
+web/dist/
+*.log
+__pycache__/
+*.pyc
+.venv/
+env/
+.env
+.env.*
+.claude/settings.local.json

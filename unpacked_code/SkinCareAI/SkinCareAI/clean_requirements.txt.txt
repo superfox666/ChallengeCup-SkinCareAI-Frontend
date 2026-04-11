@@ -1,0 +1,18 @@
+# clean_requirements.txt
+# LangChain 1.x 系列（完全兼容的版本）
+langchain-core==1.2.15
+langchain==1.0.8
+langchain-community==0.4.0
+langchain-text-splitters==1.1.1
+langchain-ollama==0.1.0
+
+# 取消安装冲突的包
+# langchain-classic  # 这个与标准langchain冲突
+# langgraph-prebuilt  # 暂时不需要
+
+# 其他必要依赖
+chromadb>=0.4.22
+pypdf>=4.2.0
+docx2txt>=0.8
+sentence-transformers>=2.7.0
+ollama>=0.1.0

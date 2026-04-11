@@ -1,0 +1,117 @@
+/* 主窗口样式 */
+QMainWindow {
+    background-color: #FFFFFF;
+}
+
+/* 侧边栏 */
+#sidebar {
+    background-color: #2E2E2E;
+    border-right: 1px solid #1E1E1E;
+}
+
+/* 功能列表 */
+#functionList {
+    background-color: transparent;
+    border: none;
+    color: #CCCCCC;
+    font-size: 14px;
+    outline: none;
+}
+
+#functionList::item {
+    padding: 12px 20px;
+    border-left: 4px solid transparent;
+}
+
+#functionList::item:selected {
+    background-color: #404040;
+    border-left: 4px solid #1E90FF;
+    color: #FFFFFF;
+}
+
+#functionList::item:hover {
+    background-color: #353535;
+}
+
+/* 按钮样式 */
+QPushButton {
+    border: none;
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-size: 13px;
+}
+
+QPushButton:hover {
+    background-color: #F0F0F0;
+}
+
+QPushButton:pressed {
+    background-color: #E0E0E0;
+}
+
+/* 发送按钮特殊样式 */
+#sendButton {
+    background-color: #1E90FF;
+    color: white;
+    font-weight: bold;
+    border-radius: 6px;
+    padding: 10px 24px;
+}
+
+#sendButton:hover {
+    background-color: #1C86EE;
+}
+
+#sendButton:pressed {
+    background-color: #1874CD;
+}
+
+/* 输入框 */
+QTextEdit#inputText {
+    border: 1px solid #D0D0D0;
+    border-radius: 8px;
+    padding: 12px;
+    font-size: 14px;
+    background-color: white;
+}
+
+QTextEdit#inputText:focus {
+    border: 1px solid #1E90FF;
+}
+
+/* 滚动条 */
+QScrollBar:vertical {
+    border: none;
+    background: #F0F0F0;
+    width: 8px;
+    margin: 0px;
+}
+
+QScrollBar::handle:vertical {
+    background: #C0C0C0;
+    min-height: 20px;
+    border-radius: 4px;
+}
+
+QScrollBar::handle:vertical:hover {
+    background: #A0A0A0;
+}
+
+QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
+    height: 0px;
+}
+
+/* 分组框 */
+QGroupBox {
+    font-weight: bold;
+    border: 1px solid #E0E0E0;
+    border-radius: 6px;
+    margin-top: 10px;
+    padding-top: 10px;
+}
+
+QGroupBox::title {
+    subcontrol-origin: margin;
+    left: 10px;
+    padding: 0 5px 0 5px;
+}
