@@ -1,0 +1,41 @@
+[
+  {
+    "id": "cdc-phil",
+    "name": "CDC Public Health Image Library (PHIL)",
+    "sourceType": "official-public-health",
+    "url": "https://wwwn.cdc.gov/phil/default.aspx",
+    "allowed": false,
+    "copyrightStatus": "requires-review",
+    "usageScope": "future-manifest-candidate",
+    "checkedBy": "team",
+    "checkedAt": "2026-04-12",
+    "updatedAt": "2026-04-12",
+    "notes": "仅登记为白名单候选来源；逐图确认版权状态后才可进入本地素材 manifest。"
+  },
+  {
+    "id": "dermnet",
+    "name": "DermNet NZ",
+    "sourceType": "official-medical",
+    "url": "https://dermnetnz.org/image-catalogue",
+    "allowed": false,
+    "copyrightStatus": "requires-review",
+    "usageScope": "future-manifest-candidate",
+    "checkedBy": "team",
+    "checkedAt": "2026-04-12",
+    "updatedAt": "2026-04-12",
+    "notes": "仅登记为参考与候选来源，不默认可直接下载或公开展示。"
+  },
+  {
+    "id": "hse-skin-library",
+    "name": "HSE Work-related Skin Disease Image Library",
+    "sourceType": "official-public-health",
+    "url": "https://www.hse.gov.uk/skin/imagelibrary.htm",
+    "allowed": false,
+    "copyrightStatus": "requires-review",
+    "usageScope": "future-manifest-candidate",
+    "checkedBy": "team",
+    "checkedAt": "2026-04-12",
+    "updatedAt": "2026-04-12",
+    "notes": "仅登记为候选来源；存在 Crown copyright 与第三方授权混合情况，需逐图确认。"
+  }
+]

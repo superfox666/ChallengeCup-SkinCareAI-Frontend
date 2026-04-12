@@ -1,0 +1,82 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SkinCareAI Knowledge Entry",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "sourceId",
+    "name",
+    "slug",
+    "category",
+    "summary",
+    "symptoms",
+    "careAdvice",
+    "redFlags",
+    "whenToSeeDoctor",
+    "triageAdvice",
+    "displayOrder",
+    "featured",
+    "visible",
+    "aliases",
+    "searchKeywords",
+    "source",
+    "sourceUrl",
+    "updatedAt",
+    "reviewStatus"
+  ],
+  "properties": {
+    "id": { "type": "string", "minLength": 1 },
+    "sourceId": { "type": "string", "minLength": 1 },
+    "name": { "type": "string", "minLength": 1 },
+    "slug": { "type": "string", "minLength": 1 },
+    "category": {
+      "type": "string",
+      "enum": ["tcm", "western", "integrated"]
+    },
+    "summary": { "type": "string", "minLength": 1 },
+    "symptoms": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 },
+      "minItems": 1
+    },
+    "careAdvice": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 },
+      "minItems": 1
+    },
+    "redFlags": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 },
+      "minItems": 1
+    },
+    "whenToSeeDoctor": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 },
+      "minItems": 1
+    },
+    "triageAdvice": { "type": "string", "minLength": 1 },
+    "displayOrder": { "type": "number" },
+    "featured": { "type": "boolean" },
+    "visible": { "type": "boolean" },
+    "aliases": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "searchKeywords": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "relatedImageIds": {
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 }
+    },
+    "source": { "type": "string", "minLength": 1 },
+    "sourceUrl": { "type": "string" },
+    "updatedAt": { "type": "string", "minLength": 1 },
+    "reviewStatus": {
+      "type": "string",
+      "enum": ["draft", "reviewed", "approved"]
+    }
+  }
+}

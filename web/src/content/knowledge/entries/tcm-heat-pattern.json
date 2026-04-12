@@ -1,0 +1,38 @@
+{
+  "id": "tcm-heat-pattern",
+  "sourceId": "project-tcm-foundation",
+  "name": "热证要点",
+  "slug": "heat-pattern",
+  "category": "tcm",
+  "summary": "热证常表现为红肿、灼热、疼痛，更常与痤疮、毛囊炎类炎症表现相关。",
+  "symptoms": [
+    "皮损发红",
+    "局部灼热疼痛",
+    "痤疮或毛囊炎样炎症表现"
+  ],
+  "careAdvice": [
+    "减少刺激性护肤步骤和高频活性叠加",
+    "观察是否与熬夜、饮食刺激、屏障受损有关",
+    "护理以温和、控刺激和稳定节奏为主"
+  ],
+  "redFlags": [
+    "炎症快速升级",
+    "疼痛明显或伴脓疱增加"
+  ],
+  "whenToSeeDoctor": [
+    "红肿持续加重",
+    "疼痛明显",
+    "反复出现结节或感染风险"
+  ],
+  "triageAdvice": "若红肿灼热持续加重、疼痛明显或伴脓疱增多，应尽快面诊。",
+  "displayOrder": 40,
+  "featured": false,
+  "visible": true,
+  "aliases": ["热证", "清热凉血"],
+  "searchKeywords": ["热证", "红肿", "灼热", "痤疮", "毛囊炎"],
+  "relatedImageIds": ["acne_placeholder_face"],
+  "source": "项目内整理文本：中医皮肤科/基础理论.txt（清洗后）",
+  "sourceUrl": "",
+  "updatedAt": "2026-04-12",
+  "reviewStatus": "reviewed"
+}

@@ -1,0 +1,39 @@
+{
+  "id": "acute-eczema-phase",
+  "sourceId": "project-integrated-treatment",
+  "name": "湿疹急性期处理重点",
+  "slug": "acute-eczema-phase",
+  "category": "integrated",
+  "summary": "湿疹急性期更强调先控制炎症和渗出，再逐步恢复日常护理节奏。",
+  "symptoms": [
+    "渗出明显",
+    "瘙痒加重",
+    "红斑和糜烂更突出"
+  ],
+  "careAdvice": [
+    "急性期优先减少刺激和控制炎症",
+    "不要在渗出阶段叠加过多活性产品",
+    "在医生指导下处理药物和外用节奏"
+  ],
+  "redFlags": [
+    "渗液明显增多",
+    "出现感染迹象",
+    "症状快速扩散"
+  ],
+  "whenToSeeDoctor": [
+    "渗出明显",
+    "瘙痒难以控制",
+    "怀疑继发感染"
+  ],
+  "triageAdvice": "湿疹急性期若渗出明显、糜烂加重或怀疑感染，应尽快面诊。",
+  "displayOrder": 65,
+  "featured": false,
+  "visible": true,
+  "aliases": ["湿疹急性期", "急性湿疹处理"],
+  "searchKeywords": ["湿疹急性期", "渗出", "糜烂", "感染风险"],
+  "relatedImageIds": ["eczema_placeholder_arm"],
+  "source": "项目内整理文本：中西医结合/综合治疗.txt（清洗后）",
+  "sourceUrl": "",
+  "updatedAt": "2026-04-12",
+  "reviewStatus": "reviewed"
+}

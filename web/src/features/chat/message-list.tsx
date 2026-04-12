@@ -22,7 +22,7 @@ export function MessageList({ messages, busy, onPromptSelect }: MessageListProps
   }, [busy, messages])
 
   return (
-    <div className="min-h-0 flex-1 overflow-hidden rounded-[30px] border border-white/8 bg-[linear-gradient(180deg,rgba(14,25,47,0.92),rgba(11,20,37,0.82))]">
+    <div className="app-surface app-panel-surface min-h-0 flex-1 overflow-hidden rounded-[30px] border border-white/8 bg-[linear-gradient(180deg,rgba(14,25,47,0.92),rgba(11,20,37,0.82))]">
       <ScrollArea className="h-full">
         <div className="flex min-h-full flex-col gap-5 p-5 lg:p-6">
           {messages.length === 0 ? (

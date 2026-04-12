@@ -1,0 +1,39 @@
+{
+  "id": "psoriasis",
+  "sourceId": "dermnet-psoriasis",
+  "name": "银屑病基础提示",
+  "slug": "psoriasis",
+  "category": "western",
+  "summary": "银屑病常表现为边界较清楚的红斑与鳞屑，属于需要长期管理的慢性皮肤问题。",
+  "symptoms": [
+    "边界较清楚的红斑",
+    "鳞屑明显",
+    "反复发作或慢性迁延"
+  ],
+  "careAdvice": [
+    "避免抓挠和自行频繁更换强刺激外用方案",
+    "把长期管理和规律随访放在重要位置",
+    "注意记录诱发加重的生活和环境因素"
+  ],
+  "redFlags": [
+    "面积快速扩大",
+    "伴明显疼痛或感染迹象",
+    "合并关节不适"
+  ],
+  "whenToSeeDoctor": [
+    "皮损持续扩大时",
+    "症状影响生活质量时",
+    "伴有关节疼痛或晨僵时"
+  ],
+  "triageAdvice": "若银屑病范围扩大、长期反复或伴关节症状，应尽快面诊评估。",
+  "displayOrder": 100,
+  "featured": true,
+  "visible": true,
+  "aliases": ["牛皮癣", "psoriasis"],
+  "searchKeywords": ["银屑病", "牛皮癣", "psoriasis", "鳞屑", "红斑"],
+  "relatedImageIds": ["psoriasis_placeholder_elbow"],
+  "source": "DermNet NZ：Psoriasis（结构化保守摘要）",
+  "sourceUrl": "https://dermnetnz.org/topics/psoriasis",
+  "updatedAt": "2026-04-12",
+  "reviewStatus": "reviewed"
+}

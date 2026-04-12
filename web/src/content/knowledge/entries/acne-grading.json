@@ -1,0 +1,38 @@
+{
+  "id": "acne-grading",
+  "sourceId": "project-western-1",
+  "name": "痤疮分级提示",
+  "slug": "acne-grading",
+  "category": "western",
+  "summary": "痤疮从轻到重可分为以粉刺为主、炎性丘疹增多以及结节囊肿等不同层级。",
+  "symptoms": [
+    "轻度以粉刺为主",
+    "中度炎性丘疹增多",
+    "重度可出现结节囊肿"
+  ],
+  "careAdvice": [
+    "先判断问题更接近哪一层级，再决定是否需要尽快面诊",
+    "轻度问题重点在温和清洁和规范外用",
+    "中重度问题不要长期自行拖延处理"
+  ],
+  "redFlags": [
+    "结节囊肿明显",
+    "瘢痕风险增加",
+    "疼痛和炎症持续加重"
+  ],
+  "whenToSeeDoctor": [
+    "怀疑已到中重度层级时",
+    "反复发作并出现瘢痕风险时"
+  ],
+  "triageAdvice": "若痤疮已不止粉刺、开始明显炎症化或出现结节，应尽快线下面诊。",
+  "displayOrder": 35,
+  "featured": true,
+  "visible": true,
+  "aliases": ["痤疮分级", "青春痘严重程度"],
+  "searchKeywords": ["痤疮分级", "轻度痤疮", "中度痤疮", "重度痤疮", "结节囊肿"],
+  "relatedImageIds": ["acne_placeholder_face"],
+  "source": "项目内整理文本：西医皮肤科/1.txt（清洗后）",
+  "sourceUrl": "",
+  "updatedAt": "2026-04-12",
+  "reviewStatus": "reviewed"
+}

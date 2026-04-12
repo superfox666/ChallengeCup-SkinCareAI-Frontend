@@ -1,14 +1,14 @@
-import aiAvatar from "@/assets/brand/ai-avatar.png"
+import { brandAiAvatarSrc } from "@/lib/brand-assets"
 
 export function BrandBlock() {
   return (
-    <div className="relative overflow-hidden rounded-[28px] border border-white/10 bg-[linear-gradient(180deg,rgba(18,35,66,0.96),rgba(9,20,39,0.88))] px-5 py-5 shadow-[0_24px_60px_rgba(0,0,0,0.22)]">
+    <div className="app-surface app-panel-surface relative overflow-hidden rounded-[28px] border border-white/10 bg-[linear-gradient(180deg,rgba(18,35,66,0.96),rgba(9,20,39,0.88))] px-5 py-5 shadow-[0_24px_60px_rgba(0,0,0,0.22)]">
       <div className="absolute inset-x-6 top-0 h-px bg-gradient-to-r from-transparent via-white/30 to-transparent" />
       <div className="flex items-center gap-4">
         <div className="relative flex size-16 items-center justify-center rounded-[22px] bg-white/10 ring-1 ring-white/12 shadow-[inset_0_1px_0_rgba(255,255,255,0.08)]">
           <div className="flex size-12 items-center justify-center rounded-full bg-[radial-gradient(circle_at_35%_35%,rgba(255,255,255,0.98),rgba(232,246,247,0.92))] shadow-[0_12px_30px_rgba(4,14,24,0.22)] ring-1 ring-white/30">
             <img
-              src={aiAvatar}
+              src={brandAiAvatarSrc}
               alt="SkinCareAI 品牌头像"
               className="size-9 object-contain"
             />

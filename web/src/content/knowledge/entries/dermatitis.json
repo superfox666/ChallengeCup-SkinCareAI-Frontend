@@ -1,0 +1,39 @@
+{
+  "id": "dermatitis",
+  "sourceId": "project-western-1",
+  "name": "皮炎",
+  "slug": "dermatitis",
+  "category": "western",
+  "summary": "皮炎常作为广义炎症性皮肤问题的统称，护理重点通常围绕刺激源控制和屏障修复。",
+  "symptoms": [
+    "红斑或脱屑",
+    "瘙痒",
+    "刺激后反应明显"
+  ],
+  "careAdvice": [
+    "优先回顾近期新增的护肤品、洗护用品和接触物",
+    "减少过度清洁和摩擦刺激",
+    "以保湿修复为基础，必要时寻求专业药物指导"
+  ],
+  "redFlags": [
+    "持续扩散",
+    "明显破溃",
+    "怀疑继发感染"
+  ],
+  "whenToSeeDoctor": [
+    "刺激源停用后仍反复",
+    "影响日常生活",
+    "伴随疼痛或渗出"
+  ],
+  "triageAdvice": "若皮炎样症状反复加重、伴渗液或感染迹象，应尽快线下面诊。",
+  "displayOrder": 50,
+  "featured": true,
+  "visible": true,
+  "aliases": ["皮炎样问题", "炎症性皮肤问题"],
+  "searchKeywords": ["皮炎", "dermatitis", "红斑", "脱屑", "刺激"],
+  "relatedImageIds": ["eczema_placeholder_arm"],
+  "source": "项目内整理文本：西医皮肤科/1.txt（清洗后，结合湿疹段落整理）",
+  "sourceUrl": "",
+  "updatedAt": "2026-04-12",
+  "reviewStatus": "reviewed"
+}

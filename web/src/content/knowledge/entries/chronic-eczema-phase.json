@@ -1,0 +1,38 @@
+{
+  "id": "chronic-eczema-phase",
+  "sourceId": "project-integrated-treatment",
+  "name": "湿疹慢性期护理重点",
+  "slug": "chronic-eczema-phase",
+  "category": "integrated",
+  "summary": "湿疹慢性期更需要长期修复皮肤屏障，减少反复，而不是只追求短期见效。",
+  "symptoms": [
+    "反复发作",
+    "干燥脱屑",
+    "皮肤屏障脆弱"
+  ],
+  "careAdvice": [
+    "把保湿修复放在长期护理核心位置",
+    "避免频繁更换方案和过度刺激",
+    "逐步建立稳定、可持续的护理节奏"
+  ],
+  "redFlags": [
+    "长期反复无改善",
+    "皮肤抓破后继发感染"
+  ],
+  "whenToSeeDoctor": [
+    "慢性反复影响生活",
+    "保湿修复后仍控制不佳",
+    "伴随皮损扩散或加重"
+  ],
+  "triageAdvice": "若湿疹长期反复、屏障持续受损或伴感染，应尽快面诊调整方案。",
+  "displayOrder": 66,
+  "featured": false,
+  "visible": true,
+  "aliases": ["湿疹慢性期", "慢性湿疹护理"],
+  "searchKeywords": ["慢性湿疹", "屏障修复", "反复发作", "保湿"],
+  "relatedImageIds": ["eczema_placeholder_arm"],
+  "source": "项目内整理文本：中西医结合/综合治疗.txt（清洗后）",
+  "sourceUrl": "",
+  "updatedAt": "2026-04-12",
+  "reviewStatus": "reviewed"
+}

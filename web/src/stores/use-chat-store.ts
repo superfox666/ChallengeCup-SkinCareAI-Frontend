@@ -80,7 +80,7 @@ function makeUserMessage(
     meta: {
       modelId: model.id,
       providerId: model.providerId,
-      source: "mock",
+      source: "server",
     },
   }
 }
@@ -101,7 +101,7 @@ function makeAssistantMessage(
     meta: {
       modelId: model.id,
       providerId: model.providerId,
-      source: "mock",
+      source: "server",
     },
   }
 }
@@ -133,13 +133,16 @@ function sanitizePersistedMessages(messagesByConversationId: Record<string, Mess
             return part
           }
 
-          const needsReset = part.image.previewUrl?.startsWith("blob:")
+          const needsReset =
+            part.image.previewUrl?.startsWith("blob:") ||
+            part.image.previewUrl?.startsWith("data:")
 
           return {
             ...part,
             image: {
               ...part.image,
               previewUrl: needsReset ? null : part.image.previewUrl,
+              transportDataUrl: needsReset ? null : part.image.transportDataUrl ?? null,
               persistenceNote: needsReset
                 ? "本地上传图片的预览不会跨刷新持久化，请重新上传原图。"
                 : part.image.persistenceNote,
@@ -162,6 +165,13 @@ interface ChatState {
   activateConversation: (conversationId: string) => void
   renameConversation: (conversationId: string, nextTitle: string) => void
   deleteConversation: (conversationId: string, fallbackModel: ModelDefinition) => void
+  upsertAssistantStream: (options: {
+    conversationId: string
+    model: ModelDefinition
+    messageId: string
+    text: string
+    state: Message["state"]
+  }) => void
   submitWithAdapter: (options: {
     adapter: ProviderAdapter
     conversationId: string
@@ -300,6 +310,33 @@ export const useChatStore = create<ChatState>()(
       set({ activeConversationId: newConversationId })
     }
   },
+  upsertAssistantStream: ({ conversationId, model, messageId, text, state }) => {
+    set((currentState) => {
+      const messages = currentState.messagesByConversationId[conversationId] ?? []
+      const existingIndex = messages.findIndex((message) => message.id === messageId)
+      const nextMessage = makeAssistantMessage(conversationId, model, text, state)
+      nextMessage.id = messageId
+
+      if (existingIndex === -1) {
+        return {
+          messagesByConversationId: {
+            ...currentState.messagesByConversationId,
+            [conversationId]: [...messages, nextMessage],
+          },
+        }
+      }
+
+      const nextMessages = [...messages]
+      nextMessages[existingIndex] = nextMessage
+
+      return {
+        messagesByConversationId: {
+          ...currentState.messagesByConversationId,
+          [conversationId]: nextMessages,
+        },
+      }
+    })
+  },
   async submitWithAdapter({ adapter, conversationId, model, input }) {
     const state = get()
     const conversation = state.conversations[conversationId]
@@ -357,10 +394,19 @@ export const useChatStore = create<ChatState>()(
         ),
         messagesByConversationId: {
           ...currentState.messagesByConversationId,
-          [conversationId]: [
-            ...(currentState.messagesByConversationId[conversationId] ?? []),
-            assistantMessage,
-          ],
+          [conversationId]: result.streamed
+            ? (currentState.messagesByConversationId[conversationId] ?? []).map((message) =>
+                message.state === "streaming"
+                  ? {
+                      ...message,
+                      state: "complete",
+                    }
+                  : message
+              )
+            : [
+                ...(currentState.messagesByConversationId[conversationId] ?? []),
+                assistantMessage,
+              ],
         },
         activeRequestConversationId: null,
       }))

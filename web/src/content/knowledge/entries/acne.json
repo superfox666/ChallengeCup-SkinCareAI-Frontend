@@ -1,0 +1,38 @@
+{
+  "id": "acne",
+  "sourceId": "project-western-1",
+  "name": "痤疮",
+  "slug": "acne",
+  "category": "western",
+  "summary": "痤疮属于毛囊皮脂腺单位的慢性炎症问题，分级会影响处理方式。",
+  "symptoms": [
+    "粉刺",
+    "炎性丘疹",
+    "结节或囊肿"
+  ],
+  "careAdvice": [
+    "温和清洁，避免频繁去角质",
+    "减少自行叠加刺激性活性产品",
+    "必要时规范使用外用药并寻求专业建议"
+  ],
+  "redFlags": [
+    "结节囊肿快速增多",
+    "反复发作并出现瘢痕风险"
+  ],
+  "whenToSeeDoctor": [
+    "中重度痤疮",
+    "久治不缓解",
+    "伴随明显疼痛或色沉瘢痕加重"
+  ],
+  "triageAdvice": "若出现明显瘢痕风险、疼痛结节或长期不缓解，建议尽快面诊。",
+  "displayOrder": 30,
+  "featured": true,
+  "visible": true,
+  "aliases": ["青春痘", "粉刺"],
+  "searchKeywords": ["痤疮", "青春痘", "粉刺", "acne", "丘疹"],
+  "relatedImageIds": ["acne_placeholder_face"],
+  "source": "项目内整理文本：西医皮肤科/1.txt（清洗后）",
+  "sourceUrl": "",
+  "updatedAt": "2026-04-12",
+  "reviewStatus": "reviewed"
+}

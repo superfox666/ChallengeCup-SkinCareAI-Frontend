@@ -1,0 +1,39 @@
+{
+  "id": "sensitive-skin-care",
+  "sourceId": "aad-dry-skin-self-care",
+  "name": "敏感肌护理注意事项",
+  "slug": "sensitive-skin-care",
+  "category": "western",
+  "summary": "敏感肌护理的关键不是不断叠加新品，而是减少刺激、稳定步骤并观察诱因。",
+  "symptoms": [
+    "使用产品后易刺痛或泛红",
+    "对环境和护理步骤变化更敏感",
+    "屏障状态不稳时反应更明显"
+  ],
+  "careAdvice": [
+    "优先精简护理步骤，避免同时叠加过多活性",
+    "新增产品时分步测试，不要一次更换整套护理",
+    "日常护理重视温和清洁、保湿和防晒"
+  ],
+  "redFlags": [
+    "泛红持续不退",
+    "刺痛和灼热感明显加重",
+    "伴脱屑、渗出或疑似皮炎表现"
+  ],
+  "whenToSeeDoctor": [
+    "精简护理后仍持续不适",
+    "频繁刺痛或明显灼热",
+    "伴随炎症、脱屑或眼周症状时"
+  ],
+  "triageAdvice": "若敏感反应频繁、持续加重或伴炎症表现，应尽快面诊而非持续自行试错。",
+  "displayOrder": 140,
+  "featured": false,
+  "visible": true,
+  "aliases": ["敏感肌", "敏感皮肤"],
+  "searchKeywords": ["敏感肌", "敏感皮肤", "泛红", "刺痛", "精简护理"],
+  "relatedImageIds": [],
+  "source": "AAD：How to relieve dry skin（护理原则延展，结构化保守摘要）",
+  "sourceUrl": "https://www.aad.org/diseases/a-z/dry-skin-self-care",
+  "updatedAt": "2026-04-12",
+  "reviewStatus": "draft"
+}

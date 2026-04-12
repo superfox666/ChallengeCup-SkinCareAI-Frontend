@@ -1,0 +1,39 @@
+{
+  "id": "eczema",
+  "sourceId": "project-western-1",
+  "name": "湿疹",
+  "slug": "eczema",
+  "category": "western",
+  "summary": "湿疹常表现为红斑、丘疹、水疱、糜烂、渗出和结痂等多阶段变化。",
+  "symptoms": [
+    "红斑和丘疹",
+    "瘙痒明显",
+    "渗出、结痂或反复脱屑"
+  ],
+  "careAdvice": [
+    "优先停用刺激源和近期新换产品",
+    "加强保湿，减少频繁清洁",
+    "症状急性加重时及时寻求专业判断"
+  ],
+  "redFlags": [
+    "大面积渗出",
+    "明显感染迹象",
+    "反复发作影响睡眠"
+  ],
+  "whenToSeeDoctor": [
+    "症状扩散",
+    "长期反复",
+    "伴继发感染或剧烈瘙痒"
+  ],
+  "triageAdvice": "若渗出明显、面积扩大或怀疑感染，应尽快线下就医。",
+  "displayOrder": 40,
+  "featured": true,
+  "visible": true,
+  "aliases": ["eczema", "皮炎样问题"],
+  "searchKeywords": ["湿疹", "eczema", "皮炎", "渗出", "瘙痒"],
+  "relatedImageIds": ["eczema_placeholder_arm"],
+  "source": "项目内整理文本：西医皮肤科/1.txt（清洗后）",
+  "sourceUrl": "",
+  "updatedAt": "2026-04-12",
+  "reviewStatus": "reviewed"
+}

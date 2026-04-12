@@ -1,0 +1,20 @@
+[
+  {
+    "id": "tcm",
+    "label": "中医皮肤基础",
+    "displayOrder": 10,
+    "visible": true
+  },
+  {
+    "id": "western",
+    "label": "西医常见问题",
+    "displayOrder": 20,
+    "visible": true
+  },
+  {
+    "id": "integrated",
+    "label": "中西医结合方案",
+    "displayOrder": 30,
+    "visible": true
+  }
+]

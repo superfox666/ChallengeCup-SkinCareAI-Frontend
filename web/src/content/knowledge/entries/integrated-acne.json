@@ -1,0 +1,36 @@
+{
+  "id": "integrated-acne",
+  "sourceId": "project-integrated-treatment",
+  "name": "痤疮中西医结合方案",
+  "slug": "integrated-acne",
+  "category": "integrated",
+  "summary": "痤疮可以采用西医控炎为主、中医调理为辅的联合思路。",
+  "symptoms": [
+    "炎症性皮损反复",
+    "需要兼顾控炎和长期调理"
+  ],
+  "careAdvice": [
+    "西医方向优先控制炎症和规范外用",
+    "中医方向偏向清热凉血、活血化瘀等调理思路",
+    "联合方案需要稳定节奏，不建议频繁换方案"
+  ],
+  "redFlags": [
+    "口服药自行调整",
+    "高频叠加酸类或刺激性方案"
+  ],
+  "whenToSeeDoctor": [
+    "需要联合口服药方案时",
+    "炎症反复或伴瘢痕风险时"
+  ],
+  "triageAdvice": "涉及口服药、激素或强效外用方案时，应以医生建议为准。",
+  "displayOrder": 50,
+  "featured": false,
+  "visible": true,
+  "aliases": ["痤疮联合方案", "中西医结合痤疮"],
+  "searchKeywords": ["痤疮", "联合治疗", "中西医结合", "维A酸", "清热凉血"],
+  "relatedImageIds": ["acne_placeholder_face"],
+  "source": "项目内整理文本：中西医结合/综合治疗.txt（清洗后）",
+  "sourceUrl": "",
+  "updatedAt": "2026-04-12",
+  "reviewStatus": "reviewed"
+}

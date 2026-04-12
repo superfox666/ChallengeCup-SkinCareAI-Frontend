@@ -1,0 +1,39 @@
+{
+  "id": "pruritus",
+  "sourceId": "project-tcm-foundation",
+  "name": "皮肤瘙痒症",
+  "slug": "pruritus",
+  "category": "western",
+  "summary": "皮肤瘙痒症更强调瘙痒本身带来的持续困扰，护理上需先排查刺激源、环境因素和屏障状态。",
+  "symptoms": [
+    "持续或反复瘙痒",
+    "抓挠后加重",
+    "可能伴干燥或局部刺激痕迹"
+  ],
+  "careAdvice": [
+    "减少热水、摩擦和频繁清洁",
+    "优先使用温和保湿",
+    "记录瘙痒的时间、部位和诱发场景"
+  ],
+  "redFlags": [
+    "瘙痒严重影响睡眠",
+    "抓破皮肤后继发感染",
+    "伴随全身症状"
+  ],
+  "whenToSeeDoctor": [
+    "长期反复",
+    "夜间加重明显",
+    "合并红肿、破溃或不明原因全身瘙痒"
+  ],
+  "triageAdvice": "若瘙痒持续反复、影响睡眠或伴全身症状，应尽快线下面诊。",
+  "displayOrder": 80,
+  "featured": false,
+  "visible": true,
+  "aliases": ["瘙痒症", "pruritus"],
+  "searchKeywords": ["瘙痒", "pruritus", "抓挠", "皮肤瘙痒症"],
+  "relatedImageIds": [],
+  "source": "项目内整理文本：中医皮肤科/基础理论.txt（风证段落提及皮肤瘙痒症，前端整理条目）",
+  "sourceUrl": "",
+  "updatedAt": "2026-04-12",
+  "reviewStatus": "draft"
+}

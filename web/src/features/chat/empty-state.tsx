@@ -10,7 +10,7 @@ import {
   EmptyTitle,
 } from "@/components/ui/empty"
 
-import aiAvatar from "@/assets/brand/ai-avatar.png"
+import { brandAiAvatarSrc } from "@/lib/brand-assets"
 
 const starterPrompts = [
   "最近脸上反复长痘，日常护理应该怎么调整？",
@@ -24,19 +24,19 @@ interface EmptyStateProps {
 
 export function EmptyState({ onPromptSelect }: EmptyStateProps) {
   return (
-    <Empty className="min-h-[360px] justify-center rounded-[30px] border border-dashed border-white/12 bg-[linear-gradient(180deg,rgba(18,36,67,0.64),rgba(11,19,35,0.64))] px-6 py-8 lg:min-h-[400px] lg:px-7 lg:py-9">
+    <Empty className="app-surface app-panel-surface min-h-[360px] justify-center rounded-[30px] border border-dashed border-white/12 bg-[linear-gradient(180deg,rgba(18,36,67,0.64),rgba(11,19,35,0.64))] px-6 py-8 lg:min-h-[400px] lg:px-7 lg:py-9">
       <EmptyHeader className="max-w-2xl gap-4">
         <EmptyMedia>
           <div className="flex size-22 items-center justify-center rounded-[30px] bg-primary/12 ring-1 ring-primary/20">
-            <img src={aiAvatar} alt="SkinCareAI 助手头像" className="size-18 object-contain" />
+            <img src={brandAiAvatarSrc} alt="SkinCareAI 助手头像" className="size-18 object-contain" />
           </div>
         </EmptyMedia>
         <EmptyTitle className="text-[2.6rem] leading-[1.06] font-semibold tracking-tight text-white lg:text-[3rem]">
           SkinCareAI 已准备就绪
         </EmptyTitle>
         <EmptyDescription className="max-w-2xl text-base leading-8 text-slate-300">
-          先从一个清晰的问题开始，或上传单张皮肤图片并补充描述。当前为
-          Batch 1 mock 演示，不接真实模型接口。
+          先从一个清晰的问题开始，或上传单张皮肤图片并补充描述。当前页面已接入真实模型路由，
+          仍保留本地知识层和 mock fallback 作为稳定兜底。
         </EmptyDescription>
       </EmptyHeader>
       <EmptyContent className="mt-6 grid w-full max-w-3xl gap-3 lg:grid-cols-3">

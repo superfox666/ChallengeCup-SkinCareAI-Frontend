@@ -7,7 +7,9 @@
     "dev": "vite",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "generate:knowledge": "node scripts/generate-knowledge-manifest.mjs",
+    "validate:knowledge": "npm run generate:knowledge && node scripts/validate-knowledge.mjs"
   },
   "dependencies": {
     "@fontsource-variable/geist": "^5.2.8",

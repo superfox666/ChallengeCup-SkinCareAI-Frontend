@@ -1,0 +1,37 @@
+{
+  "id": "integrated-eczema",
+  "sourceId": "project-integrated-treatment",
+  "name": "湿疹中西医结合方案",
+  "slug": "integrated-eczema",
+  "category": "integrated",
+  "summary": "湿疹常按急性期和慢性期分阶段处理，中医与西医可分工协同。",
+  "symptoms": [
+    "急性期渗出和瘙痒明显",
+    "慢性期反复、干燥、屏障受损"
+  ],
+  "careAdvice": [
+    "急性期以控制炎症和刺激为先",
+    "慢性期更重视保湿修复与长期调理",
+    "联合方案应减少反复，而非追求短期刺激性见效"
+  ],
+  "redFlags": [
+    "长期反复仍无改善",
+    "大面积渗出或继发感染"
+  ],
+  "whenToSeeDoctor": [
+    "反复发作影响生活",
+    "保湿和基础护理无法控制症状",
+    "怀疑感染或严重过敏"
+  ],
+  "triageAdvice": "若反复发作、渗液明显或伴继发感染，应尽快面诊处理。",
+  "displayOrder": 60,
+  "featured": false,
+  "visible": true,
+  "aliases": ["湿疹联合方案", "中西医结合湿疹"],
+  "searchKeywords": ["湿疹", "中西医结合", "屏障修复", "急性期", "慢性期"],
+  "relatedImageIds": ["eczema_placeholder_arm"],
+  "source": "项目内整理文本：中西医结合/综合治疗.txt（清洗后）",
+  "sourceUrl": "",
+  "updatedAt": "2026-04-12",
+  "reviewStatus": "reviewed"
+}

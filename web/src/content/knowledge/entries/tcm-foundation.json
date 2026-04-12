@@ -1,0 +1,37 @@
+{
+  "id": "tcm-foundation",
+  "sourceId": "project-tcm-foundation",
+  "name": "中医皮肤基础总览",
+  "slug": "tcm-foundation",
+  "category": "tcm",
+  "summary": "中医强调皮肤问题与脏腑、气血、生活方式之间的整体联系。",
+  "symptoms": [
+    "皮肤表现常被视为内部失衡的外在反映",
+    "问题分析会结合体质、作息与饮食"
+  ],
+  "careAdvice": [
+    "先梳理近期作息、饮食和外用产品变化",
+    "记录皮肤问题出现的时间、部位和是否反复",
+    "把护理重点放在温和、稳定、持续观察"
+  ],
+  "redFlags": [
+    "症状持续加重",
+    "出现渗液、破溃或明显感染迹象"
+  ],
+  "whenToSeeDoctor": [
+    "家庭护理无改善",
+    "症状范围扩大",
+    "伴随明显疼痛或全身不适"
+  ],
+  "triageAdvice": "若皮损快速加重、反复迁延或伴感染迹象，建议尽快线下面诊。",
+  "displayOrder": 10,
+  "featured": true,
+  "visible": true,
+  "aliases": ["中医整体观", "皮肤基础理论"],
+  "searchKeywords": ["中医", "皮肤基础", "整体观念", "体质", "脏腑"],
+  "relatedImageIds": [],
+  "source": "项目内整理文本：中医皮肤科/基础理论.txt（清洗后）",
+  "sourceUrl": "",
+  "updatedAt": "2026-04-12",
+  "reviewStatus": "reviewed"
+}

@@ -1,0 +1,39 @@
+{
+  "id": "folliculitis",
+  "sourceId": "project-tcm-foundation",
+  "name": "毛囊炎",
+  "slug": "folliculitis",
+  "category": "western",
+  "summary": "毛囊炎常见于毛囊周围的炎症性表现，护理上应避免继续刺激和自行挤压。",
+  "symptoms": [
+    "红色丘疹或脓疱",
+    "局部压痛或灼热",
+    "反复出现在毛发较多区域"
+  ],
+  "careAdvice": [
+    "减少摩擦、抓挠和频繁挤压",
+    "注意局部清洁和通风",
+    "避免自行叠加刺激性祛痘产品"
+  ],
+  "redFlags": [
+    "疼痛明显",
+    "范围扩大",
+    "脓疱增多或伴发热"
+  ],
+  "whenToSeeDoctor": [
+    "反复发作",
+    "自行护理无改善",
+    "怀疑细菌感染加重"
+  ],
+  "triageAdvice": "若脓疱增多、疼痛加重或出现感染迹象，应尽快线下面诊。",
+  "displayOrder": 60,
+  "featured": true,
+  "visible": true,
+  "aliases": ["毛囊周围炎症", "folliculitis"],
+  "searchKeywords": ["毛囊炎", "folliculitis", "脓疱", "红疹", "炎症"],
+  "relatedImageIds": [],
+  "source": "项目内整理文本：中医皮肤科/基础理论.txt（热证段落提及毛囊炎，前端整理条目）",
+  "sourceUrl": "",
+  "updatedAt": "2026-04-12",
+  "reviewStatus": "draft"
+}

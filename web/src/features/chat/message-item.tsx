@@ -4,7 +4,7 @@ import remarkGfm from "remark-gfm"
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
 import type { Message } from "@/types/chat"
 
-import aiAvatar from "@/assets/brand/ai-avatar.png"
+import { brandAiAvatarSrc } from "@/lib/brand-assets"
 
 interface MessageItemProps {
   message: Message
@@ -22,7 +22,7 @@ export function MessageItem({ message }: MessageItemProps) {
     >
       {isAssistant ? (
         <Avatar size="lg" className="mt-1 border border-primary/20 bg-primary/8">
-          <AvatarImage src={aiAvatar} alt="SkinCareAI" className="object-contain p-1" />
+          <AvatarImage src={brandAiAvatarSrc} alt="SkinCareAI" className="object-contain p-1" />
           <AvatarFallback>AI</AvatarFallback>
         </Avatar>
       ) : null}
@@ -75,10 +75,12 @@ export function MessageItem({ message }: MessageItemProps) {
             )
           })}
           <span className="text-xs text-slate-400">
-            {new Date(message.createdAt).toLocaleTimeString("zh-CN", {
-              hour: "2-digit",
-              minute: "2-digit",
-            })}
+            {message.state === "streaming"
+              ? "生成中…"
+              : new Date(message.createdAt).toLocaleTimeString("zh-CN", {
+                  hour: "2-digit",
+                  minute: "2-digit",
+                })}
           </span>
         </div>
       </div>

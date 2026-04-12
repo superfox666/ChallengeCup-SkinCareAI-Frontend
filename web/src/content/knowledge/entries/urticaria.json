@@ -1,0 +1,39 @@
+{
+  "id": "urticaria",
+  "sourceId": "project-tcm-foundation",
+  "name": "荨麻疹",
+  "slug": "urticaria",
+  "category": "western",
+  "summary": "荨麻疹常表现为风团样皮损和明显瘙痒，发作快、变化快，需要关注诱因和过敏风险。",
+  "symptoms": [
+    "风团样皮损",
+    "瘙痒明显",
+    "发作较快、变化较快"
+  ],
+  "careAdvice": [
+    "记录饮食、药物、环境和接触物变化",
+    "避免搔抓和继续接触可疑诱因",
+    "若反复发作，尽快做专业评估"
+  ],
+  "redFlags": [
+    "伴呼吸困难",
+    "面唇肿胀",
+    "全身症状明显"
+  ],
+  "whenToSeeDoctor": [
+    "反复发作",
+    "无法明确诱因",
+    "伴随全身过敏表现"
+  ],
+  "triageAdvice": "若伴呼吸困难、咽喉不适或明显肿胀，应立即就医。",
+  "displayOrder": 70,
+  "featured": true,
+  "visible": true,
+  "aliases": ["风团", "风疹块"],
+  "searchKeywords": ["荨麻疹", "urticaria", "风团", "过敏", "瘙痒"],
+  "relatedImageIds": [],
+  "source": "项目内整理文本：中医皮肤科/基础理论.txt（风证段落提及荨麻疹，前端整理条目）",
+  "sourceUrl": "",
+  "updatedAt": "2026-04-12",
+  "reviewStatus": "draft"
+}

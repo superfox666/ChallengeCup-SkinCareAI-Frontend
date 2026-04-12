@@ -1,8 +1,9 @@
 import { startTransition, useEffect, useMemo, useState } from "react"
 import { useLocation } from "react-router-dom"
 
-import { getRecommendedVisionModel } from "@/config/mock-model-registry"
 import { mockAdapter } from "@/lib/mock-adapter"
+import { serverAdapter } from "@/lib/server-adapter"
+import { streamChatMessage } from "@/lib/server-api"
 import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle } from "@/components/ui/sheet"
 import type { ComposerPayload, ModelDefinition } from "@/types/chat"
 import { useChatStore } from "@/stores/use-chat-store"
@@ -30,6 +31,11 @@ export function AppShell() {
   const models = useModelStore((state) => state.models)
   const selectedModelId = useModelStore((state) => state.selectedModelId)
   const setSelectedModelId = useModelStore((state) => state.setSelectedModelId)
+  const modelsLoaded = useModelStore((state) => state.modelsLoaded)
+  const modelsError = useModelStore((state) => state.modelsError)
+  const refreshAt = useModelStore((state) => state.refreshAt)
+  const loadModels = useModelStore((state) => state.loadModels)
+  const getRecommendedVisionModelId = useModelStore((state) => state.getRecommendedVisionModelId)
 
   const conversationOrder = useChatStore((state) => state.conversationOrder)
   const conversations = useChatStore((state) => state.conversations)
@@ -42,9 +48,14 @@ export function AppShell() {
   const renameConversation = useChatStore((state) => state.renameConversation)
   const deleteConversation = useChatStore((state) => state.deleteConversation)
   const submitWithAdapter = useChatStore((state) => state.submitWithAdapter)
+  const upsertAssistantStream = useChatStore((state) => state.upsertAssistantStream)
 
   const composerNotice = useUiStore((state) => state.composerNotice)
+  const draftTransfer = useUiStore((state) => state.draftTransfer)
+  const theme = useUiStore((state) => state.theme)
   const setComposerNotice = useUiStore((state) => state.setComposerNotice)
+  const setDraftTransfer = useUiStore((state) => state.setDraftTransfer)
+  const setTheme = useUiStore((state) => state.setTheme)
 
   const modelsById = useMemo(() => buildModelMap(models), [models])
   const orderedConversations = useMemo(
@@ -71,10 +82,34 @@ export function AppShell() {
     ? messagesByConversationId[activeConversationId] ?? []
     : []
   const isBusy = activeRequestConversationId !== null
+  const suggestedVisionModel = modelsById[getRecommendedVisionModelId()] ?? null
+  const initialDraft =
+    draftTransfer && draftTransfer.conversationId === activeConversationId
+      ? draftTransfer.payload
+      : null
+
+  useEffect(() => {
+    void loadModels(false)
+  }, [loadModels])
+
+  useEffect(() => {
+    void loadModels(true)
+  }, [loadModels])
 
   useEffect(() => {
     bootstrap(currentModel)
   }, [bootstrap, currentModel])
+
+  useEffect(() => {
+    if (draftTransfer && draftTransfer.conversationId === activeConversationId) {
+      setDraftTransfer(null)
+    }
+  }, [activeConversationId, draftTransfer, setDraftTransfer])
+
+  useEffect(() => {
+    document.documentElement.classList.toggle("dark", theme === "dark")
+    document.documentElement.setAttribute("data-theme", theme)
+  }, [theme])
 
   const createFreshConversation = (modelId: string, notice: string | null) => {
     const model = modelsById[modelId]
@@ -105,6 +140,7 @@ export function AppShell() {
     activateConversation(conversationId)
     setSelectedModelId(targetConversation.modelId)
     setComposerNotice(null)
+    setDraftTransfer(null)
     setIsSidebarOpen(false)
   }
 
@@ -130,12 +166,91 @@ export function AppShell() {
     targetConversationId: string,
     targetModel: ModelDefinition
   ) => {
-    await submitWithAdapter({
-      adapter: mockAdapter,
-      conversationId: targetConversationId,
-      model: targetModel,
-      input: payload,
-    })
+    if (!payload.image) {
+      const streamMessageId = `msg-${crypto.randomUUID()}`
+      let streamText = ""
+
+      try {
+        await submitWithAdapter({
+          adapter: {
+            ...serverAdapter,
+            async sendMessage(input) {
+              await streamChatMessage(
+                {
+                  modelId: input.model.modelId || input.model.id,
+                  history: input.history.map((message) => ({
+                    role: message.role,
+                    parts: message.parts
+                      .filter((part) => part.type === "text")
+                      .map((part) => ({ type: part.type, text: part.text })),
+                  })),
+                  input: input.input,
+                },
+                {
+                  onMeta: () => {
+                    upsertAssistantStream({
+                      conversationId: targetConversationId,
+                      model: targetModel,
+                      messageId: streamMessageId,
+                      text: "",
+                      state: "streaming",
+                    })
+                  },
+                  onDelta: (delta) => {
+                    streamText += delta
+                    upsertAssistantStream({
+                      conversationId: targetConversationId,
+                      model: targetModel,
+                      messageId: streamMessageId,
+                      text: streamText,
+                      state: "streaming",
+                    })
+                  },
+                  onDone: (finalText) => {
+                    upsertAssistantStream({
+                      conversationId: targetConversationId,
+                      model: targetModel,
+                      messageId: streamMessageId,
+                      text: finalText || streamText,
+                      state: "complete",
+                    })
+                  },
+                }
+              )
+
+              return {
+                text: streamText,
+                streamed: true,
+              }
+            },
+          },
+          conversationId: targetConversationId,
+          model: targetModel,
+          input: payload,
+        })
+
+        return
+      } catch {
+        // fall through to non-stream request below
+      }
+    }
+
+    try {
+      await submitWithAdapter({
+        adapter: serverAdapter,
+        conversationId: targetConversationId,
+        model: targetModel,
+        input: payload,
+      })
+    } catch {
+      setComposerNotice("真实服务暂时不可用，已切换到本地 mock 兜底。")
+      await submitWithAdapter({
+        adapter: mockAdapter,
+        conversationId: targetConversationId,
+        model: targetModel,
+        input: payload,
+      })
+    }
   }
 
   const handleSubmit = async (payload: ComposerPayload) => {
@@ -144,17 +259,19 @@ export function AppShell() {
     }
 
     if (payload.image && !currentModel.supportsImageInput) {
-      const visionModel = getRecommendedVisionModel()
+      const visionModel = suggestedVisionModel
 
-      setSelectedModelId(visionModel.id)
-      const handoffConversationId = createConversation(visionModel, activeConversationId)
-      activateConversation(handoffConversationId)
-      setComposerNotice(
-        `当前模型不支持图片分析，已 handoff 到 ${visionModel.name} 新会话。`
-      )
+      if (visionModel) {
+        setSelectedModelId(visionModel.id)
+        const handoffConversationId = createConversation(visionModel, activeConversationId)
+        activateConversation(handoffConversationId)
+        setComposerNotice(
+          `当前模型不支持图片分析，已 handoff 到 ${visionModel.displayName || visionModel.name} 新会话。`
+        )
 
-      await submitPayload(payload, handoffConversationId, visionModel)
-      return
+        await submitPayload(payload, handoffConversationId, visionModel)
+        return
+      }
     }
 
     setComposerNotice(null)
@@ -173,15 +290,32 @@ export function AppShell() {
     deleteConversation(conversationId, currentModel)
   }
 
+  const handleSwitchToSuggestedVision = (payload: ComposerPayload) => {
+    if (!suggestedVisionModel || !activeConversationId) {
+      return
+    }
+
+    const handoffConversationId = createConversation(suggestedVisionModel, activeConversationId)
+    setSelectedModelId(suggestedVisionModel.id)
+    activateConversation(handoffConversationId)
+    setDraftTransfer({
+      conversationId: handoffConversationId,
+      payload,
+    })
+    setComposerNotice(
+      `已切换到 ${suggestedVisionModel.displayName || suggestedVisionModel.name}，你可以直接继续发送图片问诊。`
+    )
+  }
+
   return (
     <div className="relative min-h-svh w-full overflow-x-clip">
       <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(38,198,190,0.14),transparent_32%),radial-gradient(circle_at_bottom_right,rgba(255,159,54,0.1),transparent_25%)]" />
       <div
         className={[
-          "relative grid min-h-svh w-full gap-4 p-4",
+          "relative grid min-h-svh w-full gap-4 p-4 2xl:px-6",
           isKnowledgeRoute
             ? "grid-cols-1"
-            : "grid-cols-1 lg:grid-cols-[300px_minmax(0,1fr)] xl:grid-cols-[300px_minmax(0,1fr)_320px]",
+            : "grid-cols-1 lg:grid-cols-[320px_minmax(0,1fr)] xl:grid-cols-[320px_minmax(0,1.18fr)_360px] 2xl:grid-cols-[340px_minmax(0,1.3fr)_380px]",
         ].join(" ")}
       >
         {!isKnowledgeRoute ? (
@@ -211,7 +345,13 @@ export function AppShell() {
             currentConversation={currentConversation}
             currentModel={currentModel}
             models={models}
+            modelsLoaded={modelsLoaded}
+            modelsError={modelsError}
+            refreshAt={refreshAt}
+            theme={theme}
             onModelChange={handleModelChange}
+            onRefreshModels={() => void loadModels(true)}
+            onThemeChange={setTheme}
             onOpenSidebar={() => setIsSidebarOpen(true)}
             onOpenRail={() => setIsRailOpen(true)}
           />
@@ -229,6 +369,9 @@ export function AppShell() {
                 model={currentModel}
                 busy={isBusy}
                 notice={composerNotice}
+                initialDraft={initialDraft}
+                suggestedVisionModel={suggestedVisionModel}
+                onSwitchToSuggestedVision={handleSwitchToSuggestedVision}
                 onSubmit={handleSubmit}
               />
             </>

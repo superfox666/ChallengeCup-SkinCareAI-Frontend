@@ -1,13 +1,13 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 
-import showcaseImage from "@/assets/brand/brand-showcase.png"
+import { brandShowcaseSrc } from "@/lib/brand-assets"
 
 export function BrandShowcaseCard() {
   return (
-    <Card className="rounded-[28px] border border-white/8 bg-[linear-gradient(180deg,rgba(16,29,54,0.96),rgba(11,19,35,0.9))] py-0 text-white shadow-[0_24px_60px_rgba(0,0,0,0.18)]">
+    <Card className="app-surface app-panel-surface rounded-[28px] border border-white/8 bg-[linear-gradient(180deg,rgba(16,29,54,0.96),rgba(11,19,35,0.9))] py-0 text-white shadow-[0_24px_60px_rgba(0,0,0,0.18)]">
       <div className="relative h-52 overflow-hidden">
         <img
-          src={showcaseImage}
+          src={brandShowcaseSrc}
           alt="SkinCareAI 品牌展示素材"
           className="h-full w-full object-cover"
           loading="lazy"

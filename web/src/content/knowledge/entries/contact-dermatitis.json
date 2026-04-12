@@ -1,0 +1,39 @@
+{
+  "id": "contact-dermatitis",
+  "sourceId": "dermnet-contact-dermatitis",
+  "name": "接触性皮炎基础提示",
+  "slug": "contact-dermatitis",
+  "category": "western",
+  "summary": "接触性皮炎通常与刺激物或过敏原接触有关，第一步往往不是加产品，而是找诱因和停刺激源。",
+  "symptoms": [
+    "接触后出现红斑、瘙痒或刺痛",
+    "局部脱屑或反复刺激感",
+    "问题与特定用品或环境接触有关"
+  ],
+  "careAdvice": [
+    "先回顾新换的洗护、护肤、清洁剂或金属接触物",
+    "优先停用可疑刺激源",
+    "护理以温和清洁和保湿修复为主"
+  ],
+  "redFlags": [
+    "范围扩散",
+    "水疱或破溃明显",
+    "怀疑继发感染"
+  ],
+  "whenToSeeDoctor": [
+    "停用诱因后仍持续不缓解",
+    "反复发作时",
+    "面部、眼周或大面积受累时"
+  ],
+  "triageAdvice": "若接触性皮炎反复发作、面积扩大或伴破溃渗出，应尽快面诊。",
+  "displayOrder": 120,
+  "featured": true,
+  "visible": true,
+  "aliases": ["接触性过敏", "刺激性皮炎"],
+  "searchKeywords": ["接触性皮炎", "刺激性皮炎", "过敏", "红斑", "接触物"],
+  "relatedImageIds": [],
+  "source": "DermNet NZ：Contact dermatitis（结构化保守摘要）",
+  "sourceUrl": "https://dermnetnz.org/topics/contact-dermatitis",
+  "updatedAt": "2026-04-12",
+  "reviewStatus": "reviewed"
+}

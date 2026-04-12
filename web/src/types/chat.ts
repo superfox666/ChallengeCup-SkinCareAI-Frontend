@@ -1,4 +1,4 @@
-export type ProviderId = "mock"
+export type ProviderId = string
 export type SessionType = "text" | "vision"
 export type ConversationStatus = "idle" | "responding" | "error"
 
@@ -8,19 +8,35 @@ export interface ImageAttachment {
   mimeType: string
   previewUrl: string | null
   size: number
+  transportDataUrl?: string | null
   persistenceNote?: string
 }
 
 export interface ModelDefinition {
   id: string
   providerId: ProviderId
+  apiFormat?: string
+  modelId?: string
   name: string
+  displayName?: string
+  description?: string
   summary: string
   sessionType: SessionType
   supportsImageInput: boolean
+  supportsVision?: boolean
   supportsMarkdown: boolean
-  status: "available" | "disabled"
+  supportsStreaming?: boolean
+  speedLevel?: string
+  priceLevel?: string
+  recommendedScore?: number
+  capabilities?: string[]
   capabilitySummary: string[]
+  status: "available" | "disabled" | "online" | "degraded" | "offline" | "unknown"
+  latencyMs?: number | null
+  networkHint?: string
+  recommendedUseCases?: string[]
+  supportedEndpointTypes?: string[]
+  available?: boolean
   recommendedForImageHandoff?: boolean
 }
 
@@ -33,12 +49,12 @@ export interface Message {
   conversationId: string
   role: "user" | "assistant" | "system"
   parts: MessagePart[]
-  state: "complete" | "failed"
+  state: "complete" | "failed" | "streaming"
   createdAt: string
   meta: {
     modelId: string
     providerId: ProviderId
-    source: "mock"
+    source: "mock" | "server"
   }
 }
 
@@ -69,4 +85,8 @@ export interface ProviderRequest {
 
 export interface AssistantTurnResult {
   text: string
+  providerId?: ProviderId
+  latencyMs?: number | null
+  streamed?: boolean
+  meta?: Record<string, unknown>
 }

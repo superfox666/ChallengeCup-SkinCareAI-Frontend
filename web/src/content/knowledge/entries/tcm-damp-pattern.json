@@ -1,0 +1,38 @@
+{
+  "id": "tcm-damp-pattern",
+  "sourceId": "project-tcm-foundation",
+  "name": "湿证要点",
+  "slug": "damp-pattern",
+  "category": "tcm",
+  "summary": "湿证更偏向渗出、缠绵、反复不愈的皮肤表现，常见于湿疹、皮炎类问题。",
+  "symptoms": [
+    "皮损渗出",
+    "反复迁延",
+    "湿疹或皮炎样表现"
+  ],
+  "careAdvice": [
+    "先减少刺激性外用，避免频繁更换护肤和清洁产品",
+    "保持皮肤干爽清洁，但避免过度清洗",
+    "记录渗出、瘙痒和反复发作的时间线"
+  ],
+  "redFlags": [
+    "渗出加重",
+    "出现破溃或感染迹象"
+  ],
+  "whenToSeeDoctor": [
+    "渗出范围扩大",
+    "反复发作影响睡眠",
+    "家庭护理效果差"
+  ],
+  "triageAdvice": "若渗液明显、反复不愈或伴感染迹象，应尽快线下面诊。",
+  "displayOrder": 30,
+  "featured": false,
+  "visible": true,
+  "aliases": ["湿证", "健脾祛湿"],
+  "searchKeywords": ["湿证", "湿疹", "皮炎", "渗出", "缠绵难愈"],
+  "relatedImageIds": ["eczema_placeholder_arm"],
+  "source": "项目内整理文本：中医皮肤科/基础理论.txt（清洗后）",
+  "sourceUrl": "",
+  "updatedAt": "2026-04-12",
+  "reviewStatus": "reviewed"
+}

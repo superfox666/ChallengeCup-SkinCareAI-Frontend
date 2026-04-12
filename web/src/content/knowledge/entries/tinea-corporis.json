@@ -1,0 +1,39 @@
+{
+  "id": "tinea-corporis",
+  "sourceId": "dermnet-tinea-corporis",
+  "name": "真菌感染基础提示",
+  "slug": "tinea-corporis",
+  "category": "western",
+  "summary": "体癣等浅表真菌感染常见为边界较清楚、可逐步向外扩展的环形或片状皮损。",
+  "symptoms": [
+    "瘙痒",
+    "边界较清楚的环形或片状皮损",
+    "皮损可逐步向外扩展"
+  ],
+  "careAdvice": [
+    "保持局部干爽，避免与他人共用毛巾和贴身物品",
+    "不要把真菌感染误当成单纯干燥或普通过敏长期拖延",
+    "如需外用药，建议在线下医生指导下使用"
+  ],
+  "redFlags": [
+    "范围持续扩大",
+    "反复迁延",
+    "诊断不清或自行处理无改善"
+  ],
+  "whenToSeeDoctor": [
+    "多部位扩散时",
+    "长期不缓解时",
+    "怀疑头皮或甲部也被累及时"
+  ],
+  "triageAdvice": "若皮损持续扩散、反复不愈或诊断不确定，应尽快线下面诊。",
+  "displayOrder": 90,
+  "featured": true,
+  "visible": true,
+  "aliases": ["体癣", "真菌感染", "ringworm"],
+  "searchKeywords": ["体癣", "真菌感染", "tinea corporis", "ringworm", "环形皮损"],
+  "relatedImageIds": ["fungal_placeholder_foot"],
+  "source": "DermNet NZ：Tinea corporis（结构化保守摘要）",
+  "sourceUrl": "https://dermnetnz.org/topics/tinea-corporis",
+  "updatedAt": "2026-04-12",
+  "reviewStatus": "reviewed"
+}

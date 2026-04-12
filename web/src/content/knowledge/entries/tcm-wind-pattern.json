@@ -1,0 +1,38 @@
+{
+  "id": "tcm-wind-pattern",
+  "sourceId": "project-tcm-foundation",
+  "name": "风证要点",
+  "slug": "wind-pattern",
+  "category": "tcm",
+  "summary": "风证常见于发作快、游走性强、瘙痒明显的皮肤表现。",
+  "symptoms": [
+    "瘙痒明显",
+    "皮损变化较快",
+    "表现可游走或反复"
+  ],
+  "careAdvice": [
+    "先记录诱因，如饮食、环境或外用刺激",
+    "减少搔抓和频繁更换护理产品",
+    "用照片和时间线记录症状变化"
+  ],
+  "redFlags": [
+    "全身过敏反应",
+    "伴随呼吸不适或明显肿胀"
+  ],
+  "whenToSeeDoctor": [
+    "症状发作频繁",
+    "影响睡眠或日常生活",
+    "疑似过敏持续升级"
+  ],
+  "triageAdvice": "伴随呼吸困难、面部肿胀或全身症状时，应立即线下就医。",
+  "displayOrder": 20,
+  "featured": false,
+  "visible": true,
+  "aliases": ["风证", "祛风止痒"],
+  "searchKeywords": ["风证", "瘙痒", "荨麻疹", "皮肤瘙痒"],
+  "relatedImageIds": [],
+  "source": "项目内整理文本：中医皮肤科/基础理论.txt（清洗后）",
+  "sourceUrl": "",
+  "updatedAt": "2026-04-12",
+  "reviewStatus": "reviewed"
+}

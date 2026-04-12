@@ -1,0 +1,39 @@
+{
+  "id": "rosacea",
+  "sourceId": "dermnet-rosacea",
+  "name": "酒糟鼻 / 面部泛红基础提示",
+  "slug": "rosacea",
+  "category": "western",
+  "summary": "酒糟鼻常见为面部持续泛红、潮红或类似痤疮样丘疹，日常护理需要特别注意刺激和诱因管理。",
+  "symptoms": [
+    "面部持续泛红",
+    "反复潮红",
+    "丘疹或脓疱样表现"
+  ],
+  "careAdvice": [
+    "减少酒精、辛辣、热刺激和高温环境等常见诱因",
+    "优先使用温和清洁和防晒护理",
+    "不要把面部泛红长期当作普通敏感自行拖延"
+  ],
+  "redFlags": [
+    "眼部刺激或不适",
+    "泛红持续加重",
+    "伴明显炎症性丘疹"
+  ],
+  "whenToSeeDoctor": [
+    "面部泛红长期不退时",
+    "眼部症状出现时",
+    "误判为痤疮后处理无改善时"
+  ],
+  "triageAdvice": "若面部泛红持续、伴眼部不适或炎症丘疹明显，应尽快面诊。",
+  "displayOrder": 110,
+  "featured": true,
+  "visible": true,
+  "aliases": ["酒渣鼻", "rosacea", "面部潮红"],
+  "searchKeywords": ["酒糟鼻", "酒渣鼻", "rosacea", "面部泛红", "潮红"],
+  "relatedImageIds": [],
+  "source": "DermNet NZ：Rosacea（结构化保守摘要）",
+  "sourceUrl": "https://dermnetnz.org/topics/rosacea",
+  "updatedAt": "2026-04-12",
+  "reviewStatus": "reviewed"
+}

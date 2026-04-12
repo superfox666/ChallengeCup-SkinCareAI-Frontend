@@ -1,0 +1,58 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "SkinCareAI Knowledge Source Registry Entry",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "id",
+    "name",
+    "sourceType",
+    "url",
+    "allowed",
+    "copyrightStatus",
+    "usageScope",
+    "checkedBy",
+    "checkedAt",
+    "updatedAt",
+    "notes"
+  ],
+  "properties": {
+    "id": { "type": "string", "minLength": 1 },
+    "name": { "type": "string", "minLength": 1 },
+    "sourceType": {
+      "type": "string",
+      "enum": [
+        "local-curated",
+        "official-medical",
+        "official-public-health",
+        "teaching-resource",
+        "reference-only"
+      ]
+    },
+    "url": { "type": "string" },
+    "allowed": { "type": "boolean" },
+    "copyrightStatus": {
+      "type": "string",
+      "enum": [
+        "unknown",
+        "internal-curated",
+        "public-reference-only",
+        "restricted",
+        "requires-review"
+      ]
+    },
+    "usageScope": {
+      "type": "string",
+      "enum": [
+        "knowledge-page-only",
+        "internal-reference-only",
+        "future-retrieval-candidate",
+        "blocked"
+      ]
+    },
+    "checkedBy": { "type": "string", "minLength": 1 },
+    "checkedAt": { "type": "string", "minLength": 1 },
+    "updatedAt": { "type": "string", "minLength": 1 },
+    "notes": { "type": "string", "minLength": 1 }
+  }
+}

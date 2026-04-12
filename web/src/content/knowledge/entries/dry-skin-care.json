@@ -1,0 +1,39 @@
+{
+  "id": "dry-skin-care",
+  "sourceId": "aad-dry-skin-self-care",
+  "name": "干燥起皮与基础护理",
+  "slug": "dry-skin-care",
+  "category": "western",
+  "summary": "干燥起皮常与清洁方式、环境、年龄或屏障状态有关，护理重点是减少刺激并及时保湿。",
+  "symptoms": [
+    "皮肤粗糙",
+    "干燥脱屑",
+    "紧绷或轻度瘙痒"
+  ],
+  "careAdvice": [
+    "缩短热水冲洗时间，减少高频清洁",
+    "洗后及时使用保湿产品",
+    "优先选择温和、低刺激的护理步骤"
+  ],
+  "redFlags": [
+    "裂口出血",
+    "红肿明显",
+    "干燥伴持续疼痛或感染迹象"
+  ],
+  "whenToSeeDoctor": [
+    "保湿后仍长期不改善",
+    "反复出现裂口和疼痛",
+    "怀疑不只是单纯干燥而是炎症性问题时"
+  ],
+  "triageAdvice": "若干燥伴裂口、红肿或长期不缓解，应尽快面诊排查屏障受损或皮炎。",
+  "displayOrder": 130,
+  "featured": true,
+  "visible": true,
+  "aliases": ["干燥起皮", "dry skin", "xerosis"],
+  "searchKeywords": ["干燥", "起皮", "dry skin", "xerosis", "保湿"],
+  "relatedImageIds": [],
+  "source": "AAD：How to relieve dry skin（结构化保守摘要）",
+  "sourceUrl": "https://www.aad.org/diseases/a-z/dry-skin-self-care",
+  "updatedAt": "2026-04-12",
+  "reviewStatus": "reviewed"
+}

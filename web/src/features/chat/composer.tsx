@@ -11,15 +11,26 @@ interface ComposerProps {
   model: ModelDefinition
   busy: boolean
   notice: string | null
+  initialDraft?: ComposerPayload | null
+  suggestedVisionModel?: ModelDefinition | null
+  onSwitchToSuggestedVision?: (payload: ComposerPayload) => void
   onSubmit: (payload: ComposerPayload) => Promise<void>
 }
 
-function createImageAttachment(file: File): ImageAttachment {
+async function createImageAttachment(file: File): Promise<ImageAttachment> {
+  const dataUrl = await new Promise<string>((resolve, reject) => {
+    const reader = new FileReader()
+    reader.onload = () => resolve(typeof reader.result === "string" ? reader.result : "")
+    reader.onerror = () => reject(reader.error)
+    reader.readAsDataURL(file)
+  })
+
   return {
     id: `img-${crypto.randomUUID()}`,
     name: file.name,
     mimeType: file.type,
-    previewUrl: URL.createObjectURL(file),
+    previewUrl: dataUrl,
+    transportDataUrl: dataUrl,
     size: file.size,
   }
 }
@@ -28,12 +39,16 @@ export function Composer({
   model,
   busy,
   notice,
+  initialDraft,
+  suggestedVisionModel,
+  onSwitchToSuggestedVision,
   onSubmit,
 }: ComposerProps) {
   const inputId = useId()
-  const [text, setText] = useState("")
-  const [image, setImage] = useState<ImageAttachment | null>(null)
+  const [text, setText] = useState(initialDraft?.text ?? "")
+  const [image, setImage] = useState<ImageAttachment | null>(initialDraft?.image ?? null)
   const [isComposing, setIsComposing] = useState(false)
+  const [isDragOver, setIsDragOver] = useState(false)
 
   const helperText = useMemo(() => {
     if (notice) {
@@ -41,7 +56,7 @@ export function Composer({
     }
 
     if (image && !model.supportsImageInput) {
-      return "当前模型不支持图片分析，发送后将自动切换到新的视觉模型会话。"
+      return `当前模型不支持图片分析，推荐切换到 ${suggestedVisionModel?.displayName || suggestedVisionModel?.name || "视觉模型"}。`
     }
 
     if (model.supportsImageInput) {
@@ -49,18 +64,29 @@ export function Composer({
     }
 
     return "当前模型为文本问诊模型，若附带图片将自动 handoff 到视觉模型。"
-  }, [image, model.supportsImageInput, notice])
+  }, [
+    image,
+    model.supportsImageInput,
+    notice,
+    suggestedVisionModel?.displayName,
+    suggestedVisionModel?.name,
+  ])
 
   const canSubmit = !busy && (text.trim().length > 0 || image !== null)
 
-  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleIncomingFile = async (file: File) => {
+    const attachment = await createImageAttachment(file)
+    setImage(attachment)
+  }
+
+  const handleFileChange = async (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0]
 
     if (!file) {
       return
     }
 
-    setImage(createImageAttachment(file))
+    await handleIncomingFile(file)
     event.target.value = ""
   }
 
@@ -93,7 +119,31 @@ export function Composer({
   }
 
   return (
-    <div className="rounded-[28px] border border-white/10 bg-[linear-gradient(180deg,rgba(15,27,50,0.96),rgba(10,18,35,0.9))] p-4 shadow-[0_24px_60px_rgba(0,0,0,0.18)]">
+    <div
+      className={[
+        "app-surface app-panel-surface rounded-[28px] border border-white/10 bg-[linear-gradient(180deg,rgba(15,27,50,0.96),rgba(10,18,35,0.9))] p-4 shadow-[0_24px_60px_rgba(0,0,0,0.18)] transition-colors",
+        isDragOver ? "border-primary/50 bg-[linear-gradient(180deg,rgba(18,46,67,0.98),rgba(10,18,35,0.92))]" : "",
+      ].join(" ")}
+      onDragOver={(event) => {
+        event.preventDefault()
+        setIsDragOver(true)
+      }}
+      onDragLeave={() => setIsDragOver(false)}
+      onDrop={(event) => {
+        event.preventDefault()
+        setIsDragOver(false)
+        const file = event.dataTransfer.files?.[0]
+        if (file) {
+          void handleIncomingFile(file)
+        }
+      }}
+      onPaste={(event) => {
+        const file = Array.from(event.clipboardData.files || [])[0]
+        if (file) {
+          void handleIncomingFile(file)
+        }
+      }}
+    >
       <div className="flex flex-col gap-4">
         {image ? (
           <UploadPreview image={image} onRemove={() => setImage(null)} />
@@ -117,7 +167,9 @@ export function Composer({
               type="file"
               accept="image/*"
               className="hidden"
-              onChange={handleFileChange}
+              onChange={(event) => {
+                void handleFileChange(event)
+              }}
             />
             <Button
               asChild
@@ -131,6 +183,21 @@ export function Composer({
               </label>
             </Button>
             <p className="text-sm text-slate-400">{helperText}</p>
+            {image && !model.supportsImageInput && suggestedVisionModel && onSwitchToSuggestedVision ? (
+              <Button
+                type="button"
+                variant="outline"
+                className="rounded-2xl border-primary/30 bg-primary/10 text-slate-100 hover:bg-primary/16"
+                onClick={() =>
+                  onSwitchToSuggestedVision({
+                    text,
+                    image,
+                  })
+                }
+              >
+                切换到 {suggestedVisionModel.displayName || suggestedVisionModel.name}
+              </Button>
+            ) : null}
           </div>
           <Button
             type="button"

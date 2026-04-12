@@ -27,7 +27,7 @@ export function ConversationList({
   busy,
 }: ConversationListProps) {
   return (
-    <div className="flex min-h-0 flex-1 flex-col gap-4 overflow-hidden rounded-[28px] border border-white/8 bg-[linear-gradient(180deg,rgba(14,26,49,0.9),rgba(10,18,35,0.82))] p-3">
+    <div className="app-surface app-panel-surface flex min-h-0 flex-1 flex-col gap-4 overflow-hidden rounded-[28px] border border-white/8 bg-[linear-gradient(180deg,rgba(14,26,49,0.9),rgba(10,18,35,0.82))] p-3">
       <div className="flex items-center justify-between gap-3 px-2 pt-1.5">
         <div className="flex items-center gap-2 text-sm font-medium text-white">
           <MessageSquareTextIcon className="size-4 text-primary" />

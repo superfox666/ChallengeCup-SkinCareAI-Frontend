@@ -1,0 +1,3079 @@
+# Ikun API接口对接
+
+## Docs
+- [引言](https://ikunapi.apifox.cn/doc-8298633.md): 
+- [在线调试说明](https://ikunapi.apifox.cn/doc-8298634.md): 
+- [发出请求](https://ikunapi.apifox.cn/doc-8298635.md): 
+- 中转站基本介绍 [API 快速开始指南](https://ikunapi.apifox.cn/doc-8298636.md): 
+- 中转站基本介绍 [联系方式](https://ikunapi.apifox.cn/doc-8298637.md): 
+- 中转站基本介绍 [分组详细表格](https://ikunapi.apifox.cn/doc-8298638.md): 
+- 中转站基本介绍 [分组的特殊性及价格差异](https://ikunapi.apifox.cn/doc-8298639.md): 
+- 中转站基本介绍 [如何新建指定分组的令牌](https://ikunapi.apifox.cn/doc-8298640.md): 
+- 中转站基本介绍 [代理接口调用地址](https://ikunapi.apifox.cn/doc-8298641.md): 
+- 中转站基本介绍 [API Key 额度查询服务](https://ikunapi.apifox.cn/doc-8298642.md): 
+- 中转站基本介绍 [免费AI聊天项目导航](https://ikunapi.apifox.cn/doc-8298643.md): 
+- 聊天(Chat) > ChatGpt 接口 > ChatGPT聊天（Chat） [聊天完成对象](https://ikunapi.apifox.cn/doc-8298644.md): 
+- 聊天(Chat) > ChatGpt 接口 > ChatGPT聊天（Chat） [聊天完成块对象](https://ikunapi.apifox.cn/doc-8298645.md): 
+- 聊天(Chat) > ChatGpt 接口 > ChatGPT自动补全（Completions） [完成对象](https://ikunapi.apifox.cn/doc-8298646.md): 
+- 聊天(Chat) > ChatGpt 接口 > ChatGPT嵌入（Embeddings） [嵌入对象](https://ikunapi.apifox.cn/doc-8298647.md): 
+- 聊天(Chat) > Anthropic Claude 接口 [聊天完成对象](https://ikunapi.apifox.cn/doc-8298648.md): 
+- 聊天(Chat) > Anthropic Claude 接口 [聊天完成块对象](https://ikunapi.apifox.cn/doc-8298649.md): 
+- 聊天(Responses) [Responses API与Chat API对比](https://ikunapi.apifox.cn/doc-8298650.md): 
+- 绘画模型 [README](https://ikunapi.apifox.cn/doc-8298651.md): 
+- 绘画模型 [图像对象](https://ikunapi.apifox.cn/doc-8298652.md): 
+- 绘画模型 > FLUX 系列 > Replicate 官方格式 [Flux 分辨率](https://ikunapi.apifox.cn/doc-8298653.md): 
+- 绘画模型 > FLUX 系列 > Replicate 官方格式 [接入教程 ](https://ikunapi.apifox.cn/doc-8298654.md): 
+- 绘画模型 > Fal.ai平台 [状态码](https://ikunapi.apifox.cn/doc-8298655.md): 
+- 绘画模型 > 腾讯AIGC生图 [状态码](https://ikunapi.apifox.cn/doc-8298656.md): 
+- 视频模型 > veo 视频生成 > 视频统一格式 [状态码](https://ikunapi.apifox.cn/doc-8298657.md): 
+- 视频模型 > luma 视频生成 > 官方API格式 [状态码](https://ikunapi.apifox.cn/doc-8298658.md): 
+- 视频模型 > Runway 视频生成 [状态码](https://ikunapi.apifox.cn/doc-8298659.md): 
+- 视频模型 > 海螺 视频生成 [状态码](https://ikunapi.apifox.cn/doc-8298663.md): 
+- 视频模型 > grok 视频生成 > 视频统一格式 [状态码](https://ikunapi.apifox.cn/doc-8298664.md): 
+- 视频模型 > 腾讯AIGC视频生成 [状态码](https://ikunapi.apifox.cn/doc-8298665.md): 
+- GPTs 相关 [简介](https://ikunapi.apifox.cn/doc-8298666.md): 
+- 文生音乐 Suno [说明](https://ikunapi.apifox.cn/doc-8298667.md): 
+- 文生音乐 Suno [参数](https://ikunapi.apifox.cn/doc-8298668.md): 
+- Python配置方式 [python 使用 语音转文本](https://ikunapi.apifox.cn/doc-8298669.md): 
+- Python配置方式 [python 使用文本转语音](https://ikunapi.apifox.cn/doc-8298670.md): 
+- Python配置方式 [python 使用Embeddings 向量化](https://ikunapi.apifox.cn/doc-8298671.md): 
+- Python配置方式 [python 调用DALL·E](https://ikunapi.apifox.cn/doc-8298672.md): 
+- Python配置方式 [python简单调用 openai function-calling demo](https://ikunapi.apifox.cn/doc-8298673.md): 
+- Python配置方式 [python 简单langchain 调用openai demo](https://ikunapi.apifox.cn/doc-8298674.md): 
+- Python配置方式 [python llama_index 配置](https://ikunapi.apifox.cn/doc-8298675.md): 
+- Python配置方式 [Python基础对话](https://ikunapi.apifox.cn/doc-8298676.md): 
+- Python配置方式 [Python使用gpt-4o识别图片-本地图片](https://ikunapi.apifox.cn/doc-8298677.md): 
+- Python配置方式 [Python使用gpt-4o识别图片](https://ikunapi.apifox.cn/doc-8298678.md): 
+- Python配置方式 [Python使用Claude识别图片](https://ikunapi.apifox.cn/doc-8298679.md): 
+- Python配置方式 [python 库流式输出](https://ikunapi.apifox.cn/doc-8298680.md): 
+- Python配置方式 [gpt realtime模型调用](https://ikunapi.apifox.cn/doc-8298681.md): 
+- Python配置方式 [python request 请求 流式输出demo](https://ikunapi.apifox.cn/doc-8298682.md): 
+- Python配置方式 [python 使用gpt-image-1 创建编辑图片](https://ikunapi.apifox.cn/doc-8298683.md): 
+- Python配置方式 [python openai官方库（使用AutoGPT，langchain等）](https://ikunapi.apifox.cn/doc-8298684.md): 
+- Python配置方式 [python 连续对话](https://ikunapi.apifox.cn/doc-8298685.md): 
+- 可灵 Kling 平台 [Callback协议](https://ikunapi.apifox.cn/doc-8298686.md): 
+- Replicate 聚合平台 [接入教程  ](https://ikunapi.apifox.cn/doc-8298687.md): 
+- Replicate 聚合平台 [Flux 分辨率 ](https://ikunapi.apifox.cn/doc-8298688.md): 
+- 官方VIDU视频生成、图片生成、音频生成 [状态码](https://ikunapi.apifox.cn/doc-8298689.md): 
+- Fal-ai 聚合平台 [接入教程](https://ikunapi.apifox.cn/doc-8298690.md): 
+- php配置方式 [php使用图片编辑demo](https://ikunapi.apifox.cn/doc-8298691.md): 
+- nodejs 配置方式  [nodejs 基础对话](https://ikunapi.apifox.cn/doc-8298692.md): 
+- 各种插件/软件使用教程 [Codex 配置教程](https://ikunapi.apifox.cn/doc-8298693.md): 
+- 各种插件/软件使用教程 [OpenClaw  Clawdbot 自定义中转站配置教程](https://ikunapi.apifox.cn/doc-8298694.md): 
+- 各种插件/软件使用教程 [N8N 工作流使用中转API 教程](https://ikunapi.apifox.cn/doc-8298695.md): 
+- 各种插件/软件使用教程 [opencode 配置教程](https://ikunapi.apifox.cn/doc-8298696.md): 
+- 各种插件/软件使用教程 [Gemini CLI 中转站配置使用教程](https://ikunapi.apifox.cn/doc-8298697.md): 
+- 各种插件/软件使用教程 [Claude Code 安装使用教程](https://ikunapi.apifox.cn/doc-8298698.md): 
+- 各种插件/软件使用教程 [CherryStudio调用cluade MCP](https://ikunapi.apifox.cn/doc-8298699.md): 
+- 各种插件/软件使用教程 [Cherry Studio配置教程](https://ikunapi.apifox.cn/doc-8298700.md): 
+- 各种插件/软件使用教程 [Cherry Studio配置 banana pro 4K和分辨率教程](https://ikunapi.apifox.cn/doc-8298701.md): 
+- 各种插件/软件使用教程 [CherryStudio配置o4推理级别](https://ikunapi.apifox.cn/doc-8298702.md): 
+- 各种插件/软件使用教程 [扣子工作流简单配置从输入到获取url](https://ikunapi.apifox.cn/doc-8298703.md): 
+- 各种插件/软件使用教程 [dify添加模型](https://ikunapi.apifox.cn/doc-8298704.md): 
+- 各种插件/软件使用教程 [cline 配置教程](https://ikunapi.apifox.cn/doc-8298705.md): 
+- 各种插件/软件使用教程 [aider 配置教程](https://ikunapi.apifox.cn/doc-8298706.md): 
+- 各种插件/软件使用教程 [Cursor 配置教程](https://ikunapi.apifox.cn/doc-8298707.md): 
+- 各种插件/软件使用教程 [lobechat 设置教程](https://ikunapi.apifox.cn/doc-8298708.md): 
+- 各种插件/软件使用教程 [ChatBox(推荐使用)](https://ikunapi.apifox.cn/doc-8298709.md): 
+- 各种插件/软件使用教程 [开源gpt_academic](https://ikunapi.apifox.cn/doc-8298710.md): 
+- 各种插件/软件使用教程 [nextchat 设置教程](https://ikunapi.apifox.cn/doc-8298711.md): 
+- 各种插件/软件使用教程 [zotero gpt 配置方法](https://ikunapi.apifox.cn/doc-8298712.md): 
+- 各种插件/软件使用教程 [CLAUDE DEV 配置教程](https://ikunapi.apifox.cn/doc-8298713.md): 
+- 各种插件/软件使用教程 [沉浸式翻译 设置gpt翻译](https://ikunapi.apifox.cn/doc-8298714.md): 
+- 各种插件/软件使用教程 [浏览器插件ChatGPT Sidebar](https://ikunapi.apifox.cn/doc-8298715.md): 
+- 各种插件/软件使用教程 [chatgpt-on-wechat 配置教程](https://ikunapi.apifox.cn/doc-8298716.md): 
+- 各种插件/软件使用教程 [chatgpt GPT Academic 学术优化配置gpt教程](https://ikunapi.apifox.cn/doc-8298717.md): 
+- 各种插件/软件使用教程 [RikkaHub 配置教程](https://ikunapi.apifox.cn/doc-8298718.md): 
+- 各种插件/软件使用教程 [coze 工作流使用中转API 教程 ](https://ikunapi.apifox.cn/doc-8298719.md): 
+- 各种插件/软件使用教程 [n8n 工作流获取本地图片生成视频例子](https://ikunapi.apifox.cn/doc-8298720.md): 
+- 各种插件/软件使用教程 [OpenClaw 最新版本 自定义中转站配置教程](https://ikunapi.apifox.cn/doc-8298721.md): 
+- 各种插件/软件使用教程 [OpenClaw配合CC switch自定义中转站配置教程](https://ikunapi.apifox.cn/doc-8298722.md): 
+- 帮助中心 [AI返回字段: 思考相关](https://ikunapi.apifox.cn/doc-8298723.md): 
+- 帮助中心 [HTTP状态码及其含义](https://ikunapi.apifox.cn/doc-8298724.md): 
+- 帮助中心 [自建图床API](https://ikunapi.apifox.cn/doc-8298725.md): 
+
+## API Docs
+- 聊天(Chat) > ChatGpt 接口 > ChatGPT音频（Audio） [GPT-4o-audio](https://ikunapi.apifox.cn/api-426464272.md): 官方文档：https://platform.openai.com/docs/api-reference/chat/create
+- 聊天(Chat) > ChatGpt 接口 > ChatGPT音频（Audio） [音频转文字 whisper-1](https://ikunapi.apifox.cn/api-426464273.md): 官方文档：https://platform.openai.com/docs/guides/speech-to-text
+- 聊天(Chat) > ChatGpt 接口 > ChatGPT音频（Audio） [音频转文字 gpt-4o-transcribe](https://ikunapi.apifox.cn/api-426464274.md): 官方文档：https://platform.openai.com/docs/guides/speech-to-text
+- 聊天(Chat) > ChatGpt 接口 > ChatGPT音频（Audio） [创建语音 gpt-4o-mini-tts](https://ikunapi.apifox.cn/api-426464275.md): 官方文档：https://platform.openai.com/docs/guides/text-to-speech
+- 聊天(Chat) > ChatGpt 接口 > ChatGPT音频（Audio） [创建翻译 (不支持)](https://ikunapi.apifox.cn/api-426464276.md): 
+- 聊天(Chat) > ChatGpt 接口 > ChatGPT聊天（Chat） [创建聊天补全 （流式）](https://ikunapi.apifox.cn/api-426464277.md): 给定一个提示，该模型将返回一个或多个预测的完成，并且还可以返回每个位置的替代标记的概率。
+- 聊天(Chat) > ChatGpt 接口 > ChatGPT聊天（Chat） [创建聊天补全 （非流） ](https://ikunapi.apifox.cn/api-426464278.md): 给定一个提示，该模型将返回一个或多个预测的完成，并且还可以返回每个位置的替代标记的概率。
+- 聊天(Chat) > ChatGpt 接口 > ChatGPT聊天（Chat） [创建聊天识图 （流式）](https://ikunapi.apifox.cn/api-426464279.md): 给定一个提示，该模型将返回一个或多个预测的完成，并且还可以返回每个位置的替代标记的概率。
+- 聊天(Chat) > ChatGpt 接口 > ChatGPT聊天（Chat） [创建聊天识图 （流式） best64](https://ikunapi.apifox.cn/api-426464280.md): 给定一个提示，该模型将返回一个或多个预测的完成，并且还可以返回每个位置的替代标记的概率。
+- 聊天(Chat) > ChatGpt 接口 > ChatGPT聊天（Chat） [创建聊天识图 （非流） ](https://ikunapi.apifox.cn/api-426464281.md): 给定一个提示，该模型将返回一个或多个预测的完成，并且还可以返回每个位置的替代标记的概率。
+- 聊天(Chat) > ChatGpt 接口 > ChatGPT聊天（Chat） [创建聊天创作图 （非流）](https://ikunapi.apifox.cn/api-426464282.md): 给定一个提示，该模型将返回一个或多个预测的完成，并且还可以返回每个位置的替代标记的概率。
+- 聊天(Chat) > ChatGpt 接口 > ChatGPT聊天（Chat） [官方Function calling调用](https://ikunapi.apifox.cn/api-426464283.md): 给定一个提示，该模型将返回一个或多个预测的完成，并且还可以返回每个位置的替代标记的概率。
+- 聊天(Chat) > ChatGpt 接口 > ChatGPT聊天（Chat） [官方N测试](https://ikunapi.apifox.cn/api-426464284.md): 给定一个提示，该模型将返回一个或多个预测的完成，并且还可以返回每个位置的替代标记的概率。
+- 聊天(Chat) > ChatGpt 接口 > ChatGPT聊天（Chat） [列出模型](https://ikunapi.apifox.cn/api-426464285.md): 给定一个提示，该模型将返回一个或多个预测的完成，并且还可以返回每个位置的替代标记的概率。
+- 聊天(Chat) > ChatGpt 接口 > ChatGPT聊天（Chat） [创建聊天函数调用](https://ikunapi.apifox.cn/api-426464286.md): 给定一个提示，该模型将返回一个或多个预测的完成，并且还可以返回每个位置的替代标记的概率。
+- 聊天(Chat) > ChatGpt 接口 > ChatGPT聊天（Chat） [创建结构化输出](https://ikunapi.apifox.cn/api-426464287.md): 给定一个提示，该模型将返回一个或多个预测的完成，并且还可以返回每个位置的替代标记的概率。
+- 聊天(Chat) > ChatGpt 接口 > ChatGPT聊天（Chat） [控制推理模型努力程度](https://ikunapi.apifox.cn/api-426464288.md): 给定一个提示，该模型将返回一个或多个预测的完成，并且还可以返回每个位置的替代标记的概率。
+- 聊天(Chat) > ChatGpt 接口 > ChatGPT聊天（Chat） [创建聊天补全 qwen-mt-turbo](https://ikunapi.apifox.cn/api-426464289.md): 给定一个提示，该模型将返回一个或多个预测的完成，并且还可以返回每个位置的替代标记的概率。
+- 聊天(Chat) > ChatGpt 接口 > ChatGPT聊天（Chat） [创建聊天补全  deepseek v3.1思考程度 (流式）](https://ikunapi.apifox.cn/api-426464290.md): 
+- 聊天(Chat) > ChatGpt 接口 > ChatGPT聊天（Chat） [deepseek-ocr 识别](https://ikunapi.apifox.cn/api-426464291.md): 给定一个提示，该模型将返回一个或多个预测的完成，并且还可以返回每个位置的替代标记的概率。
+- 聊天(Chat) > ChatGpt 接口 > ChatGPT自动补全（Completions） [创建完成](https://ikunapi.apifox.cn/api-426464292.md): 给定一个提示，该模型将返回一个或多个预测的完成，并且还可以返回每个位置的替代标记的概率。
+- 聊天(Chat) > ChatGpt 接口 > ChatGPT嵌入（Embeddings） [创建嵌入](https://ikunapi.apifox.cn/api-426464293.md): 获取给定输入的矢量表示，机器学习模型和算法可以轻松使用该表示。
+- 聊天(Chat) > ChatGpt 接口 > Web 搜索 [web搜索](https://ikunapi.apifox.cn/api-426464294.md): 参考文档：https://platform.openai.com/docs/api-reference/chat/create
+- 聊天(Chat) > Anthropic Claude 接口 > 原生格式 [创建聊天补全 （流式）](https://ikunapi.apifox.cn/api-426464295.md): 给定一个提示，该模型将返回一个或多个预测的完成，并且还可以返回每个位置的替代标记的概率。
+- 聊天(Chat) > Anthropic Claude 接口 > 原生格式 [创建函数调用 （流式）](https://ikunapi.apifox.cn/api-426464296.md): 给定一个提示，该模型将返回一个或多个预测的完成，并且还可以返回每个位置的替代标记的概率。
+- 聊天(Chat) > Anthropic Claude 接口 > 原生格式 [创建格式化输出 ](https://ikunapi.apifox.cn/api-426464297.md): 给定一个提示，该模型将返回一个或多个预测的完成，并且还可以返回每个位置的替代标记的概率。
+- 聊天(Chat) > Anthropic Claude 接口 > 原生格式 [创建思考聊天](https://ikunapi.apifox.cn/api-426464298.md): 给定一个提示，该模型将返回一个或多个预测的完成，并且还可以返回每个位置的替代标记的概率。
+- 聊天(Chat) > Anthropic Claude 接口 > 原生格式 [PDF支持 ](https://ikunapi.apifox.cn/api-426464299.md): 给定一个提示，该模型将返回一个或多个预测的完成，并且还可以返回每个位置的替代标记的概率。
+- 聊天(Chat) > Anthropic Claude 接口 > 原生格式 [PDF支持     base64格式](https://ikunapi.apifox.cn/api-426464300.md): 给定一个提示，该模型将返回一个或多个预测的完成，并且还可以返回每个位置的替代标记的概率。
+- 聊天(Chat) > Anthropic Claude 接口 > 原生格式 [联网搜索](https://ikunapi.apifox.cn/api-426464301.md): 给定一个提示，该模型将返回一个或多个预测的完成，并且还可以返回每个位置的替代标记的概率。
+- 聊天(Chat) > Anthropic Claude 接口 > chat兼容格式 [创建思考聊天 ](https://ikunapi.apifox.cn/api-426464302.md): 给定一个提示，该模型将返回一个或多个预测的完成，并且还可以返回每个位置的替代标记的概率。
+- 聊天(Chat) > Anthropic Claude 接口 > chat兼容格式 [创建聊天补全 （流式）](https://ikunapi.apifox.cn/api-426464303.md): 给定一个提示，该模型将返回一个或多个预测的完成，并且还可以返回每个位置的替代标记的概率。
+- 聊天(Chat) > Anthropic Claude 接口 > chat兼容格式 [创建聊天补全 （非流） ](https://ikunapi.apifox.cn/api-426464304.md): 给定一个提示，该模型将返回一个或多个预测的完成，并且还可以返回每个位置的替代标记的概率。
+- 聊天(Chat) > Anthropic Claude 接口 > chat兼容格式 [创建聊天识图 （流式）](https://ikunapi.apifox.cn/api-426464305.md): 给定一个提示，该模型将返回一个或多个预测的完成，并且还可以返回每个位置的替代标记的概率。
+- 聊天(Chat) > Anthropic Claude 接口 > chat兼容格式 [创建聊天识图 （非流）](https://ikunapi.apifox.cn/api-426464306.md): 给定一个提示，该模型将返回一个或多个预测的完成，并且还可以返回每个位置的替代标记的概率。
+- 聊天(Chat) > 谷歌Gemini 接口 > 原生格式 [文本生成](https://ikunapi.apifox.cn/api-426464307.md): 官方文档：https://ai.google.dev/gemini-api/docs/text-generation?hl=zh-cn#multi-turn-conversations
+- 聊天(Chat) > 谷歌Gemini 接口 > 原生格式 [文本生成-流 ](https://ikunapi.apifox.cn/api-426464308.md): 官方文档：https://ai.google.dev/gemini-api/docs/text-generation?hl=zh-cn#multi-turn-conversations
+- 聊天(Chat) > 谷歌Gemini 接口 > 原生格式 [文本生成+思考-流 ](https://ikunapi.apifox.cn/api-426464309.md): 官方文档：https://ai.google.dev/gemini-api/docs/text-generation?hl=zh-cn#multi-turn-conversations
+- 聊天(Chat) > 谷歌Gemini 接口 > 原生格式 [图片生成](https://ikunapi.apifox.cn/api-426464310.md): 官方文档：https://ai.google.dev/gemini-api/docs/image-generation?hl=zh-cn
+- 聊天(Chat) > 谷歌Gemini 接口 > 原生格式 [图片生成 gemini-2.5-flash-image](https://ikunapi.apifox.cn/api-426464311.md): 官方文档：https://ai.google.dev/gemini-api/docs/image-generation?hl=zh-cn#gemini-image-editing
+- 聊天(Chat) > 谷歌Gemini 接口 > 原生格式 [图片生成 gemini-2.5-flash-image 控制宽高比](https://ikunapi.apifox.cn/api-426464312.md): 官方文档：https://ai.google.dev/gemini-api/docs/image-generation?hl=zh-cn#gemini-image-editing
+- 聊天(Chat) > 谷歌Gemini 接口 > 原生格式 [图片生成 gemini-3-pro-image-preview 控制宽高比 +清晰度](https://ikunapi.apifox.cn/api-426464313.md): 官方文档：https://ai.google.dev/gemini-api/docs/image-generation?hl=zh-cn#gemini-image-editing
+- 聊天(Chat) > 谷歌Gemini 接口 > 原生格式 [图片编辑 ](https://ikunapi.apifox.cn/api-426464314.md): 官方文档：https://ai.google.dev/gemini-api/docs/image-generation?hl=zh-cn#gemini-image-editing
+- 聊天(Chat) > 谷歌Gemini 接口 > 原生格式 [图片理解](https://ikunapi.apifox.cn/api-426464315.md): 官方文档：https://ai.google.dev/gemini-api/docs/image-understanding?hl=zh-cn
+- 聊天(Chat) > 谷歌Gemini 接口 > 原生格式 [格式化输出](https://ikunapi.apifox.cn/api-426464316.md): 官方文档：https://ai.google.dev/gemini-api/docs/structured-output?hl=zh-cn
+- 聊天(Chat) > 谷歌Gemini 接口 > 原生格式 [函数调用](https://ikunapi.apifox.cn/api-426464317.md): 官方文档：https://ai.google.dev/gemini-api/docs/function-calling?hl=zh-cn&example=meeting
+- 聊天(Chat) > 谷歌Gemini 接口 > 原生格式 [文档理解](https://ikunapi.apifox.cn/api-426464318.md): 官方文档：https://ai.google.dev/gemini-api/docs/document-processing?hl=zh-cn
+- 聊天(Chat) > 谷歌Gemini 接口 > 原生格式 [URL context [原生格式]  ](https://ikunapi.apifox.cn/api-426464319.md): 官方文档：https://ai.google.dev/gemini-api/docs/document-processing?hl=zh-cn
+- 聊天(Chat) > 谷歌Gemini 接口 > 原生格式 [代码执行](https://ikunapi.apifox.cn/api-426464320.md): 官方文档：https://ai.google.dev/gemini-api/docs/document-processing?hl=zh-cn
+- 聊天(Chat) > 谷歌Gemini 接口 > 原生格式 [google search](https://ikunapi.apifox.cn/api-426464321.md): 官方文档：https://ai.google.dev/gemini-api/docs/document-processing?hl=zh-cn
+- 聊天(Chat) > 谷歌Gemini 接口 > 原生格式 [视频理解](https://ikunapi.apifox.cn/api-426464322.md): 官方文档：https://ai.google.dev/gemini-api/docs/video-understanding?hl=zh-cn
+- 聊天(Chat) > 谷歌Gemini 接口 > 原生格式 [URL context](https://ikunapi.apifox.cn/api-426464323.md): 官方文档：https://ai.google.dev/gemini-api/docs/url-context?hl=zh-cn
+- 聊天(Chat) > 谷歌Gemini 接口 > 原生格式 [音频理解](https://ikunapi.apifox.cn/api-426464324.md): 官方文档：https://ai.google.dev/gemini-api/docs/url-context?hl=zh-cn
+- 聊天(Chat) > 谷歌Gemini 接口 > 原生格式 [Embeddings](https://ikunapi.apifox.cn/api-426464325.md): 官方文档：https://ai.google.dev/gemini-api/docs/text-generation?hl=zh-cn#multi-turn-conversations
+- 聊天(Chat) > 谷歌Gemini 接口 > 原生格式 [TTS 文本转语音](https://ikunapi.apifox.cn/api-426464326.md): 官方文档：https://ai.google.dev/gemini-api/docs/image-generation?hl=zh-cn#gemini-image-editing
+- 聊天(Chat) > 谷歌Gemini 接口 > 原生格式 [文本生成 gemini-3-pro-preview:generateContent](https://ikunapi.apifox.cn/api-426464327.md): 官方文档：https://ai.google.dev/gemini-api/docs/text-generation?hl=zh-cn#multi-turn-conversations
+- 聊天(Chat) > 谷歌Gemini 接口 > 原生格式 [ Imagen 生成图片](https://ikunapi.apifox.cn/api-426464328.md): 官方文档：https://ai.google.dev/gemini-api/docs/document-processing?hl=zh-cn
+- 聊天(Chat) > 谷歌Gemini 接口 > 原生格式 [gemini-tts文本转语音](https://ikunapi.apifox.cn/api-426464331.md): 官方文档：https://ai.google.dev/gemini-api/docs/text-generation?hl=zh-cn#multi-turn-conversations
+- 聊天(Chat) > 谷歌Gemini 接口 > 原生格式 [文本嵌入](https://ikunapi.apifox.cn/api-426464332.md): https://ai.google.dev/gemini-api/docs/embeddings?hl=zh-cn#rest_3   官方文档
+- 聊天(Chat) > 谷歌Gemini 接口 > chat兼容格式 [gemini图片创作接口 [chat兼容格式]](https://ikunapi.apifox.cn/api-426464333.md): 给定一个提示，该模型将返回一个或多个预测的完成，并且还可以返回每个位置的替代标记的概率。
+- 聊天(Chat) > 谷歌Gemini 接口 > chat兼容格式 [聊天接口 [chat兼容格式]](https://ikunapi.apifox.cn/api-426464334.md): 给定一个提示，该模型将返回一个或多个预测的完成，并且还可以返回每个位置的替代标记的概率。
+- 聊天(Chat) > 谷歌Gemini 接口 > chat兼容格式 [聊天接口-思考1 [chat兼容格式] ](https://ikunapi.apifox.cn/api-426464335.md): 给定一个提示，该模型将返回一个或多个预测的完成，并且还可以返回每个位置的替代标记的概率。
+- 聊天(Chat) > 谷歌Gemini 接口 > chat兼容格式 [聊天接口-思考2 [chat兼容格式] ](https://ikunapi.apifox.cn/api-426464336.md): 给定一个提示，该模型将返回一个或多个预测的完成，并且还可以返回每个位置的替代标记的概率。
+- 聊天(Chat) > 谷歌Gemini 接口 > chat兼容格式 [识图接口 [chat兼容格式]](https://ikunapi.apifox.cn/api-426464337.md): 给定一个提示，该模型将返回一个或多个预测的完成，并且还可以返回每个位置的替代标记的概率。
+- 聊天(Chat) > 谷歌Gemini 接口 > chat兼容格式 [聊天+读取文件接口 [chat兼容格式] ](https://ikunapi.apifox.cn/api-426464338.md): 给定一个提示，该模型将返回一个或多个预测的完成，并且还可以返回每个位置的替代标记的概率。
+- 聊天(Chat) > 谷歌Gemini 接口 > chat兼容格式 [文本嵌入 [chat兼容格式]](https://ikunapi.apifox.cn/api-426464339.md): 
+- 聊天(Responses) [创建模型响应](https://ikunapi.apifox.cn/api-426464340.md): https://platform.openai.com/docs/api-reference/responses/create
+- 聊天(Responses) [创建函数调用](https://ikunapi.apifox.cn/api-426464341.md): https://platform.openai.com/docs/api-reference/responses/create
+- 聊天(Responses) [创建模型响应(流式返回)](https://ikunapi.apifox.cn/api-426464342.md): https://platform.openai.com/docs/api-reference/responses/create
+- 聊天(Responses) [创建模型响应 (控制思考长度)](https://ikunapi.apifox.cn/api-426464343.md): https://platform.openai.com/docs/api-reference/responses/create
+- 聊天(Responses) [创建网络搜索](https://ikunapi.apifox.cn/api-426464344.md): https://platform.openai.com/docs/api-reference/responses/create
+- 聊天(Responses) [创建模型响应 gpt-5启用思考](https://ikunapi.apifox.cn/api-426464345.md): https://platform.openai.com/docs/api-reference/responses/create
+- 聊天(Responses) [创建函数调用 Copy](https://ikunapi.apifox.cn/api-426464346.md): https://platform.openai.com/docs/api-reference/responses/create
+- 绘画模型 > Midjourney [上传图片](https://ikunapi.apifox.cn/api-426464347.md): 官方文档：https://docs.midjourney.com/hc/en-us/articles/33329380893325-Managing-Image-Uploads
+- 绘画模型 > Midjourney [提交Imagine任务](https://ikunapi.apifox.cn/api-426464348.md): 官方文档：https://docs.midjourney.com/hc/en-us/articles/32023408776205-Prompt-Basics
+- 绘画模型 > Midjourney [根据任务ID 查询任务状态](https://ikunapi.apifox.cn/api-426464349.md): 
+- 绘画模型 > Midjourney [根据ID列表查询任务](https://ikunapi.apifox.cn/api-426464350.md): 
+- 绘画模型 > Midjourney [获取任务图片的seed](https://ikunapi.apifox.cn/api-426464351.md): 
+- 绘画模型 > Midjourney [执行Action动作](https://ikunapi.apifox.cn/api-426464352.md): 官方文档：https://docs.midjourney.com/hc/en-us/articles/32804058614669-Upscalers
+- 绘画模型 > Midjourney [提交Blend任务](https://ikunapi.apifox.cn/api-426464353.md): 官方文档：https://docs.midjourney.com/hc/en-us/articles/32635189884557-Blend-Images-on-Discord
+- 绘画模型 > Midjourney [提交Describe任务](https://ikunapi.apifox.cn/api-426464354.md): 官方文档：https://docs.midjourney.com/hc/en-us/articles/32497889043981-Describe
+- 绘画模型 > Midjourney [提交Modal](https://ikunapi.apifox.cn/api-426464355.md): 
+- 绘画模型 > Ideogram [Generate 3.0（文生图）Generate ](https://ikunapi.apifox.cn/api-426464356.md): 使用 Ideogram 3.0 模型，根据给定的提示和可选参数同步生成图像
+- 绘画模型 > Ideogram [Generate 3.0（图片编辑）Edit](https://ikunapi.apifox.cn/api-426464357.md): 使用 Ideogram 3.0 模型，根据给定的提示和可选参数同步生成图像
+- 绘画模型 > Ideogram [Generate 3.0（图片重制）Remix ](https://ikunapi.apifox.cn/api-426464358.md): 使用 Ideogram 3.0 模型，根据给定的提示和可选参数同步生成图像
+- 绘画模型 > Ideogram [Generate 3.0（图片重构）Reframe ](https://ikunapi.apifox.cn/api-426464359.md): 使用 Ideogram 3.0 模型，根据给定的提示和可选参数同步生成图像
+- 绘画模型 > Ideogram [Generate 3.0（替换背景） Replace Background](https://ikunapi.apifox.cn/api-426464360.md): 使用 Ideogram 3.0 模型，根据给定的提示和可选参数同步生成图像
+- 绘画模型 > Ideogram [ideogram（文生图）](https://ikunapi.apifox.cn/api-426464361.md): Generates images synchronously based on a given prompt and optional parameters.
+- 绘画模型 > Ideogram [Remix（混合图）](https://ikunapi.apifox.cn/api-426464362.md): 官方文档：https://developer.ideogram.ai/api-reference/api-reference/remix
+- 绘画模型 > Ideogram [Upscale（放大高清）](https://ikunapi.apifox.cn/api-426464363.md): 官方文档：https://developer.ideogram.ai/api-reference/api-reference/upscale
+- 绘画模型 > Ideogram [Describe（描述）](https://ikunapi.apifox.cn/api-426464364.md): 官方文档：https://developer.ideogram.ai/api-reference/api-reference/describe
+- 绘画模型 > GPT Image 系列 [创建  gpt-image-1](https://ikunapi.apifox.cn/api-426464365.md): 给定一个提示，该模型将返回一个或多个预测的完成，并且还可以返回每个位置的替代标记的概率。
+- 绘画模型 > GPT Image 系列 [编辑  gpt-image-1](https://ikunapi.apifox.cn/api-426464366.md): 给定一个提示，该模型将返回一个或多个预测的完成，并且还可以返回每个位置的替代标记的概率。
+- 绘画模型 > GPT Image 系列 [蒙版  gpt-image-1](https://ikunapi.apifox.cn/api-426464367.md): 给定一个提示，该模型将返回一个或多个预测的完成，并且还可以返回每个位置的替代标记的概率。
+- 绘画模型 > GPT Image 系列 [创建  gpt-image-1.5](https://ikunapi.apifox.cn/api-426464368.md): 给定一个提示，该模型将返回一个或多个预测的完成，并且还可以返回每个位置的替代标记的概率。
+- 绘画模型 > GPT Image 系列 [编辑  gpt-image-1.5](https://ikunapi.apifox.cn/api-426464369.md): 给定一个提示，该模型将返回一个或多个预测的完成，并且还可以返回每个位置的替代标记的概率。
+- 绘画模型 > GPT Image 系列 [蒙版  gpt-image-1.5](https://ikunapi.apifox.cn/api-426464370.md): 给定一个提示，该模型将返回一个或多个预测的完成，并且还可以返回每个位置的替代标记的概率。
+- 绘画模型 > Grok Image 系列  [创建/编辑  image](https://ikunapi.apifox.cn/api-426464371.md): 给定一个提示，该模型将返回一个或多个预测的完成，并且还可以返回每个位置的替代标记的概率。
+- 绘画模型 > Grok Image 系列  [编辑  image](https://ikunapi.apifox.cn/api-426464372.md): 给定一个提示，该模型将返回一个或多个预测的完成，并且还可以返回每个位置的替代标记的概率。
+- 绘画模型 > DALL·E 3 [创建 DALL·E 3](https://ikunapi.apifox.cn/api-426464375.md): [图片](https://platform.openai.com/docs/api-reference/images)
+- 绘画模型 > FLUX 系列 > gpt 兼容格式 [Flux 创建（OpenAI dall-e-3格式）](https://ikunapi.apifox.cn/api-426464376.md): [图片](https://platform.openai.com/docs/api-reference/images)
+- 绘画模型 > FLUX 系列 > gpt 兼容格式 [Flux编辑（OpenAI dall-e-3格式）](https://ikunapi.apifox.cn/api-426464377.md): 给定一个提示，该模型将返回一个或多个预测的完成，并且还可以返回每个位置的替代标记的概率。
+- 绘画模型 > FLUX 系列 > Replicate 官方格式 [创建任务 black-forest-labs/flux-kontext-dev](https://ikunapi.apifox.cn/api-426464378.md): 官方文档: https://replicate.com/black-forest-labs/flux-kontext-dev
+- 绘画模型 > FLUX 系列 > Replicate 官方格式 [查询任务](https://ikunapi.apifox.cn/api-426464379.md): 官方文档: https://replicate.com/black-forest-labs/flux-kontext-max
+- 绘画模型 > 豆包系列 [创建图片](https://ikunapi.apifox.cn/api-426464380.md): 给定提示和/或输入图像，模型将生成新图像。
+- 绘画模型 > Fal.ai平台 [获取请求结果 ](https://ikunapi.apifox.cn/api-426464381.md): 
+- 绘画模型 > Fal.ai平台 [/fal-ai/nano-banana 文生图](https://ikunapi.apifox.cn/api-426464382.md): 官方文档: https://fal.ai/models/fal-ai/nano-banana
+- 绘画模型 > Fal.ai平台 [/fal-ai/nano-banana/edit 图片编辑](https://ikunapi.apifox.cn/api-426464383.md): 官方文档: https://fal.ai/models/fal-ai/nano-banana/edit
+- 绘画模型 > 腾讯AIGC生图 [获取请求结果 ](https://ikunapi.apifox.cn/api-426464384.md): 
+- 绘画模型 > 腾讯AIGC生图 [创建任务](https://ikunapi.apifox.cn/api-426464385.md): 官方文档:https://cloud.tencent.com/document/product/266/126240
+- 绘画模型 > 千问Qwen 系列 [qwen-image-max](https://ikunapi.apifox.cn/api-426464386.md): 
+- 绘画模型 > 千问Qwen 系列 [z-image-turbo](https://ikunapi.apifox.cn/api-426464387.md): 
+- 绘画模型 > 千问Qwen 系列 [qwen-image-edit-2509](https://ikunapi.apifox.cn/api-426464388.md): 给定提示和/或输入图像，模型将生成新图像。
+- 视频模型 > veo 视频生成 > 视频统一格式 [创建视频](https://ikunapi.apifox.cn/api-426464389.md): 
+- 视频模型 > veo 视频生成 > 视频统一格式 [创建视频，带图片](https://ikunapi.apifox.cn/api-426464390.md): 
+- 视频模型 > veo 视频生成 > 视频统一格式 [查询任务](https://ikunapi.apifox.cn/api-426464391.md): 给定一个提示，该模型将返回一个或多个预测的完成，并且还可以返回每个位置的替代标记的概率。
+- 视频模型 > veo 视频生成 > 视频统一格式 [创建视频（参考图）](https://ikunapi.apifox.cn/api-426464392.md): 
+- 视频模型 > veo 视频生成 > OpenAI 视频格式  [openai 创建视频，带图片](https://ikunapi.apifox.cn/api-426464393.md): 
+- 视频模型 > veo 视频生成 > OpenAI 视频格式  [openai 查询任务](https://ikunapi.apifox.cn/api-426464394.md): 给定一个提示，该模型将返回一个或多个预测的完成，并且还可以返回每个位置的替代标记的概率。
+- 视频模型 > veo 视频生成 > OpenAI 视频格式  [openai 下载视频](https://ikunapi.apifox.cn/api-426464395.md): 给定一个提示，该模型将返回一个或多个预测的完成，并且还可以返回每个位置的替代标记的概率。
+- 视频模型 > luma 视频生成 > 官方API格式 [提交生成视频任务](https://ikunapi.apifox.cn/api-426464396.md): 官方文档：https://docs.lumalabs.ai/docs/video-generation
+- 视频模型 > luma 视频生成 > 官方API格式 [扩展视频](https://ikunapi.apifox.cn/api-426464397.md): 官方文档：https://docs.lumalabs.ai/docs/video-generation
+- 视频模型 > luma 视频生成 > 查询任务 [查询单个任务](https://ikunapi.apifox.cn/api-426464398.md): "state": "completed" 枚举值： "pending", "processing", "completed", "failed"
+- 视频模型 > luma 视频生成 > 查询任务 [批量获取任务](https://ikunapi.apifox.cn/api-426464399.md): "state": "completed" 枚举值： "pending", "processing", "completed", "failed"
+- 视频模型 > Runway 视频生成 [提交视频生成任务](https://ikunapi.apifox.cn/api-426464409.md): 官方文档：https://docs.dev.runwayml.com/api/#tag/Start-generating/paths/~1v1~1image_to_video/post
+- 视频模型 > Runway 视频生成 [查询视频任务(免费)](https://ikunapi.apifox.cn/api-426464410.md): 
+- 视频模型 > 海螺 视频生成 [提交视频生成任务 ](https://ikunapi.apifox.cn/api-426464415.md): 官方文档：https://www.minimax.io/platform/document/Model%3Fkey=684261f14c5738213294faa7?key=66d1439376e52fcee2853049&document=video_generation
+- 视频模型 > 海螺 视频生成 [视频任务状态查询](https://ikunapi.apifox.cn/api-426464416.md): 
+- 视频模型 > 海螺 视频生成 [图生视频](https://ikunapi.apifox.cn/api-426464417.md): 官方文档：https://www.minimax.io/platform/document/Model%3Fkey=684261f14c5738213294faa7?key=66d1439376e52fcee2853049&document=video_generation
+- 视频模型 > 海螺 视频生成 [首尾帧视频](https://ikunapi.apifox.cn/api-426464418.md): 官方文档：https://www.minimax.io/platform/document/Model%3Fkey=684261f14c5738213294faa7?key=66d1439376e52fcee2853049&document=video_generation
+- 视频模型 > 豆包 视频生成 [创建任务](https://ikunapi.apifox.cn/api-426464419.md): 官方文档：https://www.volcengine.com/docs/82379/1520757
+- 视频模型 > 豆包 视频生成 [查询单个任务](https://ikunapi.apifox.cn/api-426464420.md): 
+- 视频模型 > 豆包 视频生成 [查询视频生成任务列表-默认](https://ikunapi.apifox.cn/api-426464421.md): 
+- 视频模型 > 豆包 视频生成 [查询视频生成任务列表-搜索多个任务 ID](https://ikunapi.apifox.cn/api-426464422.md): 
+- 视频模型 > 豆包 视频生成 [seedance-1-5-pro-首尾帧 ](https://ikunapi.apifox.cn/api-426464423.md): 
+- 视频模型 > 豆包 视频生成 [seedance-1-5-pro](https://ikunapi.apifox.cn/api-426464424.md): 
+- 视频模型 > sora 视频生成 > 统一视频格式 [查询任务 ](https://ikunapi.apifox.cn/api-426464426.md): 给定一个提示，该模型将返回一个或多个预测的完成，并且还可以返回每个位置的替代标记的概率。
+- 视频模型 > sora 视频生成 > 统一视频格式 [创建视频，带图片  sora-2](https://ikunapi.apifox.cn/api-426464427.md): 
+- 视频模型 > sora 视频生成 > 统一视频格式 [创建视频 sora-2](https://ikunapi.apifox.cn/api-426464428.md): 
+- 视频模型 > sora 视频生成 > 统一视频格式 [创建视频 sora-2-pro](https://ikunapi.apifox.cn/api-426464429.md): 
+- 视频模型 > sora 视频生成 > 统一视频格式 [创建视频 （带 Character）](https://ikunapi.apifox.cn/api-426464430.md): 
+- 视频模型 > sora 视频生成 > chat格式 [创建视频](https://ikunapi.apifox.cn/api-426464431.md): 给定一个提示，该模型将返回一个或多个预测的完成，并且还可以返回每个位置的替代标记的概率。
+- 视频模型 > sora 视频生成 > chat格式 [创建视频, 带图片](https://ikunapi.apifox.cn/api-426464432.md): 给定一个提示，该模型将返回一个或多个预测的完成，并且还可以返回每个位置的替代标记的概率。
+- 视频模型 > sora 视频生成 > chat格式 [连续修改生成视频](https://ikunapi.apifox.cn/api-426464433.md): 给定一个提示，该模型将返回一个或多个预测的完成，并且还可以返回每个位置的替代标记的概率。
+- 视频模型 > sora 视频生成 > OpenAI官方视频格式 [openai 创建视频，带图片](https://ikunapi.apifox.cn/api-426464434.md): 
+- 视频模型 > sora 视频生成 > OpenAI官方视频格式 [使用故事板创建视频](https://ikunapi.apifox.cn/api-426464435.md): 
+- 视频模型 > sora 视频生成 > OpenAI官方视频格式 [openai 创建视频，带图片 私有模式](https://ikunapi.apifox.cn/api-426464436.md): 
+- 视频模型 > sora 视频生成 > OpenAI官方视频格式 [openai 创建视频（带Character）](https://ikunapi.apifox.cn/api-426464437.md): 
+- 视频模型 > sora 视频生成 > OpenAI官方视频格式 [openai 编辑视频](https://ikunapi.apifox.cn/api-426464438.md): 
+- 视频模型 > sora 视频生成 > OpenAI官方视频格式 [openai 下载视频](https://ikunapi.apifox.cn/api-426464439.md): 给定一个提示，该模型将返回一个或多个预测的完成，并且还可以返回每个位置的替代标记的概率。
+- 视频模型 > sora 视频生成 > OpenAI官方视频格式 [openai 查询任务](https://ikunapi.apifox.cn/api-426464440.md): 给定一个提示，该模型将返回一个或多个预测的完成，并且还可以返回每个位置的替代标记的概率。
+- 视频模型 > sora 视频生成 [创建角色](https://ikunapi.apifox.cn/api-426464425.md): 
+- 视频模型 > grok 视频生成 > 视频统一格式 [创建视频 ](https://ikunapi.apifox.cn/api-426464441.md): 
+- 视频模型 > grok 视频生成 > 视频统一格式 [查询任务 ](https://ikunapi.apifox.cn/api-426464442.md): 给定一个提示，该模型将返回一个或多个预测的完成，并且还可以返回每个位置的替代标记的概率。
+- 视频模型 > 通义万象 视频生成 [生成视频](https://ikunapi.apifox.cn/api-426464443.md): 
+- 视频模型 > 通义万象 视频生成 [视频查询](https://ikunapi.apifox.cn/api-426464444.md): 
+- 视频模型 > 腾讯AIGC视频生成 [创建任务](https://ikunapi.apifox.cn/api-426464445.md): 官方文档:https://cloud.tencent.com/document/product/266/126240
+- 视频模型 > 腾讯AIGC视频生成 [获取请求结果 ](https://ikunapi.apifox.cn/api-426464446.md): 
+- GPTs 相关 [GPTs对话](https://ikunapi.apifox.cn/api-426464447.md): 模型名称格式为：gpt-4-gizmo-*，系统会自动进行识别
+- 系统API [获取令牌列表](https://ikunapi.apifox.cn/api-426464448.md): 
+- 系统API [新增令牌](https://ikunapi.apifox.cn/api-426464449.md): 
+- 系统API [获取令牌支持模型](https://ikunapi.apifox.cn/api-426464450.md): 
+- 系统API [获取账号信息](https://ikunapi.apifox.cn/api-426464451.md): 
+- 系统API [修改令牌](https://ikunapi.apifox.cn/api-426464452.md): 
+- 系统API [搜索令牌](https://ikunapi.apifox.cn/api-426464453.md): 
+- 系统API [获取令牌使用情况](https://ikunapi.apifox.cn/api-426464454.md): 
+- 系统API [删除令牌](https://ikunapi.apifox.cn/api-426464455.md): 
+- 文生音乐 Suno > 任务提交 [生成歌曲(灵感模式)](https://ikunapi.apifox.cn/api-426464457.md): 
+- 文生音乐 Suno > 任务提交 [生成歌曲(自定义模式)](https://ikunapi.apifox.cn/api-426464458.md): 
+- 文生音乐 Suno > 任务提交 [生成歌曲(续写模式)](https://ikunapi.apifox.cn/api-426464459.md): 
+- 文生音乐 Suno > 任务提交 [生成歌曲(歌手风格)](https://ikunapi.apifox.cn/api-426464460.md): # 接入步骤
+- 文生音乐 Suno > 任务提交 [生成歌曲(上传歌曲二次创作)](https://ikunapi.apifox.cn/api-426464461.md): 
+- 文生音乐 Suno > 任务提交 [生成歌曲(拼接歌曲)](https://ikunapi.apifox.cn/api-426464462.md): 
+- 文生音乐 Suno > 任务提交 [生成歌词](https://ikunapi.apifox.cn/api-426464463.md): 
+- 文生音乐 Suno > 任务提交 [歌曲拼接](https://ikunapi.apifox.cn/api-426464465.md): 
+- 文生音乐 Suno > 任务提交 [报告上传完毕](https://ikunapi.apifox.cn/api-426464466.md): ┌─────────────────────────────────────────────────────────────────┐
+- 文生音乐 Suno > 任务提交 [查询上传处理状态](https://ikunapi.apifox.cn/api-426464467.md): ┌─────────────────────────────────────────────────────────────────┐
+- 文生音乐 Suno > 任务提交 [初始化音频文件](https://ikunapi.apifox.cn/api-426464468.md): ┌─────────────────────────────────────────────────────────────────┐
+- 文生音乐 Suno > 任务提交 [请求上传授权](https://ikunapi.apifox.cn/api-426464469.md): ┌─────────────────────────────────────────────────────────────────┐
+- 文生音乐 Suno > 任务提交 [s3上传示例](https://ikunapi.apifox.cn/api-426464470.md): 
+- 文生音乐 Suno > 任务提交 [场景一: 灵感模式](https://ikunapi.apifox.cn/api-426464471.md): 
+- 文生音乐 Suno > 任务提交 [场景二: 自定义.歌词歌名](https://ikunapi.apifox.cn/api-426464472.md): 
+- 文生音乐 Suno > 任务提交 [场景三: 纯音乐.自定义](https://ikunapi.apifox.cn/api-426464473.md): 
+- 文生音乐 Suno > 查询接口 [批量获取任务](https://ikunapi.apifox.cn/api-426464474.md): 
+- 文生音乐 Suno > 查询接口 [查询单个任务](https://ikunapi.apifox.cn/api-426464475.md): 
+- 文生音乐 Suno > 查询接口 [获取wav](https://ikunapi.apifox.cn/api-426464476.md): 
+- 文生音乐 Suno > 查询接口 [Timing:歌词、音频时间线](https://ikunapi.apifox.cn/api-426464477.md): 
+- 文生音乐 Suno > 查询接口 [场景详情获取](https://ikunapi.apifox.cn/api-426464478.md): 
+- Rerank 重排序模型 [重排序](https://ikunapi.apifox.cn/api-426464479.md): 给定一个提示，该模型将返回一个或多个预测的完成，并且还可以返回每个位置的替代标记的概率。
+- 可灵 Kling 平台 > 文生视频 [文生视频](https://ikunapi.apifox.cn/api-426464480.md): 
+- 可灵 Kling 平台 > 文生视频 [查询任务（单个）](https://ikunapi.apifox.cn/api-426464481.md): 
+- 可灵 Kling 平台 > 图生视频 [图生视频](https://ikunapi.apifox.cn/api-426464482.md): 
+- 可灵 Kling 平台 > 图生视频 [查询任务（单个）](https://ikunapi.apifox.cn/api-426464483.md): 
+- 可灵 Kling 平台 > Omni-Video [Omni-Video](https://ikunapi.apifox.cn/api-426464484.md): 
+- 可灵 Kling 平台 > Omni-Video [查询任务（单个）](https://ikunapi.apifox.cn/api-426464485.md): 
+- 可灵 Kling 平台 > 多图参考生视频 [多图参考生视频](https://ikunapi.apifox.cn/api-426464486.md): 
+- 可灵 Kling 平台 > 多图参考生视频 [查询任务（单个）](https://ikunapi.apifox.cn/api-426464487.md): 
+- 可灵 Kling 平台 > 多模态视频编辑 [初始化待编辑视频](https://ikunapi.apifox.cn/api-426464488.md): 
+- 可灵 Kling 平台 > 多模态视频编辑 [增加视频选区](https://ikunapi.apifox.cn/api-426464489.md): 
+- 可灵 Kling 平台 > 多模态视频编辑 [删减视频选区](https://ikunapi.apifox.cn/api-426464490.md): 
+- 可灵 Kling 平台 > 多模态视频编辑 [预览已选区视频](https://ikunapi.apifox.cn/api-426464491.md): 
+- 可灵 Kling 平台 > 多模态视频编辑 [多模态视频](https://ikunapi.apifox.cn/api-426464492.md): 
+- 可灵 Kling 平台 > 多模态视频编辑 [查询任务（单个）](https://ikunapi.apifox.cn/api-426464493.md): 
+- 可灵 Kling 平台 > 视频延长 [视频延长](https://ikunapi.apifox.cn/api-426464494.md): 
+- 可灵 Kling 平台 > 视频延长 [查询任务（单个）](https://ikunapi.apifox.cn/api-426464495.md): 
+- 可灵 Kling 平台 > 视频特效 [视频特效](https://ikunapi.apifox.cn/api-426464496.md): 
+- 可灵 Kling 平台 > 视频特效 [查询任务（单个）](https://ikunapi.apifox.cn/api-426464497.md): 
+- 可灵 Kling 平台 > 图像生成 [图像生成](https://ikunapi.apifox.cn/api-426464498.md): 
+- 可灵 Kling 平台 > 图像生成 [查询任务（单个）](https://ikunapi.apifox.cn/api-426464499.md): 
+- 可灵 Kling 平台 > 多图参考生图 [多图参考生图](https://ikunapi.apifox.cn/api-426464500.md): 
+- 可灵 Kling 平台 > 多图参考生图 [查询任务（单个）](https://ikunapi.apifox.cn/api-426464501.md): 
+- 可灵 Kling 平台 > Omni-Image [Omni-Image](https://ikunapi.apifox.cn/api-426464502.md): 
+- 可灵 Kling 平台 > Omni-Image [查询任务（单个）](https://ikunapi.apifox.cn/api-426464503.md): 
+- 可灵 Kling 平台 > 扩图 [扩图](https://ikunapi.apifox.cn/api-426464504.md): 
+- 可灵 Kling 平台 > 扩图 [查询任务（单个）](https://ikunapi.apifox.cn/api-426464505.md): 
+- 可灵 Kling 平台 > 图像识别 [图像识别](https://ikunapi.apifox.cn/api-426464506.md): 
+- 可灵 Kling 平台 > 数字人 [数字人](https://ikunapi.apifox.cn/api-426464507.md): 
+- 可灵 Kling 平台 > 数字人 [查询任务（单个）](https://ikunapi.apifox.cn/api-426464508.md): 
+- 可灵 Kling 平台 > 文生音效 [文生音效](https://ikunapi.apifox.cn/api-426464509.md): 
+- 可灵 Kling 平台 > 文生音效 [查询任务（单个）](https://ikunapi.apifox.cn/api-426464510.md): 
+- 可灵 Kling 平台 > 视频生音效 [视频生音效](https://ikunapi.apifox.cn/api-426464511.md): 
+- 可灵 Kling 平台 > 视频生音效 [查询任务（单个）](https://ikunapi.apifox.cn/api-426464512.md): 
+- 可灵 Kling 平台 > 语音合成 [语音合成](https://ikunapi.apifox.cn/api-426464513.md): 
+- 可灵 Kling 平台 > 虚拟试穿 [虚拟试穿](https://ikunapi.apifox.cn/api-426464514.md): 
+- 可灵 Kling 平台 > 虚拟试穿 [查询任务（单个）](https://ikunapi.apifox.cn/api-426464515.md): 
+- 可灵 Kling 平台 > 对口型 [人脸识别](https://ikunapi.apifox.cn/api-426464516.md): 
+- 可灵 Kling 平台 > 对口型 [对口型](https://ikunapi.apifox.cn/api-426464517.md): 
+- 可灵 Kling 平台 > 对口型 [查询任务（单个）](https://ikunapi.apifox.cn/api-426464518.md): 
+- 可灵 Kling 平台 > 自定义音色 [自定义音色](https://ikunapi.apifox.cn/api-426464519.md): 
+- 可灵 Kling 平台 > 自定义音色 [查询自定义音色（单个）](https://ikunapi.apifox.cn/api-426464520.md): 
+- 可灵 Kling 平台 > 自定义音色 [查询官方音色](https://ikunapi.apifox.cn/api-426464521.md): 
+- 可灵 Kling 平台 > 自定义音色 [删除自定义音色](https://ikunapi.apifox.cn/api-426464522.md): 
+- 可灵 Kling 平台 > 动作控制 [动作控制](https://ikunapi.apifox.cn/api-426464523.md): 
+- 可灵 Kling 平台 > 动作控制 [查询任务（单个）](https://ikunapi.apifox.cn/api-426464524.md): 
+- 可灵 Kling 平台 > 主体 [主体](https://ikunapi.apifox.cn/api-426464525.md): 
+- Replicate 聚合平台 [查询任务](https://ikunapi.apifox.cn/api-426464526.md): 官方文档: https://replicate.com/black-forest-labs/flux-kontext-max
+- Replicate 聚合平台 [创建任务-通过模型version（predictions）](https://ikunapi.apifox.cn/api-426464527.md): version models 支持以下
+- Replicate 聚合平台 [创建任务 stability-ai/stable-diffusion](https://ikunapi.apifox.cn/api-426464528.md): 官方文档: https://replicate.com/stability-ai/stable-diffusion
+- Replicate 聚合平台 [创建任务 stability-ai/sdxl](https://ikunapi.apifox.cn/api-426464529.md): 官方文档: https://replicate.com/stability-ai/sdxl
+- Replicate 聚合平台 [创建任务 stability-ai/stable-diffusion-inpainting](https://ikunapi.apifox.cn/api-426464530.md): 官方文档: https://replicate.com/stability-ai/stable-diffusion-inpainting
+- Replicate 聚合平台 [创建任务 stability-ai/stable-diffusion-img2img](https://ikunapi.apifox.cn/api-426464531.md): 官方文档: https://replicate.com/stability-ai/stable-diffusion-img2img
+- Replicate 聚合平台 [创建任务 lucataco/flux-schnell-lora](https://ikunapi.apifox.cn/api-426464532.md): 官方文档: https://replicate.com/lucataco/flux-schnell-lora
+- Replicate 聚合平台 [创建任务 lucataco/flux-dev-lora](https://ikunapi.apifox.cn/api-426464533.md): 官方文档: https://replicate.com/lucataco/flux-dev-lora
+- Replicate 聚合平台 [创建任务 andreasjansson/stable-diffusion-animation](https://ikunapi.apifox.cn/api-426464534.md): 官方文档:https://replicate.com/andreasjansson/stable-diffusion-animation
+- Replicate 聚合平台 [创建任务 sujaykhandekar/object-removal](https://ikunapi.apifox.cn/api-426464535.md): 官方文档:https://replicate.com/sujaykhandekar/object-removal
+- Replicate 聚合平台 [创建任务 cjwbw/rembg](https://ikunapi.apifox.cn/api-426464536.md): 官方文档:https://replicate.com/cjwbw/rembg
+- Replicate 聚合平台 [创建任务 lucataco/animate-diff](https://ikunapi.apifox.cn/api-426464537.md): 官方文档:https://replicate.com/lucataco/animate-diff
+- Replicate 聚合平台 [创建任务 ideogram-ai/ideogram-v2-turbo](https://ikunapi.apifox.cn/api-426464538.md): 官方文档:https://replicate.com/ideogram-ai/ideogram-v2-turbo
+- Replicate 聚合平台 [创建任务 black-forest-labs/flux-kontext-dev](https://ikunapi.apifox.cn/api-426464539.md): 官方文档: https://replicate.com/black-forest-labs/flux-kontext-dev
+- Replicate 聚合平台 [创建任务 minimax/video-01-live](https://ikunapi.apifox.cn/api-426464540.md): 官方文档:https://replicate.com/minimax/video-01-live
+- Replicate 聚合平台 [创建任务 minimax/video-01](https://ikunapi.apifox.cn/api-426464541.md): 官方文档:https://replicate.com/minimax/video-01
+- Replicate 聚合平台 [创建任务 recraft-ai/recraft-v3](https://ikunapi.apifox.cn/api-426464542.md): 官方文档:https://replicate.com/recraft-ai/recraft-v3
+- Replicate 聚合平台 [创建任务 recraft-ai/recraft-v3-svg](https://ikunapi.apifox.cn/api-426464543.md): 官方文档:https://replicate.com/recraft-ai/recraft-v3-svg
+- Replicate 聚合平台 [创建任务 black-forest-labs/flux-1.1-pro-ultra](https://ikunapi.apifox.cn/api-426464544.md): 官方文档: https://replicate.com/black-forest-labs/flux-1.1-pro-ultra
+- Replicate 聚合平台 [创建任务 black-forest-labs/flux-kontext-pro](https://ikunapi.apifox.cn/api-426464545.md): 官方文档: https://replicate.com/black-forest-labs/flux-kontext-pro
+- Replicate 聚合平台 [创建任务 black-forest-labs/flux-kontext-max](https://ikunapi.apifox.cn/api-426464546.md): 官方文档: https://replicate.com/black-forest-labs/flux-kontext-max
+- Replicate 聚合平台 [创建任务 flux-kontext-apps/multi-image-kontext-max](https://ikunapi.apifox.cn/api-426464547.md): 官方文档:https://replicate.com/flux-kontext-apps/multi-image-kontext-max
+- Replicate 聚合平台 [创建任务 flux-kontext-apps/multi-image-kontext-pro](https://ikunapi.apifox.cn/api-426464548.md): 官方文档:https://replicate.com/flux-kontext-apps/multi-image-kontext-pro
+- Replicate 聚合平台 [创建任务 lucataco/remove-bg](https://ikunapi.apifox.cn/api-426464549.md): 官方文档:https://replicate.com/lucataco/remove-bg
+- Replicate 聚合平台 [创建任务 riffusion/riffusion](https://ikunapi.apifox.cn/api-426464550.md): 官方文档:https://replicate.com/riffusion/riffusion
+- Replicate 聚合平台 [创建任务 black-forest-labs/flux-fill-dev](https://ikunapi.apifox.cn/api-426464551.md): 官方文档:https://replicate.com/black-forest-labs/flux-fill-dev
+- Replicate 聚合平台 [创建任务 black-forest-labs/flux-fill-pro](https://ikunapi.apifox.cn/api-426464552.md): 官方文档:https://replicate.com/black-forest-labs/flux-fill-pro
+- Replicate 聚合平台 [创建任务 google/imagen-4-fast](https://ikunapi.apifox.cn/api-426464553.md): 官方文档:https://replicate.com/google/imagen-4-fast
+- Replicate 聚合平台 [创建任务 google/imagen-4-ultra](https://ikunapi.apifox.cn/api-426464554.md): 官方文档:https://replicate.com/google/imagen-4-ultra
+- Replicate 聚合平台 [创建任务 google/imagen-4](https://ikunapi.apifox.cn/api-426464555.md): 官方文档:https://replicate.com/google/imagen-4
+- Replicate 聚合平台 [创建任务 prunaai/vace-14b](https://ikunapi.apifox.cn/api-426464556.md): 官方文档:https://replicate.com/prunaai/vace-14b
+- Replicate 聚合平台 [创建任务 bytedance/seedream-4](https://ikunapi.apifox.cn/api-426464557.md): 
+- 海螺 Minimax 平台 [创建异步语音合成任务 V2](https://ikunapi.apifox.cn/api-426464558.md): https://platform.minimaxi.com/docs/api-reference/speech-t2a-async-create
+- 海螺 Minimax 平台 [同步语音合成 V2](https://ikunapi.apifox.cn/api-426464559.md): https://platform.minimaxi.com/docs/api-reference/speech-t2a-http
+- 海螺 Minimax 平台 [文生图生视频生成任务](https://ikunapi.apifox.cn/api-426464560.md): 
+- 海螺 Minimax 平台 [上传复刻音频](https://ikunapi.apifox.cn/api-426464561.md): 
+- 海螺 Minimax 平台 [上传示例音频](https://ikunapi.apifox.cn/api-426464562.md): 
+- 海螺 Minimax 平台 [首尾帧生成视频](https://ikunapi.apifox.cn/api-426464563.md): 
+- 海螺 Minimax 平台 [音色快速复刻](https://ikunapi.apifox.cn/api-426464564.md): https://platform.minimaxi.com/docs/api-reference/voice-cloning-clone
+- 海螺 Minimax 平台 [查询视频生成任务状态](https://ikunapi.apifox.cn/api-426464565.md): 
+- 海螺 Minimax 平台 [检索(用于视频下载,异步音频下载)](https://ikunapi.apifox.cn/api-426464566.md): 
+- 海螺 Minimax 平台 [文本合成](https://ikunapi.apifox.cn/api-426464567.md): https://platform.minimaxi.com/docs/api-reference/text-post
+- 海螺 Minimax 平台 [查询语音生成任务状态](https://ikunapi.apifox.cn/api-426464568.md): https://platform.minimaxi.com/docs/api-reference/speech-t2a-async-query
+- 海螺 Minimax 平台 [音色设计](https://ikunapi.apifox.cn/api-426464569.md): 
+- 官方VIDU视频生成、图片生成、音频生成 [创建文生视频任务](https://ikunapi.apifox.cn/api-426464570.md): 官方文档:https://platform.vidu.cn/docs/text-to-video
+- 官方VIDU视频生成、图片生成、音频生成 [创建图生视频任务](https://ikunapi.apifox.cn/api-426464571.md): 官方文档:https://platform.vidu.cn/docs/image-to-video
+- 官方VIDU视频生成、图片生成、音频生成 [创建图片生成任务](https://ikunapi.apifox.cn/api-426464574.md): 官方文档:https://platform.vidu.cn/docs/reference-to-image
+- 官方VIDU视频生成、图片生成、音频生成 [创建文生音频任务](https://ikunapi.apifox.cn/api-426464575.md): 官方文档:https://platform.vidu.cn/docs/text-to-audio
+- 官方VIDU视频生成、图片生成、音频生成 [语音合成](https://ikunapi.apifox.cn/api-426464576.md): 官方文档:https://platform.vidu.cn/docs/text-to-speech
+- 官方VIDU视频生成、图片生成、音频生成 [创建参考生视频任务](https://ikunapi.apifox.cn/api-426464577.md): 官方文档:https://platform.vidu.cn/docs/reference-to-video
+- 官方VIDU视频生成、图片生成、音频生成 [创建首尾帧生视频任务](https://ikunapi.apifox.cn/api-426464578.md): 官方文档:https://platform.vidu.cn/docs/start-end-to-video
+- 官方VIDU视频生成、图片生成、音频生成 [获取请求结果 ](https://ikunapi.apifox.cn/api-426464579.md): 
+- Fal-ai 聚合平台 > falai-veo3 视频生成 [/fal-ai/veo3](https://ikunapi.apifox.cn/api-426464603.md): 官方文档地址：https://fal.ai/models/fal-ai/veo3
+- Fal-ai 聚合平台 > falai-veo3 视频生成 [/fal-ai/veo3/fast/image-to-video](https://ikunapi.apifox.cn/api-426464604.md): 官方文档地址：https://fal.ai/models/fal-ai/veo3/fast/image-to-video
+- Fal-ai 聚合平台 > falai-veo3 视频生成 [/fal-ai/veo3/fast](https://ikunapi.apifox.cn/api-426464605.md): 官方文档地址：https://fal.ai/models/fal-ai/veo3/fast
+- Fal-ai 聚合平台 > falai-veo3 视频生成 [/fal-ai/veo3/requests/{request_id}](https://ikunapi.apifox.cn/api-426464606.md): 
+- Fal-ai 聚合平台 > falai-veo3 视频生成 [/fal-ai/veo3/image-to-video](https://ikunapi.apifox.cn/api-426464607.md): 官方文档：https://fal.ai/models/fal-ai/veo3/image-to-video
+- Fal-ai 聚合平台 [获取请求结果](https://ikunapi.apifox.cn/api-426464580.md): 
+- Fal-ai 聚合平台 [/fal-ai/flux-1/dev](https://ikunapi.apifox.cn/api-426464581.md): 官方文档: https://fal.ai/models/fal-ai/flux-1/dev
+- Fal-ai 聚合平台 [/fal-ai/flux-1/dev/image-to-image](https://ikunapi.apifox.cn/api-426464582.md): 官方文档: https://fal.ai/models/fal-ai/flux-1/dev/image-to-image
+- Fal-ai 聚合平台 [/fal-ai/flux-1/dev/redux](https://ikunapi.apifox.cn/api-426464583.md): 官方文档: https://fal.ai/models/fal-ai/flux-1/dev/redux
+- Fal-ai 聚合平台 [/fal-ai/flux-1/schnell/redux](https://ikunapi.apifox.cn/api-426464584.md): 官方文档: https://fal.ai/models/fal-ai/flux-1/schnell/redux
+- Fal-ai 聚合平台 [/fal-ai/flux-pro/kontext](https://ikunapi.apifox.cn/api-426464585.md): 官方文档: https://fal.ai/models/fal-ai/flux-pro/kontext
+- Fal-ai 聚合平台 [/fal-ai/flux-pro/kontext/text-to-image](https://ikunapi.apifox.cn/api-426464586.md): 官方文档: https://fal.ai/models/fal-ai/flux-pro/kontext/text-to-image
+- Fal-ai 聚合平台 [/fal-ai/flux-pro/kontext/max](https://ikunapi.apifox.cn/api-426464587.md): 官方文档:  https://fal.ai/models/fal-ai/flux-pro/kontext/max
+- Fal-ai 聚合平台 [/fal-ai/flux-pro/kontext/max/multi](https://ikunapi.apifox.cn/api-426464588.md): 官方文档: https://fal.ai/models/fal-ai/flux-pro/kontext/max/multi
+- Fal-ai 聚合平台 [/fal-ai/wan/v2.2-a14b/image-to-image](https://ikunapi.apifox.cn/api-426464589.md): 官方文档: https://fal.ai/models/fal-ai/wan/v2.2-a14b/image-to-image
+- Fal-ai 聚合平台 [/fal-ai/bytedance/seedream/v4/text-to-image](https://ikunapi.apifox.cn/api-426464590.md): 官方文档: https://fal.ai/models/fal-ai/bytedance/seedream/v4/text-to-image
+- Fal-ai 聚合平台 [/fal-ai/bytedance/seedream/v4/edit](https://ikunapi.apifox.cn/api-426464591.md): 官方文档: https://fal.ai/models/fal-ai/bytedance/seedream/v4/edit
+- Fal-ai 聚合平台 [/fal-ai/vidu/reference-to-image](https://ikunapi.apifox.cn/api-426464592.md): 官方文档: https://fal.ai/models/fal-ai/vidu/reference-to-image
+- Fal-ai 聚合平台 [/fal-ai/imagen4/preview](https://ikunapi.apifox.cn/api-426464593.md): 官方文档: https://fal.ai/models/fal-ai/imagen4/preview
+- Fal-ai 聚合平台 [/fal-ai/qwen-image-edit-lora](https://ikunapi.apifox.cn/api-426464594.md): 官方文档: https://fal.ai/models/fal-ai/qwen-image-edit-lora
+- Fal-ai 聚合平台 [/fal-ai/qwen-image-edit-plus](https://ikunapi.apifox.cn/api-426464595.md): 官方文档: https://fal.ai/models/fal-ai/qwen-image-edit-plus
+- Fal-ai 聚合平台 [/fal-ai/kling-video/v2.5-turbo/pro/text-to-video](https://ikunapi.apifox.cn/api-426464596.md): 官方文档: https://fal.ai/models//fal-ai/kling-video/v2.5-turbo/pro/text-to-video
+- Fal-ai 聚合平台 [/fal-ai/kling-video/v2.5-turbo/pro/image-to-video](https://ikunapi.apifox.cn/api-426464597.md): 官方文档: https://fal.ai/models/fal-ai/kling-video/v2.5-turbo/pro/image-to-video
+- Fal-ai 聚合平台 [/fal-ai/flux-lora](https://ikunapi.apifox.cn/api-426464598.md): 官方文档: https://fal.ai/models/fal-ai/flux-lora
+- Fal-ai 聚合平台 [/fal-ai/flux-lora/image-to-image](https://ikunapi.apifox.cn/api-426464599.md): 官方文档: https://fal.ai/models/fal-ai/flux-lora/image-to-image
+- Fal-ai 聚合平台 [/fal-ai/flux-lora/inpainting](https://ikunapi.apifox.cn/api-426464600.md): 官方文档: https://fal.ai/models/fal-ai/flux-lora/inpainting
+- Fal-ai 聚合平台 [/fal-ai/kling-video/v2.5-turbo/pro/text-to-video](https://ikunapi.apifox.cn/api-426464601.md): 
+- Fal-ai 聚合平台 [/fal-ai/qwen-image-edit-lora](https://ikunapi.apifox.cn/api-426464602.md): 
+- 帮助中心 [上传图片到图床](https://ikunapi.apifox.cn/api-426464608.md): 
+
+
+logo
+Ikun API
+首页
+控制台
+模型广场
+联系我们
+API 文档
+筛选
+供应商
+展开更多
+模型类型
+标签
+展开更多
+可用令牌分组
+展开更多
+计费类型
+全部供应商
+查看所有可用的AI模型供应商，包括众多知名供应商的模型。
+
+模糊搜索模型名称
+倍率
+
+gpt-5.4-mini
+输入价格 💰0.4500/M
+补全价格 💰2.7000/M
+GPT-5.4mini将GPT-5.4的优势融入到一个更快、更高效的模型中，专为高负载工作量设计。
+
+倍率信息
+模型: 0.375
+补全: 6
+分组: 0.6
+gpt-5.4-mini-2026-03-17
+输入价格 💰0.4500/M
+补全价格 💰2.7000/M
+GPT-5.4mini将GPT-5.4的优势融入到一个更快、更高效的模型中，专为高负载工作量设计。
+
+倍率信息
+模型: 0.375
+补全: 6
+分组: 0.6
+gpt-5.4-nano
+输入价格 💰0.1200/M
+补全价格 💰0.7200/M
+GPT‑5.4 nano 是 GPT‑5.4 最轻量、最快速的版本，专为对速度和成本要求极高的任务而设计。
+
+倍率信息
+模型: 0.1
+补全: 6
+分组: 0.6
+gpt-5.4-nano-2026-03-17
+输入价格 💰0.1200/M
+补全价格 💰0.7200/M
+GPT‑5.4 nano 是 GPT‑5.4 最轻量、最快速的版本，专为对速度和成本要求极高的任务而设计。
+
+倍率信息
+模型: 0.1
+补全: 6
+分组: 0.6
+doubao-seed-2-0-code-preview-260215
+输入价格 💰4.8000/M
+补全价格 💰24.0000/M
+Doubao-Seed-2.0-Code 面向企业级编程需求优化，在 Seed 2.0 优秀的 Agent、VLM 能力基础上，特别增强了代码能力，不仅前端能力表现出众，也对企业常见的多语言编码需求做了特别优化，适合接入各种 AI 编程工具使用。
+
+倍率信息
+模型: 1.6
+补全: 5
+分组: 1.5
+doubao-seed-2-0-lite-260215
+输入价格 💰0.9000/M
+补全价格 💰5.4000/M
+Doubao-Seed-2.0-lite 是面向高频企业场景兼顾性能与成本的均衡型模型，综合能力超越上一代Doubao-Seed-1.8。胜任非结构化信息处理、内容创作、搜索推荐、数据分析等生产型工作，支持长上下文、多源信息融合、多步指令执行与高保真结构化输出。在保障稳定效果的同时显著优化成本。
+
+倍率信息
+模型: 0.3
+补全: 6
+分组: 1.5
+doubao-seed-2-0-mini-260215
+输入价格 💰0.3000/M
+补全价格 💰3.0000/M
+Doubao-Seed-2.0-mini 面向低时延、高并发与成本敏感场景，提供极致的模型推理速度。模型效果与Doubao-Seed-1.6相当。支持256k上下文、4档思考长度和多模态理解，适合成本和速度优先的轻量级任务。
+
+倍率信息
+模型: 0.1
+补全: 10
+分组: 1.5
+doubao-seed-2-0-pro-260215
+输入价格 💰4.8000/M
+补全价格 💰24.0000/M
+Doubao-Seed-2.0-pro是旗舰级全能通用模型，面向 Agent 时代的复杂推理与长链路任务执行场景。强调多模态理解、长上下文推理、结构化生成与工具增强执行。复杂指令与多约束执行能力突出，可稳定应对多步复杂规划、复杂图文推理、视频内容理解与高难度分析等场景。
+
+倍率信息
+模型: 1.6
+补全: 5
+分组: 1.5
+gemini-3.1-flash-lite-preview
+输入价格 💰0.3750/M
+补全价格 💰2.2500/M
+我们最具成本效益的多模态模型，可为高频轻量级任务提供最快的性能。Gemini 3.1 Flash-Lite 最适合处理海量代理任务、简单的数据提取任务，以及预算和速度是主要限制因素的极低延迟应用。
+
+倍率信息
+模型: 0.125
+补全: 6
+分组: 1.5
+gemini-3.1-pro-preview
+输入价格 💰1.6000/M
+补全价格 💰9.6000/M
+Gemini 3.1 是谷歌迄今为止最智能的模型系列，以先进的推理能力为基础。它旨在通过掌握智能体工作流、自主编码和复杂的多模态任务，将任何想法变为现实。gemini-3.1-pro-preview 最适合需要广泛的世界知识和跨模态的高级推理的复杂任务。
+
+倍率信息
+模型: 1
+补全: 6
+分组: 0.8
+gpt-5.4
+输入价格 💰1.5000/M
+补全价格 💰9.0000/M
+GPT-5.4是我们用于复杂专业工作的前沿模型。
+
+倍率信息
+模型: 1.25
+补全: 6
+分组: 0.6
+grok-imagine-image
+模型价格 💰0.208
+Grok-Imagine-Image 是X平台推出的多模态AI模型，能够根据文本描述生成高质量图像
+
+倍率信息
+模型: 无
+补全: 无
+分组: 1
+grok-imagine-image-pro
+模型价格 💰0.728
+Grok-Imagine-Image-Pro 是 X 平台的升级版多模态 AI 模型，通过更强的理解力与生成细节，实现更高精度图像生成与多轮优化。
+
+倍率信息
+模型: 无
+补全: 无
+分组: 1
+MiniMax-M2.7
+输入价格 💰2.1000/M
+补全价格 💰8.4000/M
+MiniMax-M2.7 在编程、工具调用和搜索、办公等生产力场景都达到或刷新了行业的 SOTA。
+
+倍率信息
+模型: 1.05
+补全: 4
+分组: 1
+gpt-5.4-pro
+输入价格 💰18.0000/M
+补全价格 💰108.0000/M
+GPT-5.4pro使用更多计算资源来更深入地思考并提供始终更好的答案。仅可通过响应API访问，以在响应API请求前支持多轮模型交互功能，以及未来其他高级API特性。
+
+倍率信息
+模型: 15
+补全: 6
+分组: 0.6
+speech-2.8-hd
+模型价格 💰5.600
+新一代语音 HD 模型，精准还原真实语气细节，全面提升音色相似度
+
+倍率信息
+模型: 无
+补全: 无
+分组: 1
+speech-2.8-turbo
+模型价格 💰3.200
+新一代语音 Turbo 模型，极速响应，语气表达生动自然
+
+倍率信息
+模型: 无
+补全: 无
+分组: 1
+gemini-3.1-flash-image-preview
+模型价格 💰0.166
+Nano Banana 2 以主流价格提供高质量的图片生成和对话式编辑功能，延迟时间短。
+
+倍率信息
+模型: 无
+补全: 无
+分组: 1
+gpt-5.3-chat-latest
+输入价格 💰1.0500/M
+补全价格 💰8.4000/M
+GPT-5.3-chat-latest 是 OpenAI 优化的高速对话模型，响应更直接自然，减少说教和拒答，适合日常轻量任务
+
+倍率信息
+模型: 0.875
+补全: 8
+分组: 0.6
+qwen3.6-plus
+输入价格 💰2.0000/M
+补全价格 💰12.0000/M
+Qwen3.6原生视觉语言系列Plus模型，展现出与当前顶尖前沿模型相媲美的卓越性能，模型效果相较3.5系列显著提升。模型在Agentic coding、前端编程、Vibe coding等代码能力、多模态万物识别、OCR、物体定位等能力上显著增强。
+
+倍率信息
+模型: 1
+补全: 6
+分组: 1
+qwen3.6-plus-2026-04-02
+输入价格 💰2.0000/M
+补全价格 💰12.0000/M
+Qwen3.6原生视觉语言系列Plus模型，展现出与当前顶尖前沿模型相媲美的卓越性能，模型效果相较3.5系列显著提升。模型在Agentic coding、前端编程、Vibe coding等代码能力、多模态万物识别、OCR、物体定位等能力上显著增强。
+
+倍率信息
+模型: 1
+补全: 6
+分组: 1
+claude-sonnet-4-6
+输入价格 💰3.0000/M
+补全价格 💰15.0000/M
+Claude Sonnet 4.6 可大规模提供前沿智能，专为编码、代理和企业工作流而打造。
+
+倍率信息
+模型: 1.5
+补全: 5
+分组: 1
+gpt-5.3-codex-spark
+输入价格 💰1.4000/M
+补全价格 💰11.2000/M
+GPT‑5.3‑Codex‑Spark 研究预览版。作为 GPT‑5.3‑Codex 的轻量化版本，它是我们首款专为“实时编程”场景设计的模型。
+
+倍率信息
+模型: 0.875
+补全: 8
+分组: 0.8
+claude-sonnet-4-6-thinking
+输入价格 💰15.0000/M
+补全价格 💰75.0000/M
+Claude Sonnet 4.6 可大规模提供前沿智能，专为编码、代理和企业工作流而打造。
+
+倍率信息
+模型: 1.5
+补全: 5
+分组: 5
+claude-opus-4-6
+输入价格 💰5.0000/M
+补全价格 💰25.0000/M
+Claude Opus 4.6 是 Anthropic 最新发布的旗舰级 AI 模型，在专业任务处理、长上下文理解和多智能体协作方面实现了重大突破。
+
+倍率信息
+模型: 2.5
+补全: 5
+分组: 1
+claude-opus-4-6-thinking
+输入价格 💰5.0000/M
+补全价格 💰25.0000/M
+专业级战略大脑AI，专为复杂商业决策和深度逻辑推理而生。
+
+倍率信息
+模型: 2.5
+补全: 5
+分组: 1
+gpt-5.2
+输入价格 💰1.0500/M
+补全价格 💰8.4000/M
+GPT-5.2适用于各行各业的编码和智能任务的最佳模型
+
+倍率信息
+模型: 0.875
+补全: 8
+分组: 0.6
+gpt-5.2-chat
+输入价格 💰1.0500/M
+补全价格 💰8.4000/M
+GPT-5.2-chat 适用于自然流畅对话和动态交互体验的最新版本
+
+倍率信息
+模型: 0.875
+补全: 8
+分组: 0.6
+gpt-5.2-chat-latest
+输入价格 💰1.0500/M
+补全价格 💰8.4000/M
+GPT-5.2-chat-latest 适用于自然流畅对话和动态交互体验的最新版本
+
+倍率信息
+模型: 0.875
+补全: 8
+分组: 0.6
+gpt-5.2-pro
+输入价格 💰12.6000/M
+补全价格 💰100.8000/M
+GPT-5.2 pro 仅在 Responses API 中提供，以支持多回合模型交互，并在响应 API 请求前支持其他高级 API 功能。由于GPT-5.2 pro旨在解决棘手问题，有些请求可能需要几分钟才能完成。
+
+倍率信息
+模型: 10.5
+补全: 8
+分组: 0.6
+claude-opus-4-5-20251101
+输入价格 💰5.0000/M
+补全价格 💰25.0000/M
+Claude Opus 4.5 是我们迄今为止最智能的模型。它在编码、代理、计算机使用和企业工作流程中树立了新的标准。Opus 4.5是人工智能系统能力的一次有意义的进步。
+
+倍率信息
+模型: 2.5
+补全: 5
+分组: 1
+claude-opus-4-5-20251101-thinking
+输入价格 💰5.0000/M
+补全价格 💰25.0000/M
+思考版 Claude 4.5 Opus 在 Claude 4 Opus 的基础上，在多个领域进行了突破，尤其是在深度推理和复杂系统分析方面。它提供了适用于最苛刻 AI 用例的极致性能，包括开放式科学探索和多步骤战略规划。
+
+倍率信息
+模型: 2.5
+补全: 5
+分组: 1
+doubao-seedream-5-0-260128
+模型价格 💰0.220
+Doubao-Seedream-5.0-lite是字节跳动发布的最新图像创作模型。模型能够精准解析复杂指令和视觉内容。此外，模型在世界知识广度、参考一致性及专业场景生成质量上均有增强，可更好地满足企业级视觉创作需求。
+
+倍率信息
+模型: 无
+补全: 无
+分组: 1
+gemini-3-pro-image-preview
+模型价格 💰0.330
+Nano Banana pro是Google Gemini系列中的下一代AI图像生成与编辑模型,是Gemini 2.5 Flash Image(Nano Banana)的升级版。该模型融合多模态Transformer和扩散模型,原生支持2K(2048×2048)及4K分辨率输出,在图像质量、文字渲染、物理推理等方面实现显著提升。
+
+倍率信息
+模型: 无
+补全: 无
+分组: 1
+gemini-3-pro-preview
+输入价格 💰1.6000/M
+补全价格 💰9.6000/M
+Gemini 3 是谷歌迄今为止最智能的模型系列，以先进的推理能力为基础。它旨在通过掌握智能体工作流、自主编码和复杂的多模态任务，将任何想法变为现实。gemini-3-pro-preview 最适合需要广泛的世界知识和跨模态的高级推理的复杂任务。
+
+倍率信息
+模型: 1
+补全: 6
+分组: 0.8
+gpt-5.1
+输入价格 💰0.7500/M
+补全价格 💰6.0000/M
+GPT-5.1：更智能、更具对话性的聊天GPT,最常用的型号，现在更温暖、更智能，更能遵循您的指令。
+
+倍率信息
+模型: 0.625
+补全: 8
+分组: 0.6
+gpt-5.1-2025-11-13
+输入价格 💰0.7500/M
+补全价格 💰6.0000/M
+GPT-5.1-2025-11-13：更智能、更具对话性的聊天GPT,最常用的型号，现在更温暖、更智能，更能遵循您的指令。
+
+倍率信息
+模型: 0.625
+补全: 8
+分组: 0.6
+gpt-5.3-codex
+输入价格 💰1.4000/M
+补全价格 💰11.2000/M
+GPT-5.3-Codex通过性能提升、功能泛化和安全性升级，重新定义了AI在编程及泛生产力领域的角色。
+
+倍率信息
+模型: 0.875
+补全: 8
+分组: 0.8
+gpt-5.3-codex-high
+输入价格 💰1.4000/M
+补全价格 💰11.2000/M
+GPT-5.3-Codex-High 是 OpenAI 当前最强的编程专用模型。
+
+倍率信息
+模型: 0.875
+补全: 8
+分组: 0.8
+gpt-5.3-codex-low
+输入价格 💰1.4000/M
+补全价格 💰11.2000/M
+GPT-5.3-Codex-Low 是该系列的轻量级版本。
+
+倍率信息
+模型: 0.875
+补全: 8
+分组: 0.8
+gpt-5.3-codex-medium
+输入价格 💰1.4000/M
+补全价格 💰11.2000/M
+GPT-5.3-Codex-Medium 通过 性能碾压、功能泛化 和 安全升级，重新定义了AI在开发与生产力场景的角色.
+
+倍率信息
+模型: 0.875
+补全: 8
+分组: 0.8
+gpt-5.3-codex-xhigh
+输入价格 💰1.4000/M
+补全价格 💰11.2000/M
+GPT-5.3-Codex-XHigh 是一款专为编程、系统操作和多领域专业任务优化的高性能AI模型，具备顶尖代码能力、安全防御和实时交互功能，适合开发者和企业高效解决复杂问题。
+
+倍率信息
+模型: 0.875
+补全: 8
+分组: 0.8
+grok-4.2
+输入价格 💰3.0000/M
+补全价格 💰15.0000/M
+Grok-4.2 是一个具备万亿级参数、16-Agent 集群协作、支持实时数据流处理，并能通过每周高频更新自我进化的 AI 生产力系统，专为复杂决策、商业自动化和个性化认知增强优化。
+
+倍率信息
+模型: 1.5
+补全: 5
+分组: 1
+mimo-v2-flash
+输入价格 💰0.7000/M
+补全价格 💰2.1000/M
+MiMo-V2-Flash 是小米开源的高效专业大模型，以 150 tokens/秒的极速推理、3090亿参数 MoE 架构动态激活 15B、256K 上下文处理能力，在代码生成（SWE-Bench 73.4%）、数学竞赛（AIME 94.1分）及智能体任务（95.3分通信得分）上达到开源顶尖水平
+
+倍率信息
+模型: 0.35
+补全: 3
+分组: 1
+MiniMax-M2.5
+输入价格 💰2.1000/M
+补全价格 💰8.4000/M
+MiniMax-M2.5 在编程、工具调用和搜索、办公等生产力场景都达到或刷新了行业的 SOTA。
+
+倍率信息
+模型: 1.05
+补全: 4
+分组: 1
+glm-4.7
+输入价格 💰2.0000/M
+补全价格 💰8.0000/M
+GLM-4.7 是智谱最新旗舰模型，GLM-4.7 面向 Agentic Coding 场景强化了编码能力、长程任务规划与工具协同，并在多个公开基准的当期榜单中取得开源模型中的领先表现。通用能力提升，回复更简洁自然，写作更具沉浸感。
+
+倍率信息
+模型: 1
+补全: 4
+分组: 1
+gpt-image-1.5
+输入价格 💰3.0000/M
+补全价格 💰19.2000/M
+GPT Image 1.5是我们最新的图像生成模型，拥有更好的指令跟踪和对提示的遵循。
+
+倍率信息
+模型: 2.5
+补全: 6.4
+分组: 0.6
+speech-02-hd
+模型价格 💰5.600
+MiniMax 语音大模型能够根据上下文，智能预测文本的情绪、语调等信息，并生成超自然、高保真、个性化的语音。在社交、播客、有声书、新闻资讯、教育、数字人等多种场景中展现出强大的实力。
+
+倍率信息
+模型: 无
+补全: 无
+分组: 1
+speech-02-turbo
+模型价格 💰3.200
+MiniMax 语音大模型能够根据上下文，智能预测文本的情绪、语调等信息，并生成超自然、高保真、个性化的语音。在社交、播客、有声书、新闻资讯、教育、数字人等多种场景中展现出强大的实力。
+
+倍率信息
+模型: 无
+补全: 无
+分组: 1
+speech-2.6-turbo
+模型价格 💰3.200
+MiniMax 语音大模型能够根据上下文，智能预测文本的情绪、语调等信息，并生成超自然、高保真、个性化的语音。在社交、播客、有声书、新闻资讯、教育、数字人等多种场景中展现出强大的实力。
+
+倍率信息
+模型: 无
+补全: 无
+分组: 1
+claude-haiku-4-5-20251001
+输入价格 💰1.0000/M
+补全价格 💰5.0000/M
+Claude Haiku 4.5 是速度最快、性价比最高的模型，在编码、计算机使用和代理任务方面的表现与 Sonnet 4 相当。
+
+倍率信息
+模型: 0.5
+补全: 5
+分组: 1
+deepseek-v3.2
+输入价格 💰1.2000/M
+补全价格 💰1.8000/M
+DeepSeek-V3.2 是我们推出的首个将思考融入工具使用的模型，并且同时支持思考模式与非思考模式的工具调用
+
+倍率信息
+模型: 1
+补全: 1.5
+分组: 0.6
+gemini-3-flash-preview
+输入价格 💰0.4000/M
+补全价格 💰2.4000/M
+gemini-3-flash-preview我们打造的最智能的模型，兼具速度和前沿智能，并具备出色的搜索和接地能力。
+
+倍率信息
+模型: 0.25
+补全: 6
+分组: 0.8
+gpt-5.4-high
+输入价格 💰2.0000/M
+补全价格 💰12.0000/M
+GPT-5.4-high 是 OpenAI 当前最强的专业级推理模型，专注高复杂度任务，具备百万级上下文处理、跨系统计算机操作和行业专家级分析能力，牺牲速度换取深度与精准度。
+
+倍率信息
+模型: 1.25
+补全: 6
+分组: 0.8
+gpt-5.4-low
+输入价格 💰2.0000/M
+补全价格 💰12.0000/M
+作为GPT-5.4家族的轻量级版本，聚焦于响应速度与成本效益的平衡
+
+倍率信息
+模型: 1.25
+补全: 6
+分组: 0.8
+gpt-5.4-medium
+输入价格 💰2.0000/M
+补全价格 💰12.0000/M
+GPT-5.4-medium 是 OpenAI 推出的中档性能模型，在成本、速度和能力之间取得平衡，适合日常专业任务和中等复杂度工作流，支持工具调用和计算机操作，但推理深度和长上下文处理弱于 high 版本
+
+倍率信息
+模型: 1.25
+补全: 6
+分组: 0.8
+gpt-5.4-xhigh
+输入价格 💰2.0000/M
+补全价格 💰12.0000/M
+GPT-5.4-high是OpenAI推出的高推理强度版本，专为需要深度逻辑分析、复杂专业场景设计的旗舰模型。
+
+倍率信息
+模型: 1.25
+补全: 6
+分组: 0.8
+kimi-k2.5
+输入价格 💰4.0000/M
+补全价格 💰21.0000/M
+kimi-k2.5 是 Kimi 迄今最全能的模型，原生的多模态架构设计，同时支持视觉与文本输入、思考与非思考模式、对话与 Agent 任务
+
+倍率信息
+模型: 2
+补全: 5.25
+分组: 1
+gemini-2.5-flash-preview-tts
+输入价格 💰0.7500/M
+补全价格 💰15.0000/M
+2.5 Flash 文字转语音音频模型经过优化，可实现高性价比、低延迟、可控的语音生成。
+
+倍率信息
+模型: 0.25
+补全: 20
+分组: 1.5
+gemini-2.5-pro-preview-tts
+输入价格 💰1.5000/M
+补全价格 💰30.0000/M
+Gemini-TTS 是我们 Cloud TTS 技术的最新发展，它不仅能生成自然的语音，还能通过基于文本的提示对生成的音频进行精细控制。借助 Gemini-TTS，您可以合成单个说话者或多个说话者语音，从短片段到长篇叙事，精准指定风格、口音、语速、语调，甚至情感表达，所有这些元素均可通过自然语言提示来灵活调控。
+
+倍率信息
+模型: 0.5
+补全: 20
+分组: 1.5
+claude-sonnet-4-5-20250929
+输入价格 💰3.0000/M
+补全价格 💰15.0000/M
+Claude Sonnet 4.5 是世界上最好的编码模型。它是构建复杂代理的最强大模型。它是使用计算机的最佳模型。它在推理和数学方面表现出显著的进步。
+
+倍率信息
+模型: 1.5
+补全: 5
+分组: 1
+deepseek-v3.2-thinking
+输入价格 💰2.0000/M
+补全价格 💰3.0000/M
+DeepSeek-V3.2-thinking 是我们推出的首个将思考融入工具使用的模型，是DeepSeek-V3.2的思考模式
+
+倍率信息
+模型: 1
+补全: 1.5
+分组: 1
+claude-sonnet-4-5-20250929-thinking
+输入价格 💰3.0000/M
+补全价格 💰15.0000/M
+Claude Sonnet 4.5 是世界上最好的编码模型。它是构建复杂代理的最强大模型。它是使用计算机的最佳模型。它在推理和数学方面表现出显著的进步。
+
+倍率信息
+模型: 1.5
+补全: 5
+分组: 1
+doubao-seed-1-8-251228
+输入价格 💰1.2000/M
+补全价格 💰12.0000/M
+doubao-seed-1.8 有着更强的多模态理解能力和 Agent 能力，模型在真实世界诸多复杂任务中，能发挥更出色的表现，进一步帮助企业创造价值。
+
+倍率信息
+模型: 0.4
+补全: 10
+分组: 1.5
+doubao-seed-1-8-251228-thinking
+输入价格 💰1.2000/M
+补全价格 💰12.0000/M
+doubao-seed-1.8 有着更强的多模态理解能力和 Agent 能力，模型在真实世界诸多复杂任务中，能发挥更出色的表现，进一步帮助企业创造价值。
+
+倍率信息
+模型: 0.4
+补全: 10
+分组: 1.5
+glm-5
+输入价格 💰4.0000/M
+补全价格 💰18.0000/M
+GLM-5 是智谱新一代的旗舰基座模型，面向 Agentic Engineering 打造，能够在复杂系统工程与长程 Agent 任务中提供可靠生产力。
+
+倍率信息
+模型: 2
+补全: 4.5
+分组: 1
+veo_3_1-lite
+模型价格 💰0.500
+Google最新的高级人工智能模型, veo3.1 lite 模式，支持视频自动配套音频生成，质量高价格很低，性价比最高的选择
+
+倍率信息
+模型: 无
+补全: 无
+分组: 1
+veo_3_1-lite-4K
+模型价格 💰0.550
+Google最新的高级人工智能模型, veo3.1lite 模式,支持4k，支持视频自动配套音频生成，质量高，性价比最高的选择
+
+倍率信息
+模型: 无
+补全: 无
+分组: 1
+veo_3_1-components-4K
+模型价格 💰0.850
+Google最新的高级人工智能模型, veo_3_1 4k 模式，支持视频自动配套音频生成，支持首帧传递，不支持尾帧，质量高价格很低，性价比最高的选择
+
+倍率信息
+模型: 无
+补全: 无
+分组: 1
+gemini-3-pro-preview-11-2025
+输入价格 💰1.6000/M
+补全价格 💰9.6000/M
+Gemini 3 是谷歌迄今为止最智能的模型系列，以先进的推理能力为基础。它旨在通过掌握智能体工作流、自主编码和复杂的多模态任务，将任何想法变为现实。gemini-3-pro-preview 最适合需要广泛的世界知识和跨模态的高级推理的复杂任务。
+
+倍率信息
+模型: 1
+补全: 6
+分组: 0.8
+gemini-3-pro-preview-thinking
+输入价格 💰3.0000/M
+补全价格 💰18.0000/M
+Gemini 3 是谷歌迄今为止最智能的模型系列，以先进的推理能力为基础。它旨在通过掌握智能体工作流、自主编码和复杂的多模态任务，将任何想法变为现实。gemini-3-pro-preview 最适合需要广泛的世界知识和跨模态的高级推理的复杂任务。
+
+倍率信息
+模型: 1
+补全: 6
+分组: 1.5
+qwen3.5-397b-a17b
+输入价格 💰1.2000/M
+补全价格 💰7.2000/M
+Qwen3.5系列397B-A17B原生视觉语言模型，基于混合架构设计，融合了线性注意力机制与稀疏混合专家模型，实现了更高的推理效率。在语言理解、逻辑推理、代码生成、智能体任务、图像理解、视频理解、图形用户界面（GUI）等多种任务中，均展现出与当前顶尖前沿模型相媲美的卓越性能。具备强大的代码生成与智能体能力，对于各类智能体场景具有良好的泛化性。
+
+倍率信息
+模型: 0.6
+补全: 6
+分组: 1
+qwen3.5-plus
+输入价格 💰0.8000/M
+补全价格 💰4.8000/M
+wen3.5原生视觉语言系列Plus模型，基于混合架构设计，融合了线性注意力机制与稀疏混合专家模型，实现了更高的推理效率。在多项任务评测中，3.5系列均展现出与当前顶尖前沿模型相媲美的卓越性能，模型效果在纯文本与多模态方面相较3系列均实现飞跃式进步。
+
+倍率信息
+模型: 0.4
+补全: 6
+分组: 1
+qwen3.5-plus-2026-02-15
+输入价格 💰0.8000/M
+补全价格 💰4.8000/M
+Qwen3.5原生视觉语言系列Plus模型，基于混合架构设计，融合了线性注意力机制与稀疏混合专家模型，实现了更高的推理效率。在多项任务评测中，3.5系列均展现出与当前顶尖前沿模型相媲美的卓越性能，模型效果在纯文本与多模态方面相较3系列均实现飞跃式进步。该版本为2026年2月15日快照。
+
+倍率信息
+模型: 0.4
+补全: 6
+分组: 1
+qwen-plus
+输入价格 💰0.4800/M
+补全价格 💰1.2000/M
+通义千问超大规模语言模型，支持中文、英文等不同语言输入。适合文本创作、文本处理、编程辅助、翻译服务、对话模拟
+
+倍率信息
+模型: 0.4
+补全: 2.5
+分组: 0.6
+qwen-plus-2025-12-01
+输入价格 💰0.8000/M
+补全价格 💰2.0000/M
+本版本为2025年12月1日快照，相较7月28日快照在推理能力上有提升；智能体能力、多轮工具调用能力进一步增强；主观创作类任务表现更优。支持1M上下文长度，按照上下文长度进行阶梯计费。
+
+倍率信息
+模型: 0.4
+补全: 2.5
+分组: 1
+qwen3-max-2026-01-23
+输入价格 💰2.5000/M
+补全价格 💰10.0000/M
+通义千问3系列Max模型，相较2025年9月23日快照，此版本实现思考模式和非思考模式的有效融合，模型整体效果得到全方位的大幅度提升。在思考模式下，同时发布Web搜索、Web信息提取和代码解释器工具能力，使得模型在慢思考的同时，能够通过引入外部工具，以更高的准确性解决更有难度的问题。
+
+倍率信息
+模型: 1.25
+补全: 4
+分组: 1
+veo_3_1-4K
+模型价格 💰0.850
+Google最新的高级人工智能模型, veo_3_1 4k 模式，支持视频自动配套音频生成，质量高价格很低，性价比最高的选择
+
+倍率信息
+模型: 无
+补全: 无
+分组: 1
+veo_3_1-fast-4K
+模型价格 💰0.430
+Google最新的高级人工智能模型, veo3.1快速 +4k 模式，支持视频自动配套音频生成，质量高价格很低，性价比最高的选择, 支持首尾帧和文生视频
+
+倍率信息
+模型: 无
+补全: 无
+分组: 1
+veo_3_1-fast-components-4K
+模型价格 💰0.860
+Google最新的高级人工智能模型 veo3.1-fast-components支持三张垫图输入，更快、更稳、更可控，重新定义图生视频的创作自由度，4k模型
+
+倍率信息
+模型: 无
+补全: 无
+分组: 1
+veo3.1-4k
+模型价格 💰1.000
+Google最新的高级人工智能模型, veo3.1 4k 模式，支持视频自动配套音频生成，质量高价格很低，性价比最高的选择
+
+倍率信息
+模型: 无
+补全: 无
+分组: 1
+veo3.1-components-4k
+模型价格 💰1.000
+Google最新的高级人工智能模型, veo3.1 4k 模式，支持视频自动配套音频生成，支持首帧传递，不支持尾帧，质量高价格很低，性价比最高的选择
+
+倍率信息
+模型: 无
+补全: 无
+分组: 1
+claude-haiku-4-5-20251001-thinking
+输入价格 💰1.0000/M
+补全价格 💰5.0000/M
+Claude Haiku 4.5 是速度最快、性价比最高的模型，在编码、计算机使用和代理任务方面的表现与 Sonnet 4 相当。
+
+倍率信息
+模型: 0.5
+补全: 5
+分组: 1
+claude-opus-4-1-20250805
+输入价格 💰15.0000/M
+补全价格 💰75.0000/M
+Anthropic公告，新模型在智能体工具调用、智能体编程与多语言问答能力上全面超越OpenAI o3，Opus 4.1在SWE-bench Verified上的顶级编码性能提升至74.5%，该版本还增强了Claude的深度研究与数据分析能力，特别是在细节追踪和智能体搜索方面。
+
+倍率信息
+模型: 7.5
+补全: 5
+分组: 1
+claude-opus-4-1-20250805-thinking
+输入价格 💰15.0000/M
+补全价格 💰75.0000/M
+Anthropic公告，新模型在智能体工具调用、智能体编程与多语言问答能力上全面超越OpenAI o3，Opus 4.1在SWE-bench Verified上的顶级编码性能提升至74.5%，该版本还增强了Claude的深度研究与数据分析能力，特别是在细节追踪和智能体搜索方面。
+
+倍率信息
+模型: 7.5
+补全: 5
+分组: 1
+claude-opus-4-20250514
+输入价格 💰15.0000/M
+补全价格 💰75.0000/M
+Claude 4系列是Anthropic公司最新一代AI模型，代表了当前大型语言模型技术的巅峰水平。这一代模型主要分为两条产品线：Claude Sonnet 4和Claude Opus 4，分别针对不同的应用场景和需求。
+
+倍率信息
+模型: 7.5
+补全: 5
+分组: 1
+claude-opus-4-20250514-thinking
+输入价格 💰15.0000/M
+补全价格 💰75.0000/M
+思考版Claude Opus 4 是全球领先的编码模型，在复杂、长时间运行的任务和代理工作流中拥有持续的性能。Claude Sonnet 4 是 Claude Sonnet 3.7 的重大升级，提供卓越的编码和推理能力，同时更精确地响应您的指令。
+
+倍率信息
+模型: 7.5
+补全: 5
+分组: 1
+claude-sonnet-4-20250514
+输入价格 💰3.0000/M
+补全价格 💰15.0000/M
+Claude 4系列是Anthropic公司最新一代AI模型，代表了当前大型语言模型技术的巅峰水平。这一代模型主要分为两条产品线：Claude Sonnet 4和Claude Opus 4，分别针对不同的应用场景和需求。
+
+倍率信息
+模型: 1.5
+补全: 5
+分组: 1
+claude-sonnet-4-20250514-thinking
+输入价格 💰3.0000/M
+补全价格 💰15.0000/M
+思考版Claude Sonnet 4 在 Claude Sonnet 3.7 的基础上，在多个领域进行了改进，尤其是在编码方面。它提供了适用于大多数 AI 用例的前沿性能，包括面向用户的 AI 助手和高容量任务。
+
+倍率信息
+模型: 1.5
+补全: 5
+分组: 1
+doubao-seedance-1-5-pro-251215
+模型价格 💰24.000
+支持文生音画、首帧图生音画、首尾帧图生音画
+
+倍率信息
+模型: 无
+补全: 无
+分组: 1.5
+gemini-2.5-flash-image
+模型价格 💰0.150
+我们的标准模型已升级，具备图像生成和对话式多轮编辑功能，专为快速创意工作流程而优化。
+
+倍率信息
+模型: 无
+补全: 无
+分组: 1
+gemini-2.5-flash-image-preview
+模型价格 💰0.150
+我们的标准模型已升级，具备图像生成和对话式多轮编辑功能，专为快速创意工作流程而优化。
+
+倍率信息
+模型: 无
+补全: 无
+分组: 1
+gemini-2.5-pro
+输入价格 💰1.0000/M
+补全价格 💰8.0000/M
+Gemini 2.5 Pro 是谷歌推出的最新 AI 模型迄今为止最先进的型号，擅长编码和复杂提示。通过“深度思考”，能在回应前进行推理，提升性能和准确性。模型在多个基准测试中表现卓越，在推理和代码生成方面，在 LMArena 排行榜上位居第一。支持文本、图像、音频、视频及代码的多模态输入。
+
+倍率信息
+模型: 0.625
+补全: 8
+分组: 0.8
+gemini-2.5-pro-thinking
+输入价格 💰1.0000/M
+补全价格 💰8.0000/M
+最先进的思维模型，能够推理代码、数学和 STEM 领域中的复杂问题，还能使用长上下文分析大型数据集、代码库和文档。gemini-2.5-pro的思考版本
+
+倍率信息
+模型: 0.625
+补全: 8
+分组: 0.8
+glm-4.7-thinking
+输入价格 💰2.0000/M
+补全价格 💰8.0000/M
+glm-4.7-thinking 提供思考模式，覆盖从常规对话到工具调用与编码智能体的不同需求。
+
+倍率信息
+模型: 1
+补全: 4
+分组: 1
+gpt-5
+输入价格 💰0.7500/M
+补全价格 💰6.0000/M
+GPT-5 是我们面向跨领域编码、推理和智能体任务的旗舰模型。
+
+倍率信息
+模型: 0.625
+补全: 8
+分组: 0.6
+gpt-5-2025-08-07
+输入价格 💰0.7500/M
+补全价格 💰6.0000/M
+GPT-5 是我们面向跨领域编码、推理和智能体任务的旗舰模型。
+
+倍率信息
+模型: 0.625
+补全: 8
+分组: 0.6
+gpt-5-codex
+输入价格 💰0.7500/M
+补全价格 💰6.0000/M
+GPT-5-Codex 是 GPT-5 的一个版本，针对 Codex 中的代理编码进行了优化。与其前身 codex-1 一样，该模型在各种环境中使用强化学习对真实世界的编码任务进行训练，以生成与人类风格和公关偏好密切相关的代码，精确遵守指令，并迭代运行测试，直到获得通过的结果。
+
+倍率信息
+模型: 0.625
+补全: 8
+分组: 0.6
+gpt-5-codex-high
+输入价格 💰0.7500/M
+补全价格 💰6.0000/M
+GPT-5-Codex 是 GPT-5 的一个版本，针对 Codex 中的代理编码进行了优化。与其前身 codex-1 一样，该模型在各种环境中使用强化学习对真实世界的编码任务进行训练，以生成与人类风格和公关偏好密切相关的代码，精确遵守指令，并迭代运行测试，直到获得通过的结果。
+
+倍率信息
+模型: 0.625
+补全: 8
+分组: 0.6
+gpt-5-codex-low
+输入价格 💰0.7500/M
+补全价格 💰6.0000/M
+GPT-5-Codex 是 GPT-5 的一个版本，针对 Codex 中的代理编码进行了优化。与其前身 codex-1 一样，该模型在各种环境中使用强化学习对真实世界的编码任务进行训练，以生成与人类风格和公关偏好密切相关的代码，精确遵守指令，并迭代运行测试，直到获得通过的结果。
+
+倍率信息
+模型: 0.625
+补全: 8
+分组: 0.6
+© 2026 Ikun API. 版权所有
+logo
+Ikun API
+首页
+控制台
+模型广场
+联系我们
+API 文档
+筛选
+供应商
+展开更多
+模型类型
+标签
+展开更多
+可用令牌分组
+展开更多
+计费类型
+全部供应商
+查看所有可用的AI模型供应商，包括众多知名供应商的模型。
+
+模糊搜索模型名称
+倍率
+
+gpt-5-codex-medium
+输入价格 💰0.7500/M
+补全价格 💰6.0000/M
+GPT-5-Codex 是 GPT-5 的一个版本，针对 Codex 中的代理编码进行了优化。与其前身 codex-1 一样，该模型在各种环境中使用强化学习对真实世界的编码任务进行训练，以生成与人类风格和公关偏好密切相关的代码，精确遵守指令，并迭代运行测试，直到获得通过的结果。
+
+倍率信息
+模型: 0.625
+补全: 8
+分组: 0.6
+gpt-5-mini-2025-08-07
+输入价格 💰0.1500/M
+补全价格 💰1.2000/M
+GPT-5 mini 是 GPT-5 的提速降本版本，特别适合处理定义清晰的任务和精确指令。
+
+倍率信息
+模型: 0.125
+补全: 8
+分组: 0.6
+gpt-5-nano-2025-08-07
+输入价格 💰0.0300/M
+补全价格 💰0.2400/M
+GPT-5 Nano 是我们最快、最经济的 GPT-5 版本，特别适合摘要生成和分类任务。
+
+倍率信息
+模型: 0.025
+补全: 8
+分组: 0.6
+gpt-5-pro
+输入价格 💰9.0000/M
+补全价格 💰72.0000/M
+GPT-5 Pro 是由 openai 提供的人工智能模型。
+
+倍率信息
+模型: 7.5
+补全: 8
+分组: 0.6
+gpt-5-search-api
+输入价格 💰10.0000/M
+补全价格 💰80.0000/M
+gpt-5专用搜索模型
+
+倍率信息
+模型: 0.625
+补全: 8
+分组: 8
+gpt-5-search-api-2025-10-14
+输入价格 💰10.0000/M
+补全价格 💰80.0000/M
+gpt-5专用搜索模型
+
+倍率信息
+模型: 0.625
+补全: 8
+分组: 8
+gpt-5.2-codex
+输入价格 💰1.4000/M
+补全价格 💰11.2000/M
+是一个能够理解极度复杂的系统架构、能够零错误编写整个软件项目、甚至能自我纠错的神级编程 AI
+
+倍率信息
+模型: 0.875
+补全: 8
+分组: 0.8
+gpt-image-1.5-all
+模型价格 💰0.078
+gpt-image-1.5的逆向
+
+倍率信息
+模型: 无
+补全: 无
+分组: 0.6
+minimax-m2.1
+输入价格 💰2.1000/M
+补全价格 💰8.4000/M
+强大多语言编程能力，全面升级编程体验
+
+倍率信息
+模型: 1.05
+补全: 4
+分组: 1
+veo_3_1
+模型价格 💰0.730
+Google最新的高级人工智能模型, veo3.1高质量 模式，支持视频自动配套音频生成，质量高价格很低，性价比最高的选择, 支持首尾帧和文生视频
+
+倍率信息
+模型: 无
+补全: 无
+分组: 1
+veo_3_1-components
+模型价格 💰0.730
+Google最新的高级人工智能模型, veo_3_1 4k 模式，支持视频自动配套音频生成，支持首帧传递，不支持尾帧，质量高价格很低，性价比最高的选择
+
+倍率信息
+模型: 无
+补全: 无
+分组: 1
+veo_3_1-fast
+模型价格 💰0.430
+Google最新的高级人工智能模型, veo3.1快速 模式，支持视频自动配套音频生成，质量高价格很低，性价比最高的选择, 支持首尾帧和文生视频
+
+倍率信息
+模型: 无
+补全: 无
+分组: 1
+veo3.1
+模型价格 💰0.700
+Google最新的高级人工智能模型, veo3.1支持视频自动配套音频生成，质量高价格很低，性价比最高的选择, 支持首尾帧和文生视频
+
+倍率信息
+模型: 无
+补全: 无
+分组: 1
+veo3.1-pro
+模型价格 💰3.500
+Google最新的高级人工智能模型, veo3.1 高质量 模式，支持视频自动配套音频生成，质量超高，价格也超高，使用需注意, 支持首尾帧和文生视频
+
+倍率信息
+模型: 无
+补全: 无
+分组: 1
+veo3.1-pro-4k
+模型价格 💰3.500
+Google最新的高级人工智能模型, veo3.1 4k 高质量 模式，支持视频自动配套音频生成，质量超高，价格也超高，使用需注意, 支持首尾帧和文生视频
+
+倍率信息
+模型: 无
+补全: 无
+分组: 1
+gpt-5.1-all
+输入价格 💰1.2500/M
+补全价格 💰10.0000/M
+GPT-5.1：更智能、更具对话性的聊天GPT，最常用的型号，现在更温暖、更智能，更能遵循您的指令。
+
+倍率信息
+模型: 0.625
+补全: 8
+分组: 1
+gpt-5.1-chat
+输入价格 💰0.7500/M
+补全价格 💰6.0000/M
+GPT-5.1-chat 适用于自然语言交互和即时通讯场景的流畅对话与辅助创作的通用模型
+
+倍率信息
+模型: 0.625
+补全: 8
+分组: 0.6
+gpt-5.1-chat-latest
+输入价格 💰0.7500/M
+补全价格 💰6.0000/M
+GPT-5.1-chat-latest 适用于自然语言交互和即时通讯场景的流畅对话与辅助创作的通用模型
+
+倍率信息
+模型: 0.625
+补全: 8
+分组: 0.6
+gpt-5.1-codex-max
+输入价格 💰0.7500/M
+补全价格 💰6.0000/M
+GPT-5.1-codex-max 它突破了上下文理解与逻辑推理的极限，专为统筹跨仓库的系统级重构、自主设计并落地全栈生态、以及实现“零错误”的极端边缘场景而生。
+
+倍率信息
+模型: 0.625
+补全: 8
+分组: 0.6
+gpt-5.1-thinking-all
+输入价格 💰1.2500/M
+补全价格 💰10.0000/M
+GPT-5.1：更智能、更具对话性的聊天GPT，先进的推理模型，现在更容易理解，处理简单任务速度更快，处理复杂任务更持久。
+
+倍率信息
+模型: 0.625
+补全: 8
+分组: 1
+gpt-5.2-all
+输入价格 💰1.7500/M
+补全价格 💰14.0000/M
+gpt-5.2的逆向模型
+
+倍率信息
+模型: 0.875
+补全: 8
+分组: 1
+qwen-plus-character
+输入价格 💰0.8000/M
+补全价格 💰2.0000/M
+通义千问系列角色扮演模型，本模型是动态更新版本，模型更新会提前通知，适合拟人化的角色扮演，同时优化了限定人设指令遵循、话题推进、倾听共情等能力，支持个性化角色的深度还原。
+
+倍率信息
+模型: 0.4
+补全: 2.5
+分组: 1
+sora-2-all
+模型价格 💰0.200
+sora-2的逆向，支持10s，15s，都是720p
+
+倍率信息
+模型: 无
+补全: 无
+分组: 1
+sora-2-pro-all
+模型价格 💰3.600
+sora-2-pro的逆向，支持15s和25s，15s支持1080p和720p，25s只支持720p
+
+倍率信息
+模型: 无
+补全: 无
+分组: 1
+sora-2-vip-all
+模型价格 💰2.500
+sora-2模型的逆向，暂时支持10s
+
+倍率信息
+模型: 无
+补全: 无
+分组: 4
+wan2.6-i2v
+价格 💰1.000/s
+万相2.6。新增多镜头叙事能力，同时支持自动配音和传入自定义音频文件。
+
+倍率信息
+模型: 无
+补全: 无
+分组: 1
+viduq3
+模型价格 💰2.500
+viduq3画面质感强，支持智能切镜，动态效果好，均衡性最强.支持540p，720p，1080p
+
+倍率信息
+模型: 无
+补全: 无
+分组: 1
+viduq3-mix
+模型价格 💰6.250
+viduq3-mix支持智能切镜，多机位的一致性更出色.支持720p，1080p
+
+倍率信息
+模型: 无
+补全: 无
+分组: 1
+gemini-embedding-2-preview
+输入价格 💰0.3000/M
+补全价格 💰1.2000/M
+最新模型 gemini-embedding-2-preview 是 Gemini API 中的首个多模态嵌入模型。它将文本、图片、视频、音频和文档映射到统一的嵌入空间中，从而能够以 100 多种语言进行跨模态搜索、分类和聚类。
+
+倍率信息
+模型: 0.1
+补全: 4
+分组: 1.5
+viduq3-turbo
+模型价格 💰1.400
+viduq3-turbo支持音画同出，支持智能切镜，支持540p、720p, 1080p，支持文生、图生和首尾帧生视频
+
+倍率信息
+模型: 无
+补全: 无
+分组: 0.7
+audio1.0
+模型价格 💰0.500
+该接口用于输入文本生成对应的朗读音频，可控制朗读的语速、音量、情绪。
+
+倍率信息
+模型: 无
+补全: 无
+分组: 1
+deepseek-v3.1-thinking
+输入价格 💰4.0000/M
+补全价格 💰12.0000/M
+deepseek-v3.1 的思考版本
+
+倍率信息
+模型: 2
+补全: 3
+分组: 1
+deepseek-v3.2-fast
+输入价格 💰8.0000/M
+补全价格 💰24.0000/M
+DeepSeek-V3.2-Fast 是基于 DeepSeek V3.2 架构的高性能、低延迟变体
+
+倍率信息
+模型: 4
+补全: 3
+分组: 1
+gemini-2.5-flash
+输入价格 💰0.2400/M
+补全价格 💰2.0020/M
+Gemini 2.5 Flash 是由 google-vertex 提供的人工智能模型。可以控制是否思考
+
+倍率信息
+模型: 0.15
+补全: 8.34
+分组: 0.8
+gemini-2.5-flash-nothinking
+输入价格 💰0.2400/M
+补全价格 💰2.0020/M
+2.5 Flash 最适合大规模处理、低延迟、高数据量且需要思考的任务，以及代理应用场景。gemini-2.5-flash的非思考版本
+
+倍率信息
+模型: 0.15
+补全: 8.34
+分组: 0.8
+gemini-2.5-flash-thinking
+输入价格 💰1.8000/M
+补全价格 💰15.0120/M
+2.5 Flash 最适合大规模处理、低延迟、高数据量且需要思考的任务，以及代理应用场景。gemini-2.5-flash的思考版本
+
+倍率信息
+模型: 0.15
+补全: 8.34
+分组: 6
+gemini-embedding-001
+输入价格 💰0.2250/M
+补全价格 💰0.9000/M
+Gemini API 提供文本嵌入模型，用于为字词、短语、句子和代码生成嵌入。嵌入任务，例如语义搜索、分类和聚类，可提供比基于关键字的方法更准确、更贴合情境的结果。
+
+倍率信息
+模型: 0.075
+补全: 4
+分组: 1.5
+glm-4.6
+输入价格 💰1.2000/M
+补全价格 💰4.8000/M
+GLM-4.6 是由 zhipuai-coding-plan 提供的人工智能模型。
+
+倍率信息
+模型: 1
+补全: 4
+分组: 0.6
+glm-4.6-thinking
+输入价格 💰1.2000/M
+补全价格 💰4.8000/M
+GLM-4.6 是智谱最新的旗舰模型，其总参数量 355B，激活参数 32B。GLM-4.6 所有核心能力上均完成了对 GLM-4.5 的超越，在公开基准与真实编程任务中，GLM-4.6 的代码能力对齐 Claude Sonnet 4，是国内已知的最好的 Coding 模型。
+
+倍率信息
+模型: 1
+补全: 4
+分组: 0.6
+gpt-5-chat-latest
+输入价格 💰0.7500/M
+补全价格 💰6.0000/M
+GPT-5 Chat 指向当前 ChatGPT 所使用的 GPT-5 快照版本。
+
+倍率信息
+模型: 0.625
+补全: 8
+分组: 0.6
+gpt-5-mini
+输入价格 💰0.1500/M
+补全价格 💰1.2000/M
+GPT-5 Mini 是由 openai 提供的人工智能模型。
+
+倍率信息
+模型: 0.125
+补全: 8
+分组: 0.6
+gpt-5-nano
+输入价格 💰0.0300/M
+补全价格 💰0.2400/M
+GPT-5 Nano 是由 openai 提供的人工智能模型。
+
+倍率信息
+模型: 0.025
+补全: 8
+分组: 0.6
+gpt-5.1-codex
+输入价格 💰0.7500/M
+补全价格 💰6.0000/M
+GPT-5.1-codex 则是装备精良的“重装主力”。它专为解决最棘手的编程挑战、处理大规模代码库以及提供深度架构指导而设计，是企业级和高复杂度开发场景的首选模型。
+
+倍率信息
+模型: 0.625
+补全: 8
+分组: 0.6
+grok-video-3-10s
+模型价格 💰0.400
+grok的最新视频模型，10s，支持音画同出
+
+倍率信息
+模型: 无
+补全: 无
+分组: 1
+kimi-k2-250905
+输入价格 💰4.0000/M
+补全价格 💰16.0000/M
+Kimi-K2 是一款Moonshot AI推出的具备超强代码和 Agent 能力的 MoE 架构基础模型，总参数 1T，激活参数 32B。在通用知识推理、编程、数学、Agent 等主要类别的基准性能测试中，K2 模型的性能超过其他主流开源模型。
+
+倍率信息
+模型: 2
+补全: 4
+分组: 1
+qwen3-vl-30b-a3b-instruct
+输入价格 💰0.7500/M
+补全价格 💰3.0000/M
+Qwen3-VL系列第二大MoE模型的Instruct版本，响应速度快，支持长视频长文档等超长上下文；全面升级图像/视频理解、空间感知与万物识别能力；具备视觉2D/3D定位能力，胜任复杂现实任务。
+
+倍率信息
+模型: 0.375
+补全: 4
+分组: 1
+qwen3-vl-30b-a3b-thinking
+输入价格 💰0.7500/M
+补全价格 💰7.5000/M
+Qwen3-VL系列第二大MoE模型的Thinking版本，响应速度快，具备更强多模态理解与推理、视觉智能体、长视频长文档等超长上下文支持能力；全面升级图像/视频理解、空间感知与万物识别能力，胜任复杂现实任务。
+
+倍率信息
+模型: 0.375
+补全: 10
+分组: 1
+qwen3-vl-32b-instruct
+输入价格 💰2.0000/M
+补全价格 💰8.0000/M
+Qwen3-VL系列最大尺寸Dense模型的非推理版本，综合表现仅次于Qwen3-VL-235B-Instruct，文档识别和理解能力出色，空间感知与万物识别能力强，视觉2D检测/空间推理能力达到SOTA，适合通用场景下的复杂感知任务。
+
+倍率信息
+模型: 1
+补全: 4
+分组: 1
+qwen3-vl-32b-thinking
+输入价格 💰2.0000/M
+补全价格 💰20.0000/M
+Qwen3-VL系列最大尺寸Dense模型的推理版本，多模态推理能力仅次于Qwen3-VL-235B-Thinking，STEM&数学类解题能力、通用图像和视频理解能力出众，多模态Agent能力达到SOTA，适合做复杂多模态推理任务。
+
+倍率信息
+模型: 1
+补全: 10
+分组: 1
+qwen3.5-122b-a10b
+输入价格 💰0.8000/M
+补全价格 💰6.4000/M
+Qwen3.5系列122B-A10B原生视觉语言模型，基于混合架构设计，融合了线性注意力机制与稀疏混合专家模型，实现了更高的推理效率。该模型的综合表现仅次于Qwen3.5-397B-A17B，文本能力显著优于Qwen3-235B-2507，视觉能力优于Qwen3-VL-235B。
+
+倍率信息
+模型: 0.4
+补全: 8
+分组: 1
+qwen3.5-27b
+输入价格 💰0.6000/M
+补全价格 💰4.8000/M
+Qwen3.5系列27B原生视觉语言Dense模型，融合了线性注意力机制；响应速度快，兼具推理速度和性能。
+
+倍率信息
+模型: 0.3
+补全: 8
+分组: 1
+qwen3.5-35b-a3b
+输入价格 💰0.4000/M
+补全价格 💰3.2000/M
+Qwen3.5系列35B-A3B原生视觉语言模型，基于混合架构设计，融合了线性注意力机制与稀疏混合专家模型，实现了更高的推理效率。该模型的综合表现接近于Qwen3.5-27B。
+
+倍率信息
+模型: 0.2
+补全: 8
+分组: 1
+veo3-pro-frames
+模型价格 💰4.000
+Google最新的高级人工智能模型, veo3 高质量 模式，支持视频自动配套音频生成，支持首帧传递，不支持尾帧，质量超高，价格也超高，使用需注意
+
+倍率信息
+模型: 无
+补全: 无
+分组: 1
+veo3.1-components
+模型价格 💰0.700
+Google最新的高级人工智能模型, veo3.1 高质量 模式，支持视频自动配套音频生成，质量超高，价格也超高，使用需注意, 多图元素合一功能，支持 1～3 个图片
+
+倍率信息
+模型: 无
+补全: 无
+分组: 1
+veo3.1-fast-components
+模型价格 💰0.260
+Google最新的高级人工智能模型 veo3.1-fast-components支持三张垫图输入，更快、更稳、更可控，重新定义图生视频的创作自由度
+
+倍率信息
+模型: 无
+补全: 无
+分组: 1
+vidu-tts
+模型价格 💰0.500
+该接口用于输入文本生成对应的朗读音频，可控制朗读的语速、音量、情绪。
+
+倍率信息
+模型: 无
+补全: 无
+分组: 1
+vidu2.0
+模型价格 💰1.000
+vidu2.0生成速度快，支持360p, 720p, 1080p，支持图生视频，参考生视频，首尾帧
+
+倍率信息
+模型: 无
+补全: 无
+分组: 1
+viduq1
+模型价格 💰1.000
+viduq1生成视频画面清晰，支持1080p，支持文生视频，图生视频，参考生视频，首尾帧
+
+倍率信息
+模型: 无
+补全: 无
+分组: 1
+viduq1-classic
+模型价格 💰4.000
+viduq1-classic，运镜丰富稳定，支持图生视频和首尾帧，支持1080p
+
+倍率信息
+模型: 无
+补全: 无
+分组: 1
+viduq2
+模型价格 💰0.210
+viduq2支持文生视频和参考生视频，动态效果好，生成细节丰富,也支持文生图、图片编辑、参考生图
+
+倍率信息
+模型: 无
+补全: 无
+分组: 0.7
+viduq2-pro
+模型价格 💰0.280
+viduq2-pro支持参考视频，视频编辑，540p, 720p, 1080p
+
+倍率信息
+模型: 无
+补全: 无
+分组: 0.7
+viduq2-turbo
+模型价格 💰0.210
+viduq2-turbo新模型，效果好，生成快，支持540p, 720p, 1080p
+
+倍率信息
+模型: 无
+补全: 无
+分组: 0.7
+viduq3-pro
+模型价格 💰2.450
+viduq3-pro支持音画同出，支持智能切镜，支持720p, 1080p
+
+倍率信息
+模型: 无
+补全: 无
+分组: 0.7
+gemini-3-flash-preview-thinking
+输入价格 💰0.7500/M
+补全价格 💰4.5000/M
+gemini-3-flash-preview模型的思考版本
+
+倍率信息
+模型: 0.25
+补全: 6
+分组: 1.5
+deepseek-v3.1-fast
+输入价格 💰8.0000/M
+补全价格 💰24.0000/M
+DeepSeek-v3.1-fast 是一款极其令人期待的、旨在解决大模型“速度与深度”兼顾难题的突破性产品。
+
+倍率信息
+模型: 4
+补全: 3
+分组: 1
+gpt-image-1
+输入价格 💰3.0000/M
+补全价格 💰24.0000/M
+支持/v1/images/generations和 /v1/images/edits所有参数的
+
+倍率信息
+模型: 2.5
+补全: 8
+分组: 0.6
+sora-2-characters
+模型价格 💰0.010
+OpenAI 推出的 Sora Character 功能(也称为 Cameo 功能)，通过创建自定义角色并获取唯一的 Character ID,你可以让同一角色在无数视频中保持完美一致的外观和特征。
+
+倍率信息
+模型: 无
+补全: 无
+分组: 1
+sora-2-pro
+价格 💰0.300/s
+Sora 2 pro版本 ，支持4，8，12s，支持720p和1080p
+
+倍率信息
+模型: 无
+补全: 无
+分组: 1
+glm-4
+输入价格 💰0.1800/M
+补全价格 💰0.7200/M
+智谱AI通用大模型，提供了更强大的问答和文本生成能力。适合于复杂的对话交互和深度内容创作设计的场景. 旧版旗舰：发布于2024年1月16日，目前已被GLM-4-0520取代
+
+倍率信息
+模型: 0.15
+补全: 4
+分组: 0.6
+glm-4.5
+输入价格 💰0.9600/M
+补全价格 💰3.8400/M
+GLM-4.5 和 GLM-4.5-Air 是最新的旗舰模型系列，专为智能体应用打造的基础模型。GLM-4.5 和 GLM-4.5-Air 均使用了混合专家（Mixture-of-Experts）架构。GLM-4.5 总参数达 3550 亿，激活参数为 320 亿； GLM-4.5-Air 采用更精简的设计，总参数为 1060 亿，激活参数为 120 亿。
+
+倍率信息
+模型: 0.8
+补全: 4
+分组: 0.6
+gpt-4o-image-vip
+模型价格 💰0.120
+4o系列最新图片生成功能 VIP版本
+
+倍率信息
+模型: 无
+补全: 无
+分组: 1
+gpt-5-all
+输入价格 💰1.2500/M
+补全价格 💰10.0000/M
+gpt-5-all是openai最新的旗舰模型
+
+倍率信息
+模型: 0.625
+补全: 8
+分组: 1
+gpt-5-pro-all
+模型价格 💰1.610
+gpt-5-pro-all 是openai 最新出的 顶尖模型
+
+倍率信息
+模型: 无
+补全: 无
+分组: 1.4
+gpt-5-thinking-all
+输入价格 💰1.2500/M
+补全价格 💰10.0000/M
+gpt-5-thinking-all 是 openai 最新出的旗舰模型
+
+倍率信息
+模型: 0.625
+补全: 8
+分组: 1
+gpt-5.1-codex-medium
+输入价格 💰1.0000/M
+补全价格 💰8.0000/M
+gpt-5.1-codex-medium是一款专为处理通用型开发任务和具有中等复杂度的代码逻辑而设计的平衡型模型。
+
+倍率信息
+模型: 0.625
+补全: 8
+分组: 0.8
+gpt-5.1-codex-mini
+输入价格 💰0.9000/M
+补全价格 💰7.2000/M
+GPT-5.1-codex-mini 适用于快速代码生成和轻量级开发任务的高效模型
+
+倍率信息
+模型: 0.75
+补全: 8
+分组: 0.6
+gpt-image-1-all
+模型价格 💰0.080
+支持/v1/images/generations和 /v1/images/edits所有参数计费 的逆向模型
+
+倍率信息
+模型: 无
+补全: 无
+分组: 1
+gpt-image-1-mini
+输入价格 💰1.5000/M
+补全价格 💰4.8000/M
+gpt-image-1-mini 是我们的轻量级图像生成模型
+
+倍率信息
+模型: 1.25
+补全: 3.2
+分组: 0.6
+grok-4.1
+输入价格 💰2.0000/M
+补全价格 💰10.0000/M
+Grok 4.1 在创造性、情感化和协作式交互方面表现卓越，能够更敏锐地捕捉细微意图，对话体验更具吸引力，人格特质保持高度一致，同时完整继承了前代产品犀利的智能表现与可靠性能。
+
+倍率信息
+模型: 1
+补全: 5
+分组: 1
+grok-video-3
+模型价格 💰0.400
+grok的最新视频模型
+
+倍率信息
+模型: 无
+补全: 无
+分组: 1
+o1-pro
+输入价格 💰450.0000/M
+补全价格 💰1800.0000/M
+O1-Pro 可在仅响应 API以便在响应API之前支持多回合模型交互 请求以及未来会推出的其他高级API功能。
+
+倍率信息
+模型: 37.5
+补全: 4
+分组: 6
+o1-pro-2025-03-19
+输入价格 💰450.0000/M
+补全价格 💰1800.0000/M
+O1-Pro-2025-03-19 可在仅响应 API以便在响应API之前支持多回合模型交互 请求以及未来会推出的其他高级API功能。
+
+倍率信息
+模型: 37.5
+补全: 4
+分组: 6
+qwen-image-edit-2509
+模型价格 💰0.120
+qwen-image-edit-2509 是最新的绘画模型
+
+倍率信息
+模型: 无
+补全: 无
+分组: 1
+qwen2.5-coder-32b-instruct
+输入价格 💰2.0000/M
+补全价格 💰6.0000/M
+Qwen2.5系列编程专家32B模型，相较于 Qwen2，Qwen2.5 获得了显著更多的知识，并在编程能力和数学能力方面有了大幅提升。此外，新模型在指令执行、生成长文本、理解结构化数据（例如表格）以及生成结构化输出特别是 JSON 方面取得了显著改进
+
+倍率信息
+模型: 1
+补全: 3
+分组: 1
+qwen2.5-math-7b-instruct
+输入价格 💰1.0000/M
+补全价格 💰2.0000/M
+Qwen2.5系列数学专家7B模型，相较于 Qwen2，Qwen2.5 获得了显著更多的知识，并在编程能力和数学能力方面有了大幅提升。此外，新模型在指令执行、生成长文本、理解结构化数据（例如表格）以及生成结构化输出特别是 JSON 方面取得了显著改进。
+
+倍率信息
+模型: 0.5
+补全: 2
+分组: 1
+qwen3-30b-a3b-think
+输入价格 💰0.4200/M
+补全价格 💰1.6800/M
+Qwen3 的数据集相比 Qwen2.5 有了显著扩展。Qwen2.5是在 18 万亿个 token 上进行预训练的，而 Qwen3 使用的数据量几乎是其两倍，达到了约 36 万亿个 token，涵盖了 119 种语言和方言。
+
+倍率信息
+模型: 0.35
+补全: 4
+分组: 0.6
+qwen3-30b-a3b-thinking-2507
+输入价格 💰0.7500/M
+补全价格 💰7.5000/M
+2025 年 7月发布的 qwen3-30b-a3b-thinking-2507 模型仅支持思考模式，是qwen3-30b-a3b （思考模式）的升级版。
+
+倍率信息
+模型: 0.375
+补全: 10
+分组: 1
+qwen3-coder
+输入价格 💰6.0000/M
+补全价格 💰24.0000/M
+基于Qwen3的代码生成模型，具有强大的Coding Agent能力，擅长工具调用和环境交互，能够实现自主编程、代码能力卓越的同时兼具通用能力。
+
+倍率信息
+模型: 3
+补全: 4
+分组: 1
+qwen3-coder-flash
+输入价格 💰1.0000/M
+补全价格 💰4.0000/M
+基于Qwen3的代码生成模型，继承Qwen3-Coder-Plus的coding agent能力，支持多轮工具交互，重点优化仓库级别理解能力并增加工具调用稳定性。
+
+倍率信息
+模型: 0.5
+补全: 4
+分组: 1
+qwen3-max
+输入价格 💰1.5000/M
+补全价格 💰6.0000/M
+通义千问系列效果最好的模型，适合复杂、多步骤的任务。
+
+倍率信息
+模型: 1.25
+补全: 4
+分组: 0.6
+qwen3-rerank
+输入价格 💰0.5000/M
+补全价格 💰0.0000/M
+基于Qwen LLM底座训练的文本排序模型，对输入的Query和候选Docs进行相关性排序，支持100+语种和长文本输入，适用于文本检索、RAG等场景，效果对齐开源Qwen3-Rerank系列模型
+
+倍率信息
+模型: 0.25
+补全: 0
+分组: 1
+qwen3-vl-235b-a22b-instruct
+输入价格 💰2.0000/M
+补全价格 💰8.0000/M
+阿里云的通义千问VL开源版。相较于Qwen2.5-VL，Qwen3-VL模型能力有极大提升。
+
+倍率信息
+模型: 1
+补全: 4
+分组: 1
+sora_image
+模型价格 💰0.030
+和openai网页版一样的绘画模型 , 可以在提示词末尾加上【比例】来控制绘画尺寸, 比如 【4:3】 【1:1】 支持任意比例
+
+倍率信息
+模型: 无
+补全: 无
+分组: 0.6
+sora-2
+价格 💰0.100/s
+Sora 2 现已推出，openai最新的视频生成模型比之前的系统更加物理精准、逼真，并且更易于控制。它还支持同步对话和音效。支持4s，8s，12s，支持720p
+
+倍率信息
+模型: 无
+补全: 无
+分组: 1
+wan2.5-i2v-preview
+价格 💰1.000/s
+wan2.5-i2v-preview 是由 aliyun-bailian 提供的人工智能模型。
+
+倍率信息
+模型: 无
+补全: 无
+分组: 1
+z-image-turbo
+模型价格 💰0.100
+Z-Image-Turbo是在Artificial Analysis评测中荣登文生图开源模型世界第一的高效图像生成模型,仅用60亿参数和8步推理就能生成媲美大规模商业模型的照片级真实感图像,并在中英双语文本渲染、复杂语义理解和多样化主题生成上表现卓越。
+
+倍率信息
+模型: 无
+补全: 无
+分组: 1
+grok-4-1-fast-non-reasoning
+输入价格 💰0.1200/M
+补全价格 💰0.3000/M
+grok-4-1-fast-non-reasoning是xAI开发的一款 AI 模型，专为在生成响应和执行代理任务时实现最大速度而优化。与它的“推理”对应版本不同，这一变体省去了使用“思考标记”的过程，从而能够针对简单、直白的查询立即提供模式匹配式的答案。
+
+倍率信息
+模型: 0.1
+补全: 2.5
+分组: 0.6
+MiniMax-M2
+输入价格 💰2.1000/M
+补全价格 💰8.4000/M
+MiniMax M2 根据输入的上下文，让模型生成对话内容、工具调用。具有强大多语言编程能力，全面升级编程体验
+
+倍率信息
+模型: 1.05
+补全: 4
+分组: 1
+doubao-seedream-4-0-250828
+模型价格 💰0.200
+Seedream 4.0 是字节跳动推出的多模态图像生成模型，该模型在统一框架内集成了文生图、图像编辑及多图组合生成的能力：支持单次输入最多 10 张图像及进行复合编辑，并能通过对提示词的深度推理，自动适配最优的图像比例尺寸与生成数量，可一次性输出最多 15 张内容关联的图像。此外，模型显著提升了中文生成的准确率与内容多样性，且支持 4K 超高清输出，为专业图像创作提供了从生成到编辑的一站式解决方案。
+
+倍率信息
+模型: 无
+补全: 无
+分组: 1
+doubao-seedream-4-5-251128
+模型价格 💰0.250
+Seedream 4.5 原生支持文本、单图和多图输入，实现基于主体一致性的多图融合创作、图像编辑、组图生成等多样玩法，让图像创作更加自由可控
+
+倍率信息
+模型: 无
+补全: 无
+分组: 1
+© 2026 Ikun API. 版权所有
+logo
+Ikun API
+首页
+控制台
+模型广场
+联系我们
+API 文档
+筛选
+供应商
+展开更多
+模型类型
+标签
+展开更多
+可用令牌分组
+展开更多
+计费类型
+全部供应商
+查看所有可用的AI模型供应商，包括众多知名供应商的模型。
+
+模糊搜索模型名称
+倍率
+
+grok-4
+输入价格 💰1.8000/M
+补全价格 💰9.0000/M
+Grok 4 模型具备深度推理能力，经过 xAI 的 Colossus 超级计算机训练，承诺提供更强的逻辑推理和文本生成能力。xAI声称是全球最强 AI 模型，在处理学术问题上的表现，已达到博士级别。在实时速度、推理能力和高级视觉等方面成绩突出。
+
+倍率信息
+模型: 1.5
+补全: 5
+分组: 0.6
+grok-4-1-fast-reasoning
+输入价格 💰0.1200/M
+补全价格 💰0.3000/M
+Grok 4.1 Fast 是xAI旗下的一款顶尖工具调用模型，拥有 200 万个上下文窗口。它能够以准确且高效的方式推理并执行代理式任务，尤其擅长处理复杂的现实应用场景，如客户支持和金融领域。为充分发挥其最大智能潜力而进行优化。
+
+倍率信息
+模型: 0.1
+补全: 2.5
+分组: 0.6
+grok-4-fast
+输入价格 💰0.2000/M
+补全价格 💰0.5000/M
+grok-4-fast，这是在经济高效推理模型方面的最新进展。
+
+倍率信息
+模型: 0.1
+补全: 2.5
+分组: 1
+grok-4-fast-non-reasoning
+输入价格 💰0.1200/M
+补全价格 💰0.3000/M
+Grok 4 Fast (Non-Reasoning) 是由 xai 提供的人工智能模型。
+
+倍率信息
+模型: 0.1
+补全: 2.5
+分组: 0.6
+grok-4.1-fast
+输入价格 💰0.4000/M
+补全价格 💰3.0000/M
+Grok 4.1 Fast，这是一款专为高性能代理工具调用优化的前沿多模态模型。
+
+倍率信息
+模型: 0.2
+补全: 7.5
+分组: 1
+qwen2.5-coder-14b-instruct
+输入价格 💰2.0000/M
+补全价格 💰6.0000/M
+Qwen2.5系列编程专家14B模型，相较于 Qwen2，Qwen2.5 获得了显著更多的知识，并在编程能力和数学能力方面有了大幅提升。此外，新模型在指令执行、生成长文本、理解结构化数据（例如表格）以及生成结构化输出特别是 JSON 方面取得了显著改进
+
+倍率信息
+模型: 1
+补全: 3
+分组: 1
+qwen3-30b-a3b-instruct-2507
+输入价格 💰0.7500/M
+补全价格 💰3.0000/M
+2025 年 7月发布的 qwen3-30b-a3b-instruct-2507模型仅支持非思考模式，是qwen3-30b-a3b （非思考模式）的升级版。
+
+倍率信息
+模型: 0.375
+补全: 4
+分组: 1
+qwen3-coder-480b-a35b-instruct
+输入价格 💰0.0150/M
+补全价格 💰0.0600/M
+通义千问代码模型开源版。最新的 qwen3-coder-480b-a35b-instruct 是基于 Qwen3 的代码生成模型，具有强大的Coding Agent能力，擅长工具调用和环境交互，能够实现自主编程、代码能力卓越的同时兼具通用能力。
+
+倍率信息
+模型: 0.0075
+补全: 4
+分组: 1
+qwen3-next-80b-a3b-instruct
+输入价格 💰0.6000/M
+补全价格 💰2.4000/M
+Qwen3-Next 80B-A3B Instruct 是由 alibaba-cn 提供的人工智能模型。
+
+倍率信息
+模型: 0.5
+补全: 4
+分组: 0.6
+qwen3-vl-8b-instruct
+输入价格 💰0.5000/M
+补全价格 💰2.0000/M
+Qwen3-VL系列8B Dense模型的Instruct版本，占用显存更低，全面升级图像/视频理解、长视频长文档等超长上下文支持、空间感知与万物识别能力，胜任复杂现实任务。
+
+倍率信息
+模型: 0.25
+补全: 4
+分组: 1
+qwen3-vl-8b-thinking
+输入价格 💰0.5000/M
+补全价格 💰5.0000/M
+Qwen3-VL系列8B Dense模型的Thinking版本，占用显存更低，能够完成多模态理解与推理；支持长视频长文档等超长上下文、视觉2D/3D定位；全面升级图像/视频理解、空间感知与万物识别能力。
+
+倍率信息
+模型: 0.25
+补全: 10
+分组: 1
+qwen3-vl-plus
+输入价格 💰0.6000/M
+补全价格 💰6.0000/M
+通义千问VL是具有视觉（图像）理解能力的文本生成模型，不仅能进行OCR（图片文字识别），还能进一步总结和推理，例如从商品照片中提取属性，根据习题图进行解题等
+
+倍率信息
+模型: 0.5
+补全: 10
+分组: 0.6
+grok-4.2-image
+模型价格 💰0.120
+grok系列的绘图模型
+
+倍率信息
+模型: 无
+补全: 无
+分组: 1
+deepseek-v3-1-think-250821
+输入价格 💰4.0000/M
+补全价格 💰12.0000/M
+默认指向最新deepseek-v3-1-terminus 混合推理：思考与非思考——一个模型，两种模式 更快的思考：DeepSeek-V3.1-Think 与 DeepSeek-R1-0528 相比，可以在更短的时间内找到答案 更强的代理技能：后期培训可提升工具使用和多步骤代理任务
+
+倍率信息
+模型: 2
+补全: 3
+分组: 1
+deepseek-v3.1
+输入价格 💰2.4000/M
+补全价格 💰7.2000/M
+深度求索全新推出的混合推理模型，支持思考与非思考2种推理模式，较 deepseek-r1-0528 思考效率更高
+
+倍率信息
+模型: 2
+补全: 3
+分组: 0.6
+deepseek-v3.2-exp
+输入价格 💰2.0000/M
+补全价格 💰3.0000/M
+deepSeek-V3.2-Exp 模型，这是一个实验性（Experimental）的版本。作为迈向新一代架构的中间步骤，V3.2-Exp 在 V3.1-Terminus 的基础上引入了 DeepSeek Sparse Attention（一种稀疏注意力机制），针对长文本的训练和推理效率进行了探索性的优化和验证。
+
+倍率信息
+模型: 1
+补全: 1.5
+分组: 1
+doubao-seed-1-6-250615
+输入价格 💰1.2000/M
+补全价格 💰12.0000/M
+全能综合型模型，是全能型的综合模型，也是国内首个支持 256K上下文的思考模型。模型具备深度思考、多模态理解及图形界面操作等多项能力。用户根据需求灵活选择开启或关闭深度思考功能，支持自适应思考模式，自适应模式根据提示词的难度自动判断是否开启深度思考，在提升效果的同时，大幅减少 tokens 的消耗。
+
+倍率信息
+模型: 0.4
+补全: 10
+分组: 1.5
+doubao-seed-1-6-251015
+输入价格 💰1.2000/M
+补全价格 💰12.0000/M
+支持调节思考长度，即支持API中的reasoning_effort 字段，分为minimal、low、medium、high四种模式。可以压缩整体输出长度，平衡客户在不同场景下对效果、时延、成本的需求。
+
+倍率信息
+模型: 0.4
+补全: 10
+分组: 1.5
+doubao-seed-1-6-flash-250828
+输入价格 💰0.4500/M
+补全价格 💰4.5000/M
+极速响应版本，是豆包大模型 1.6 系列中的极速版本，具备深度思考和多模态理解能力，支持 256K上下文。模型的延迟极低，TOPT(Top-of-Pipeline Time)仅需 10ms，能快速响应用户的请求。模型视觉理解能力与友商旗舰模型相当，适合对响应速度要求极高的场景，例如实时交互和视觉任务处理。
+
+倍率信息
+模型: 0.15
+补全: 10
+分组: 1.5
+doubao-seed-1-6-thinking-250615
+输入价格 💰1.2000/M
+补全价格 💰12.0000/M
+深度思考强化版，是豆包大模型 1.6 系列中专注于深度思考的强化版本。模型在代码编写、数学计算、逻辑推理等基础能力上进行进一步提升，能处理更复杂的任务。同时支持 256K的上下文，能理解和生成更长的文本内容，适合需要深度分析和复杂推理的场景。
+
+倍率信息
+模型: 0.4
+补全: 10
+分组: 1.5
+doubao-seed-1-6-thinking-250715
+输入价格 💰1.2000/M
+补全价格 💰12.0000/M
+在思考能力上进行了大幅强化， 对比 doubao 1.5 代深度理解模型，在编程、数学、逻辑推理等基础能力上进一步提升， 支持视觉理解。
+
+倍率信息
+模型: 0.4
+补全: 10
+分组: 1.5
+doubao-seedance-1-0-pro-250528
+模型价格 💰22.500
+Seedance 1.0 是字节跳动豆包大模型团队最新推出的视频生成基础模型。Seedance 1.0 pro作为该模型系列的大参数量版本，具备独特的多镜头叙事能力，在各维度表现出色。它在语义理解与指令遵循能力上取得突破，能生成运动流畅、细节丰富、风格多样且具备影视级美感的 1080P 高清视频
+
+倍率信息
+模型: 无
+补全: 无
+分组: 1.5
+flux-1.1-pro
+模型价格 💰0.300
+这款先锋模型能轻松将文本和图像转换为令人惊叹、细节丰富、色彩生动的视觉效果，特别适合需要高质量内容的创作者和市场营销人员
+
+倍率信息
+模型: 无
+补全: 无
+分组: 1
+grok-4-fast-reasoning
+输入价格 💰0.1200/M
+补全价格 💰0.3000/M
+倍率信息
+模型: 0.1
+补全: 2.5
+分组: 0.6
+grok-4.1-image
+模型价格 💰0.100
+grok的绘图模型
+
+倍率信息
+模型: 无
+补全: 无
+分组: 1
+kimi-k2
+输入价格 💰2.4000/M
+补全价格 💰9.6000/M
+Kimi K2是一个突破性的混合专家模型，专为前沿知识、推理和编程任务中的卓越性能而设计。为自主行动和智能问题解决而构建。
+
+倍率信息
+模型: 2
+补全: 4
+分组: 0.6
+kimi-k2-0711-preview
+输入价格 💰2.4000/M
+补全价格 💰9.6000/M
+kimi-k2 是一款具备超强代码和 Agent 能力的 MoE 架构基础模型。在编程、数学、Agent等主要类别测试里面，K2的性能超过其他主流开源模型 ！
+
+倍率信息
+模型: 2
+补全: 4
+分组: 0.6
+kimi-k2-0905
+输入价格 💰2.4000/M
+补全价格 💰9.6000/M
+Kimi K2是一个突破性的混合专家模型，专为前沿知识、推理和编程任务中的卓越性能而设计。为自主行动和智能问题解决而构建。
+
+倍率信息
+模型: 2
+补全: 4
+分组: 0.6
+kimi-k2-thinking
+输入价格 💰2.4000/M
+补全价格 💰9.6000/M
+kimi-k2的思考版本
+
+倍率信息
+模型: 2
+补全: 4
+分组: 0.6
+MiniMax-Hailuo-02
+模型价格 💰3.200
+海螺AI 02通过先进的AI运动合成技术，让您的图像栩栩如生。无论您是为社交媒体创建内容、开发互动应用程序，还是制作营销材料，此模型都能从单张图像中提供流畅、自然的动画效果。
+
+倍率信息
+模型: 无
+补全: 无
+分组: 1
+MiniMax-Hailuo-2.3
+模型价格 💰3.200
+MiniMax视频模型 Hailuo 2.3，在 Hailuo 02 模型的基础上进一步升级动态表现力，画面更加真实、稳定。Hailuo 2.3 模型在肢体动作呈现、风格化以及人物微表情方面实现了显著的效果提升，同时对运动指令响应做进一步优化。
+
+倍率信息
+模型: 无
+补全: 无
+分组: 1
+mj_imagine
+模型价格 💰0.180
+Midjourney想象模式
+
+倍率信息
+模型: 无
+补全: 无
+分组: 0.6
+qwen-plus-latest
+输入价格 💰0.4800/M
+补全价格 💰1.2000/M
+最新版通义千问-Plus能力均衡，推理效果、成本和速度介于通义千问-Max和通义千问-Turbo之间，适合中等复杂任务。
+
+倍率信息
+模型: 0.4
+补全: 2.5
+分组: 0.6
+qwen3-235b-a22b-instruct-2507
+输入价格 💰2.0000/M
+补全价格 💰8.0000/M
+2025 年 7月发布的 qwen3-235b-a22b-instruct-2507 模型仅支持非思考模式，是qwen3-235b-a22b（非思考模式）的升级版。
+
+倍率信息
+模型: 1
+补全: 4
+分组: 1
+qwen3-235b-a22b-thinking-2507
+输入价格 💰2.0000/M
+补全价格 💰8.0000/M
+基于Qwen3的思考模式开源模型，相较上一版本（通义千问3-235B-A22B）逻辑能力、通用能力、知识增强及创作能力均有大幅提升，适用于高难度强推理场景。
+
+倍率信息
+模型: 1
+补全: 4
+分组: 1
+qwen3-coder-30b-a3b-instruct
+输入价格 💰1.5000/M
+补全价格 💰6.0000/M
+qwen3-coder-30b-a3b-instruct是基于 Qwen3 的代码生成模型，具有强大的Coding Agent能力，擅长工具调用和环境交互，能够实现自主编程、代码能力卓越的同时兼具通用能力。
+
+倍率信息
+模型: 0.75
+补全: 4
+分组: 1
+qwen3-coder-plus
+输入价格 💰2.4000/M
+补全价格 💰9.6000/M
+通义千问代码模型。最新的 Qwen3-Coder-Plus 系列模型是基于 Qwen3 的代码生成模型，具有强大的Coding Agent能力，擅长工具调用和环境交互，能够实现自主编程，代码能力卓越的同时兼具通用能力。
+
+倍率信息
+模型: 2
+补全: 4
+分组: 0.6
+qwen3-vl-235b-a22b-thinking
+输入价格 💰2.0000/M
+补全价格 💰20.0000/M
+阿里云的通义千问VL开源版。仅思考模式。相较于Qwen2.5-VL，Qwen3-VL模型能力有极大提升。
+
+倍率信息
+模型: 1
+补全: 10
+分组: 1
+qwen3-vl-flash
+输入价格 💰0.1500/M
+补全价格 💰1.5000/M
+Qwen3系列小尺寸视觉理解模型，实现思考模式和非思考模式的有效融合，效果优于开源版Qwen3-VL-30B-A3B，响应速度快。全面升级图像/视频理解，支持长视频长文档等超长上下文、空间感知与万物识别；具备视觉2D/3D定位能力，胜任复杂现实任务。
+
+倍率信息
+模型: 0.075
+补全: 10
+分组: 1
+seed-oss-36b-instruct
+输入价格 💰1.2000/M
+补全价格 💰12.0000/M
+Seed-OSS 是由字节跳动种子团队开发的一系列开源大型语言模型，旨在提供强大的长上下文、推理、代理和通用能力，以及丰富的开发者友好功能。
+
+倍率信息
+模型: 0.6
+补全: 10
+分组: 1
+speech-2.6-hd
+模型价格 💰5.600
+MiniMax 语音大模型能够根据上下文，智能预测文本的情绪、语调等信息，并生成超自然、高保真、个性化的语音。在社交、播客、有声书、新闻资讯、教育、数字人等多种场景中展现出强大的实力。
+
+倍率信息
+模型: 无
+补全: 无
+分组: 1
+ERNIE-Functions-8K
+输入价格 💰0.9720/M
+补全价格 💰1.9430/M
+ERNIE Functions 8K是百度开发的一款强大的AI模型，专为高级自然语言处理任务设计，并能够与外部功能集成以增强其功能性。
+
+倍率信息
+模型: 0.4858
+补全: 2
+分组: 1
+deepseek-v3-1
+输入价格 💰2.4000/M
+补全价格 💰7.2000/M
+深度求索全新推出的混合推理模型，支持思考与非思考2种推理模式，较 deepseek-r1-0528 思考效率更高
+
+倍率信息
+模型: 2
+补全: 3
+分组: 0.6
+deepseek-chat
+输入价格 💰2.0000/M
+补全价格 💰3.0000/M
+最强开源 MoE 模型 DeepSeek-V3.2
+
+倍率信息
+模型: 1
+补全: 1.5
+分组: 1
+deepseek-r1
+输入价格 💰2.4000/M
+补全价格 💰9.6000/M
+deepseek-r1 是由深度求索推出的深度思考模型。在后训练阶段大规模使用了强化学习技术，在仅有极少标注数据的情况下，极大提升了模型推理能力。在数学、代码、自然语言推理等任务上，性能比肩 OpenAI o1 正式版。自动指向最新版本
+
+倍率信息
+模型: 2
+补全: 4
+分组: 0.6
+deepseek-r1-0528
+输入价格 💰2.4000/M
+补全价格 💰9.6000/M
+DeepSeek 最新模型。该模型在推理、代码生成等能力上相比前代有显著增强，并已在各大评测中表现优异，全面接近 OpenAI O3 级别！
+
+倍率信息
+模型: 2
+补全: 4
+分组: 0.6
+doubao-seed-1-6-vision-250815
+输入价格 💰2.4000/M
+补全价格 💰19.2000/M
+Doubao-Seed-1.6-vision 视觉深度思考模型，在教育、图像审核、巡检与安防和AI 搜索问答等场景下展现出更强的通用多模态理解和推理能力。支持 256k 上下文窗口，输出长度支持最大 64k tokens。
+
+倍率信息
+模型: 0.8
+补全: 8
+分组: 1.5
+Embedding-V1
+输入价格 💰0.5000/M
+补全价格 💰0.5000/M
+Embedding-V1是基于百度文心大模型技术的文本表示模型，将文本转化为用数值表示的向量形式，用于文本检索、信息推荐、知识挖掘等场景。
+
+倍率信息
+模型: 0.25
+补全: 1
+分组: 1
+ERNIE-3.5-8K
+输入价格 💰3.7140/M
+补全价格 💰3.7140/M
+ERNIE 3.5是百度自研的旗舰级大规模⼤语⾔模型，覆盖海量中英文语料，具有强大的通用能力，可满足绝大部分对话问答、创作生成、插件应用场景要求；，保障问答信息时效。
+
+倍率信息
+模型: 1.8572
+补全: 1
+分组: 1
+ERNIE-4.0-8K
+输入价格 💰33.1440/M
+补全价格 💰33.1440/M
+百度文心系列中效果最强大的⼤语⾔模型，理解、生成、逻辑、记忆能力达到业界顶尖水平。
+
+倍率信息
+模型: 16.572
+补全: 1
+分组: 1
+ERNIE-Character-8K
+输入价格 💰0.9720/M
+补全价格 💰1.9430/M
+百度自研的垂直场景大语言模型，适合游戏NPC、客服对话、对话角色扮演等应用场景，人设风格更为鲜明、一致，指令遵循能力更强，推理性能更优
+
+倍率信息
+模型: 0.4858
+补全: 2
+分组: 1
+ERNIE-Lite-8K
+输入价格 💰0.8290/M
+补全价格 💰1.6570/M
+百度自研的轻量级大语言模型，兼顾优异的模型效果与推理性能，适合低算力AI加速卡推理使用
+
+倍率信息
+模型: 0.4143
+补全: 2
+分组: 1
+ERNIE-Speed-128K
+输入价格 💰0.9720/M
+补全价格 💰1.9430/M
+百度自研的轻量级大语言模型，兼顾优异的模型效果与推理性能，适合低算力AI加速卡推理使用
+
+倍率信息
+模型: 0.4858
+补全: 2
+分组: 1
+ERNIE-Speed-8K
+输入价格 💰0.9720/M
+补全价格 💰1.9430/M
+百度自研的轻量级大语言模型，兼顾优异的模型效果与推理性能，适合低算力AI加速卡推理使用
+
+倍率信息
+模型: 0.4858
+补全: 2
+分组: 1
+ERNIE-Tiny-8K
+输入价格 💰0.2830/M
+补全价格 💰0.2830/M
+ERNIE-Tiny-8K是由百度团队开发的一种轻量级中文预训练语言模型。它基于ERNIE系列模型的设计理念，旨在提供更小的模型尺寸和更快的推理速度，同时保持较高的性能。
+
+倍率信息
+模型: 0.1415
+补全: 1
+分组: 1
+gemini-2.5-flash-all
+输入价格 💰0.4200/M
+补全价格 💰3.3600/M
+多模态版本的 gemini 模型，支持文件，视频，图片等分析，支持画图，支持实时联网
+
+倍率信息
+模型: 0.15
+补全: 8
+分组: 1.4
+gemini-2.5-flash-lite
+输入价格 💰0.1500/M
+补全价格 💰0.6000/M
+Gemini 2.5 Flash Lite 是由 google-vertex 提供的人工智能模型。可控制是否开启思考
+
+倍率信息
+模型: 0.05
+补全: 4
+分组: 1.5
+gemini-2.5-flash-lite-preview-06-17
+输入价格 💰0.1500/M
+补全价格 💰0.6000/M
+Gemini 2.5 Flash Lite Preview 06-17 是由 google-vertex 提供的人工智能模型。可控制是否开启思考
+
+倍率信息
+模型: 0.05
+补全: 4
+分组: 1.5
+grok-3
+输入价格 💰1.8000/M
+补全价格 💰9.0000/M
+Grok 3 是由 xai 提供的人工智能模型。
+
+倍率信息
+模型: 1.5
+补全: 5
+分组: 0.6
+grok-3-deepsearch
+输入价格 💰2.0000/M
+补全价格 💰10.0000/M
+grok-3-deepsearch 深度联网搜索模型
+
+倍率信息
+模型: 1
+补全: 5
+分组: 1
+grok-3-image
+模型价格 💰0.050
+使用grok3进行生图
+
+倍率信息
+模型: 无
+补全: 无
+分组: 1
+grok-3-mini
+输入价格 💰0.1800/M
+补全价格 💰0.3010/M
+Grok 3 mini，它代表了高性价比推理能力的新 frontier。Grok 3 的推理能力经由大规模强化学习的锤炼，能够进行数秒到数分钟的思考，纠正错误，探索替代方案，最终提供精准答案。
+
+倍率信息
+模型: 0.15
+补全: 1.67
+分组: 0.6
+grok-3-reasoner
+输入价格 💰2.0000/M
+补全价格 💰10.0000/M
+grok-3-reasoning 是grok增强推理能力的模型
+
+倍率信息
+模型: 1
+补全: 5
+分组: 1
+grok-3-reasoning
+输入价格 💰2.0000/M
+补全价格 💰10.0000/M
+grok-3-reasoning 是grok增强推理能力的模型
+
+倍率信息
+模型: 1
+补全: 5
+分组: 1
+grok-4-image
+模型价格 💰0.080
+grok4的绘图模型
+
+倍率信息
+模型: 无
+补全: 无
+分组: 1
+mj_blend
+模型价格 💰0.180
+Midjourney混合模式
+
+倍率信息
+模型: 无
+补全: 无
+分组: 0.6
+mj_custom_zoom
+模型价格 💰0.000
+Midjourney自定义缩放
+
+倍率信息
+模型: 无
+补全: 无
+分组: 0.6
+mj_describe
+模型价格 💰0.090
+Midjourney描述模式
+
+倍率信息
+模型: 无
+补全: 无
+分组: 0.6
+mj_high_variation
+模型价格 💰0.180
+Midjourney高变化模式
+
+倍率信息
+模型: 无
+补全: 无
+分组: 0.6
+mj_inpaint
+模型价格 💰0.000
+Midjourney局部重绘
+
+倍率信息
+模型: 无
+补全: 无
+分组: 0.6
+mj_low_variation
+模型价格 💰0.180
+Midjourney低变化模式
+
+倍率信息
+模型: 无
+补全: 无
+分组: 0.6
+mj_modal
+模型价格 💰0.180
+Midjourney模态模式
+
+倍率信息
+模型: 无
+补全: 无
+分组: 0.6
+mj_pan
+模型价格 💰0.180
+Midjourney平移模式
+
+倍率信息
+模型: 无
+补全: 无
+分组: 0.6
+mj_reroll
+模型价格 💰0.180
+Midjourney重新生成
+
+倍率信息
+模型: 无
+补全: 无
+分组: 0.6
+mj_upload
+模型价格 💰0.003
+Midjourney上传服务
+
+倍率信息
+模型: 无
+补全: 无
+分组: 1
+mj_upscale
+模型价格 💰0.090
+Midjourney放大模式
+
+倍率信息
+模型: 无
+补全: 无
+分组: 0.6
+mj_variation
+模型价格 💰0.180
+Midjourney变体模式
+
+倍率信息
+模型: 无
+补全: 无
+分组: 0.6
+mj_zoom
+模型价格 💰0.180
+Midjourney缩放模式
+
+倍率信息
+模型: 无
+补全: 无
+分组: 0.6
+deepseek-v3-1-250821
+输入价格 💰2.4000/M
+补全价格 💰7.2000/M
+默认指向deepseek-v3-1-terminus 深度求索全新推出的混合推理模型，支持思考与非思考2种推理模式，较 deepseek-r1-0528 思考效率更高
+
+倍率信息
+模型: 2
+补全: 3
+分组: 0.6
+deepseek-reasoner
+输入价格 💰2.4000/M
+补全价格 💰9.6000/M
+deepseek-r1
+
+倍率信息
+模型: 2
+补全: 4
+分组: 0.6
+doubao-seedance-1-0-lite-i2v-250428
+模型价格 💰15.000
+Seedance 1.0 lite 具备强大的语义理解与指令遵循能力，可精细控制人物外貌气质、衣着风格、表情动作，在多主体动作解析、嵌入式文本响应、程度副词和镜头切换响应方面，也展现出了绝对优势。运镜能力强，支持环绕、航拍、变焦、平移、跟随、手持等多种镜头语言。生成的视频兼容多种风格，具备细腻高清的基础画质和影视级美感。
+
+倍率信息
+模型: 无
+补全: 无
+分组: 1.5
+doubao-seedance-1-0-lite-t2v-250428
+模型价格 💰15.000
+Seedance 1.0 lite 具备强大的语义理解与指令遵循能力，可精细控制人物外貌气质、衣着风格、表情动作，在多主体动作解析、嵌入式文本响应、程度副词和镜头切换响应方面，也展现出了绝对优势。运镜能力强，支持环绕、航拍、变焦、平移、跟随、手持等多种镜头语言。生成的视频兼容多种风格，具备细腻高清的基础画质和影视级美感。
+
+倍率信息
+模型: 无
+补全: 无
+分组: 1.5
+doubao-seedance-1-0-pro-fast-251015
+模型价格 💰6.300
+Seedance 1.0 pro fast是一款价格触底、效能封顶的全面模型，在视频生成质量、速度、价格之间取得了卓越平衡。它继承了Seedance 1.0 pro 核心优势，同时生成速度提升、价格更具竞争力，为创作者带来效率与成本双重优化的体验
+
+倍率信息
+模型: 无
+补全: 无
+分组: 1.5
+doubao-seededit-3-0-i2i-250628
+模型价格 💰0.100
+豆包新出的图片编辑模型,效果很不错
+
+倍率信息
+模型: 无
+补全: 无
+分组: 1
+doubao-seedream-3-0-t2i-250415
+模型价格 💰0.100
+Seedream 3.0 是一款支持原生高分辨率的中英双语图像生成基础模型，综合能力媲美GPT-4o，处于世界第一梯队。响应速度更快；小字生成更准确，文本排版效果增强；指令遵循能力强，美感&结构提升，保真度和细节表现较好。
+
+倍率信息
+模型: 无
+补全: 无
+分组: 1
+flux-dev
+模型价格 💰0.080
+Flux AI 文生图模型开发版本，用于测试新功能和实验性特性,dalle3格式请求
+
+倍率信息
+模型: 无
+补全: 无
+分组: 1
+flux-pro
+模型价格 💰0.150
+Flux AI 文生图模型，效果堪比 Midjourney，碾压 StableDiffusion；
+
+倍率信息
+模型: 无
+补全: 无
+分组: 1
+flux-pro-1.1-ultra
+模型价格 💰0.500
+Flux 1.1 Pro Ultra是一款先进的 AI 图像生成器，擅长生成高分辨率输出和快速图像创建。专为数字艺术家、营销人员和创意专业人士设计，这款工具提供了卓越的质量和效率。
+
+倍率信息
+模型: 无
+补全: 无
+分组: 1
+flux-pro-max
+模型价格 💰0.300
+Flux AI 旗舰版文生图模型，提供最高质量的图像生成效果
+
+倍率信息
+模型: 无
+补全: 无
+分组: 1
+flux-schnell
+模型价格 💰0.050
+Flux AI 快速生成模型，生成速度更快但质量略低,dalle3格式请求
+
+倍率信息
+模型: 无
+补全: 无
+分组: 1
+flux.1-kontext-pro
+模型价格 💰0.120
+Flux AI 文生图模型，效果堪比 Midjourney，碾压 StableDiffusion
+
+倍率信息
+模型: 无
+补全: 无
+分组: 1
+flux.1.1-pro
+模型价格 💰0.120
+Flux AI 文生图模型，效果堪比 Midjourney，碾压 StableDiffusion；生成图片接口,dalle3格式请求
+
+倍率信息
+模型: 无
+补全: 无
+分组: 1
+gemini-2.5-pro-all
+输入价格 💰3.5000/M
+补全价格 💰28.0000/M
+gemini-2.5-pro-all 多模态版本的 gemini 模型，支持文件，视频，图片等分析，支持画图，支持实时联网
+
+倍率信息
+模型: 1.25
+补全: 8
+分组: 1.4
+gemma-7b-it
+输入价格 💰2.0000/M
+补全价格 💰2.0000/M
+gemma 是由 Google 推出的一系列轻量级先进的开源模型，基于 Google Gemini 模型的研究和技术而构建。它们是一系列text generation，decoder-only的大型语言模型,对英文的支持较好，具有模型权重开源。
+
+倍率信息
+模型: 1
+补全: 1
+分组: 1
+kimi-k2-instruct
+输入价格 💰4.0000/M
+补全价格 💰16.0000/M
+Kimi K2 在前沿知识、推理和编码任务上表现出色，同时在代理能力方面进行了精心优化。
+
+倍率信息
+模型: 2
+补全: 4
+分组: 1
+veo3.1-fast
+模型价格 💰0.700
+Google最新的高级人工智能模型, veo3.1 快速 模式，支持视频自动配套音频生成，质量高价格很低，性价比最高的选择, 支持首尾帧和文生视频
+
+倍率信息
+模型: 无
+补全: 无
+分组: 1
+veo3
+模型价格 💰0.900
+veo3 谷歌官方最新的视频生成模型，生成的视频带有声音，目前全球独一家带有声音的视频模型 , 请求格式: openai chat格式
+
+倍率信息
+模型: 无
+补全: 无
+分组: 1
+veo3-fast
+模型价格 💰0.900
+Google最新的高级人工智能模型, veo3 快速 模式，支持视频自动配套音频生成，质量高价格很低，性价比最高的选择
+
+倍率信息
+模型: 无
+补全: 无
+分组: 1
+veo3-fast-frames
+模型价格 💰0.900
+Google最新的高级人工智能模型, veo3 快速 模式，支持视频自动配套音频生成，支持首帧传递，质量高价格很低，性价比最高的选择
+
+倍率信息
+模型: 无
+补全: 无
+分组: 1
+veo3-frames
+模型价格 💰0.900
+Google最新的高级人工智能模型, veo3 快速 模式，支持视频自动配套音频生成，支持首帧传递，质量高价格很低，性价比最高的选择
+
+倍率信息
+模型: 无
+补全: 无
+分组: 1
+© 2026 Ikun API. 版权所有
