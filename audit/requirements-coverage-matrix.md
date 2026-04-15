@@ -1,37 +1,42 @@
 # SkinCareAI 需求覆盖矩阵
 
-更新日期：2026-04-12
+更新日期：2026-04-14
 
 | 需求项 | 来源 | 当前状态 | 对应文件 | 备注 |
 |---|---|---|---|---|
-| 文本对话输入 | 原始文档 P0 | 已完成 | `web/src/features/chat/composer.tsx` | 支持 Enter 发送、Shift+Enter 换行、IME 保护 |
-| 单图上传入口 | 原始文档 P0 | 已完成 | `web/src/features/chat/composer.tsx` | 仅支持单图，符合当前阶段边界 |
-| 消息流展示 | 原始文档 P0 | 已完成 | `web/src/features/chat/message-list.tsx` | 区分用户与 AI 消息 |
-| 多轮对话历史 | 原始文档 P0 | 已完成 | `web/src/stores/use-chat-store.ts` | 本地持久化已接入 |
-| 加载状态 | 原始文档 P0 | 已完成 | `web/src/features/chat/typing-indicator.tsx` | 生成中禁重发 |
-| 新建对话按钮 | 原始文档 / 后续拍板 | 已完成 | `web/src/features/sidebar/new-conversation-button.tsx` | 左侧显式入口，不依赖模型切换 |
-| 会话重命名 | 原始文档扩展 | 已完成 | `web/src/features/sidebar/conversation-list-item.tsx` | 行内重命名 |
-| 会话删除 | 原始文档扩展 | 已完成 | `web/src/features/sidebar/conversation-list-item.tsx` | 带确认弹窗 |
-| 对话分组 / 标签 | 原始文档扩展 | 未完成 | - | 按阶段延后 |
-| `/knowledge` 独立入口 | 原始文档扩展 | 已完成 | `web/src/app/router.tsx` | 顶部导航进入 |
-| 科普页固定文章 / 卡片 | 原始文档扩展 | 已完成 | `web/src/features/knowledge/knowledge-page.tsx` | 已切换到本地结构化知识包 |
-| 科普页搜索 / RAG | 原始文档扩展 | 未完成 | - | 当前明确不做 |
-| 一个模型一个会话 | 后续拍板规则 | 已完成 | `web/src/stores/use-chat-store.ts` | 不允许跨模型续写上下文 |
-| 切模型默认新建会话 | 后续拍板规则 | 已完成 | `web/src/app/app-shell.tsx` | 已落地 |
+| 文本对话输入 | 原始需求 P0 | 已完成 | `web/src/features/chat/composer.tsx` | 支持 Enter 发送、Shift+Enter 换行、IME 保护 |
+| 单图上传入口 | 原始需求 P0 | 已完成 | `web/src/features/chat/composer.tsx` | 支持点击上传、拖拽、粘贴 |
+| 消息流展示 | 原始需求 P0 | 已完成 | `web/src/features/chat/message-list.tsx` | 区分用户与 AI |
+| 多轮对话历史 | 原始需求 P0 | 已完成 | `web/src/stores/use-chat-store.ts` | 本地持久化已接入 |
+| 加载状态 | 原始需求 P0 | 已完成 | `web/src/features/chat/typing-indicator.tsx` | 流式和等待态都有体现 |
+| `/knowledge` 独立入口 | 原始需求扩展 | 已完成 | `web/src/app/app-shell.tsx` | 顶部导航进入 |
+| 结构化知识页 | 后续拍板 | 已完成 | `web/src/features/knowledge/knowledge-page.tsx` | 本地知识包驱动 |
+| 会话重命名 | 扩展需求 | 已完成 | `web/src/features/sidebar/conversation-list-item.tsx` | 行内改名 |
+| 会话删除 | 扩展需求 | 已完成 | `web/src/features/sidebar/conversation-list-item.tsx` | 带确认弹窗 |
+| 新建对话 | 扩展需求 | 已完成 | `web/src/features/sidebar/new-conversation-button.tsx` | 左侧显式入口 |
+| 一模型一会话 | 后续拍板规则 | 已完成 | `web/src/stores/use-chat-store.ts` | 不允许跨模型续写上下文 |
+| 切换模型默认新建会话 | 后续拍板规则 | 已完成 | `web/src/app/app-shell.tsx` | 已落地 |
 | 非视觉模型图片 handoff | 后续拍板规则 | 已完成 | `web/src/app/app-shell.tsx` | 自动切到视觉模型新会话 |
-| Provider-agnostic / mock-first | 后续拍板规则 | 已完成 | `web/src/lib/provider-adapter.ts`, `web/src/lib/mock-adapter.ts` | 已保留 mock fallback，同时开始接真实 server |
-| 右侧栏边界 | 后续拍板规则 | 已完成 | `web/src/features/layout/chat-context-rail-panel.tsx` | 仅品牌卡、能力卡、免责声明 |
-| Logo 方案 A | 后续拍板规则 | 已完成 | `web/src/features/sidebar/brand-block.tsx` | 抠图版 + 浅底圆片 |
-| 本地知识包基础层 | 后续阶段目标 | 已完成 | `web/src/content/knowledge/` | 已从硬编码数组切换到结构化内容，当前总条目数 21 |
-| 知识包校验机制 | 后续阶段目标 | 已完成 | `web/scripts/validate-knowledge.mjs` | schema + registry + manifest 校验 |
-| manifest 自动生成 | 本轮工作线 C | 已完成 | `web/scripts/generate-knowledge-manifest.mjs` | 不再手工维护 manifest，按 displayOrder 自动刷新 |
-| `/knowledge` 精选 / 全部 | 本轮工作线 D | 已完成 | `web/src/features/knowledge/knowledge-page.tsx` | 精选与全部分层已落地 |
-| 病例图片内容层结构 | 后续阶段目标 | 部分完成 | `web/src/content/clinical-images/` | 已有 manifest/registry/占位与知识条目关联，但无真实图片 |
-| 轻量后端壳 | 本轮工作线 F | 已完成 | `server/` | 已具备真实 API adapter 架构与 mock fallback |
-| 真实文本对话接入 | 真实 API 阶段 | 已完成 | `server/src/index.mjs`, `server/src/providers/`, `web/src/lib/server-adapter.ts` | `/api/chat` 已打到真实模型 |
-| 真实图片理解接入 | 真实 API 阶段 | 已完成 | `server/src/index.mjs`, `server/src/providers/`, `web/src/lib/server-adapter.ts` | `/api/vision` 已打到真实模型 |
-| 精选模型注册表 | 真实 API 阶段 | 已完成 | `server/src/registry/curated-models.mjs` | 当前为 16 个精选模型 |
-| 模型健康状态 | 真实 API 阶段 | 已完成 | `server/src/services/model-health.mjs` | 当前为轻量检测和缓存 |
-| 外部白名单资料引入 | 后续阶段目标 | 部分完成 | `web/src/content/knowledge/sources/source-registry.json` | 仅登记候选来源，未抓取正文 |
-| 搜索框 / 本地检索 | 未来规划 | 未完成 | - | 当前明确不做 |
-| 真实 API | 未来规划 | 未完成 | - | 当前明确不接 |
+| 模型工作台 | Endgame Sprint | 已完成 | `web/src/features/topbar/top-bar.tsx` | 默认推荐模型、帮助入口、状态摘要已收口 |
+| 模型选择器分类 | Endgame Sprint | 已完成 | `web/src/features/topbar/model-selector.tsx` | 通用 / 文本 / 图片 / 推理 / 低成本 |
+| 会话搜索 | Endgame Sprint | 已完成 | `web/src/features/sidebar/conversation-list.tsx` | 本轮新增 |
+| 会话时间分组 | Endgame Sprint | 已完成 | `web/src/features/sidebar/conversation-list.tsx` | 本轮新增 |
+| 复制回答 | Endgame Sprint | 已完成 | `web/src/features/chat/message-item.tsx` | 本轮新增 |
+| 复制当前会话 | UX Market Research | 已完成 | `web/src/app/app-shell.tsx`, `web/src/lib/share-utils.ts` | 复制当前会话快照，适合作为答辩材料 |
+| 导出当前会话 Markdown | UX Market Research | 已完成 | `web/src/app/app-shell.tsx`, `web/src/lib/share-utils.ts` | 本轮确定的最小导出策略 |
+| 系统分享会话快照 | UX Market Research | 已完成 | `web/src/app/app-shell.tsx` | 仅在支持 `navigator.share` 的设备上显示 |
+| 桌面侧边栏收起 / 展开 | Endgame Sprint | 已完成 | `web/src/app/app-shell.tsx`, `web/src/stores/use-ui-store.ts` | 本轮新增 |
+| 主题切换 | 后续拍板规则 | 已完成 | `web/src/features/topbar/top-bar.tsx`, `web/src/index.css` | 深色 / 浅色 / 柔和 |
+| tooltip / 帮助入口 | Endgame Sprint | 已完成 | `web/src/components/ui/info-hint.tsx` | 桌面为 popover，小屏改为底部 drawer |
+| 最小病例图演示集区块 | Endgame Sprint | 已完成 | `web/src/features/knowledge/knowledge-page.tsx` | 已接入正式内容层 |
+| 正式病例图演示目录 | Endgame Sprint | 已完成 | `web/public/clinical-images/demo/` | 目录已建立，待真实图替换 |
+| 轻量专家会诊 | Endgame Sprint | 已完成 | `web/src/features/consult/expert-consult-panel.tsx` | 当前为可演示版，待运行级验证 |
+| 最终 QA 清单 | Demo Packaging | 已完成 | `audit/final-qa-checklist.md` | 已建立 |
+| 当前使用说明 | Demo Packaging | 已完成 | `docs/final-usage-guide.md` | 已建立 |
+| 当前答辩演示说明 | Demo Packaging | 已完成 | `docs/demo-packaging-guide.md` | 已建立 |
+
+## 当前仍未完成
+
+- 真实病例图逐张授权替换。
+- 真实 `server` 启动后的 `/api/models`、`/api/chat`、`/api/chat/stream`、`/api/vision` 运行级确认。
+- 更完整的多主题、多视口截图矩阵。

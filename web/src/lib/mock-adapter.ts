@@ -92,7 +92,7 @@ export const mockAdapter: ProviderAdapter = {
     await new Promise((resolve) => window.setTimeout(resolve, responseDelay))
 
     return {
-      text: input.model.supportsImageInput
+      text: input.input.image
         ? buildVisionResponse(input)
         : buildTextResponse(input),
     }

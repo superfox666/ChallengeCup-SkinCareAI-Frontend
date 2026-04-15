@@ -10,7 +10,7 @@ interface UploadPreviewProps {
 
 export function UploadPreview({ image, onRemove }: UploadPreviewProps) {
   return (
-    <div className="flex items-center gap-3 rounded-[22px] border border-white/10 bg-white/5 p-3">
+    <div className="surface-panel-muted flex items-center gap-3 rounded-[22px] border border-border/70 p-3">
       {image.previewUrl ? (
         <img
           src={image.previewUrl}
@@ -18,13 +18,13 @@ export function UploadPreview({ image, onRemove }: UploadPreviewProps) {
           className="size-16 rounded-[16px] object-cover"
         />
       ) : (
-        <div className="flex size-16 items-center justify-center rounded-[16px] bg-white/8 text-xs text-slate-300">
+        <div className="flex size-16 items-center justify-center rounded-[16px] bg-background/80 text-xs text-muted-foreground">
           预览缺失
         </div>
       )}
       <div className="min-w-0 flex-1">
-        <p className="truncate text-sm font-medium text-white">{image.name}</p>
-        <p className="text-xs text-slate-400">
+        <p className="truncate text-sm font-medium text-foreground">{image.name}</p>
+        <p className="text-xs text-muted-foreground">
           {(image.size / 1024).toFixed(0)} KB · 单图上传
         </p>
       </div>

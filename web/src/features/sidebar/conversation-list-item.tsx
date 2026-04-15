@@ -59,40 +59,42 @@ export function ConversationListItem({
 
   if (isEditing) {
     return (
-      <div className="flex flex-col gap-3 rounded-[20px] border border-primary/45 bg-primary/12 px-4 py-3">
-        <Input
-          value={draftTitle}
-          onChange={(event) => setDraftTitle(event.target.value)}
-          onClick={(event) => event.stopPropagation()}
-          onKeyDown={(event) => {
-            if (event.key === "Enter") {
-              event.preventDefault()
-              commitRename()
-            }
+      <div className="rounded-[22px] border border-primary/40 bg-primary/10 px-4 py-3">
+        <div className="flex flex-col gap-3">
+          <Input
+            value={draftTitle}
+            onChange={(event) => setDraftTitle(event.target.value)}
+            onClick={(event) => event.stopPropagation()}
+            onKeyDown={(event) => {
+              if (event.key === "Enter") {
+                event.preventDefault()
+                commitRename()
+              }
 
-            if (event.key === "Escape") {
-              setDraftTitle(conversation.title)
-              setIsEditing(false)
-            }
-          }}
-          className="h-10 rounded-2xl border-white/12 bg-white/8 text-white"
-          autoFocus
-        />
-        <div className="flex justify-end gap-2">
-          <Button
-            type="button"
-            variant="ghost"
-            size="icon-sm"
-            onClick={() => {
-              setDraftTitle(conversation.title)
-              setIsEditing(false)
+              if (event.key === "Escape") {
+                setDraftTitle(conversation.title)
+                setIsEditing(false)
+              }
             }}
-          >
-            <XIcon />
-          </Button>
-          <Button type="button" size="icon-sm" onClick={commitRename}>
-            <CheckIcon />
-          </Button>
+            className="h-10 rounded-2xl border-border/70 bg-background/80 text-foreground"
+            autoFocus
+          />
+          <div className="flex justify-end gap-2">
+            <Button
+              type="button"
+              variant="ghost"
+              size="icon-sm"
+              onClick={() => {
+                setDraftTitle(conversation.title)
+                setIsEditing(false)
+              }}
+            >
+              <XIcon />
+            </Button>
+            <Button type="button" size="icon-sm" onClick={commitRename}>
+              <CheckIcon />
+            </Button>
+          </div>
         </div>
       </div>
     )
@@ -101,10 +103,10 @@ export function ConversationListItem({
   return (
     <div
       className={[
-        "flex w-full flex-col gap-2 rounded-[20px] border px-4 py-3 text-left transition-all",
+        "flex w-full flex-col gap-2 rounded-[22px] border px-4 py-3 text-left transition-all",
         active
-          ? "border-primary/45 bg-primary/12 shadow-[0_18px_36px_rgba(8,21,43,0.26)]"
-          : "border-white/8 bg-white/4 hover:border-white/16 hover:bg-white/7",
+          ? "border-primary/40 bg-primary/10 shadow-[0_18px_36px_rgba(38,198,190,0.14)]"
+          : "border-border/70 bg-background/60 hover:border-primary/20 hover:bg-muted/60",
       ].join(" ")}
     >
       <div className="flex items-center justify-between gap-3">
@@ -113,7 +115,7 @@ export function ConversationListItem({
           onClick={onSelect}
           className="flex min-w-0 flex-1 appearance-none items-center gap-3 bg-transparent text-left"
         >
-          <span className="truncate text-sm font-medium text-white">
+          <span className="truncate text-sm font-medium text-foreground">
             {conversation.title}
           </span>
           <span
@@ -123,16 +125,18 @@ export function ConversationListItem({
                 ? "bg-primary"
                 : conversation.status === "error"
                   ? "bg-amber-400"
-                  : "bg-slate-500",
+                  : "bg-muted-foreground/45",
             ].join(" ")}
           />
         </button>
+
         <div className="flex items-center gap-1">
           <Button
             type="button"
             variant="ghost"
             size="icon-sm"
-            className="text-slate-300 hover:bg-white/8 hover:text-white"
+            aria-label="重命名会话"
+            className="text-muted-foreground hover:bg-muted hover:text-foreground"
             disabled={busy}
             onClick={(event) => {
               event.stopPropagation()
@@ -142,28 +146,30 @@ export function ConversationListItem({
           >
             <PencilIcon />
           </Button>
+
           <AlertDialog>
             <AlertDialogTrigger asChild>
               <Button
                 type="button"
                 variant="ghost"
                 size="icon-sm"
-                className="text-slate-300 hover:bg-white/8 hover:text-white"
+                aria-label="删除会话"
+                className="text-muted-foreground hover:bg-muted hover:text-foreground"
                 disabled={busy}
                 onClick={(event) => event.stopPropagation()}
               >
                 <Trash2Icon />
               </Button>
             </AlertDialogTrigger>
-            <AlertDialogContent className="border-white/10 bg-[#10203d] text-white">
+            <AlertDialogContent className="border-border/70 bg-card text-foreground">
               <AlertDialogHeader>
                 <AlertDialogTitle>删除会话</AlertDialogTitle>
-                <AlertDialogDescription className="text-slate-300">
+                <AlertDialogDescription className="text-muted-foreground">
                   删除后将无法恢复当前会话记录。若这是最后一个会话，系统会自动创建新的空会话。
                 </AlertDialogDescription>
               </AlertDialogHeader>
               <AlertDialogFooter>
-                <AlertDialogCancel className="border-white/12 bg-white/6 text-slate-100 hover:bg-white/8 hover:text-white">
+                <AlertDialogCancel className="border-border/70 bg-background/70 text-foreground hover:bg-muted hover:text-foreground">
                   取消
                 </AlertDialogCancel>
                 <AlertDialogAction
@@ -180,7 +186,8 @@ export function ConversationListItem({
           </AlertDialog>
         </div>
       </div>
-      <div className="flex items-center justify-between gap-3 text-xs text-slate-400">
+
+      <div className="flex items-center justify-between gap-3 text-xs text-muted-foreground">
         <button
           type="button"
           onClick={onSelect}
@@ -190,7 +197,8 @@ export function ConversationListItem({
           <span>{formatRelativeLabel(conversation)}</span>
         </button>
       </div>
-      <div className="flex items-center justify-between gap-3 text-[0.72rem] text-slate-500">
+
+      <div className="flex items-center justify-between gap-3 text-[0.72rem] text-muted-foreground">
         <button
           type="button"
           onClick={onSelect}

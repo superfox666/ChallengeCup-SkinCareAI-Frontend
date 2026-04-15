@@ -6,13 +6,14 @@ import { ModelCapabilityCard } from "@/features/context-rail/model-capability-ca
 
 interface ChatContextRailPanelProps {
   model: ModelDefinition
+  defaultGeneralModel?: ModelDefinition | null
 }
 
-export function ChatContextRailPanel({ model }: ChatContextRailPanelProps) {
+export function ChatContextRailPanel({ model, defaultGeneralModel }: ChatContextRailPanelProps) {
   return (
-    <div className="grid w-full min-w-0 gap-4">
+    <div className="flex h-full min-h-0 w-full min-w-0 flex-col gap-3 overflow-y-auto pr-1">
       <BrandShowcaseCard />
-      <ModelCapabilityCard model={model} />
+      <ModelCapabilityCard model={model} defaultGeneralModel={defaultGeneralModel} />
       <DisclaimerCard />
     </div>
   )

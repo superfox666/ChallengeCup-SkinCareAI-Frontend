@@ -49,24 +49,24 @@
 }
 
 :root {
-    --background: #f4f8fb;
+    --background: #ecf3f8;
     --foreground: #0b1a28;
-    --card: rgba(255, 255, 255, 0.92);
+    --card: rgba(255, 255, 255, 0.95);
     --card-foreground: #102239;
-    --popover: rgba(255, 255, 255, 0.96);
+    --popover: rgba(255, 255, 255, 0.98);
     --popover-foreground: #102239;
     --primary: #26c6be;
     --primary-foreground: #041112;
-    --secondary: rgba(20, 58, 104, 0.08);
+    --secondary: rgba(20, 58, 104, 0.1);
     --secondary-foreground: #102239;
-    --muted: rgba(20, 58, 104, 0.08);
-    --muted-foreground: #55708b;
-    --accent: rgba(38, 198, 190, 0.14);
+    --muted: rgba(20, 58, 104, 0.1);
+    --muted-foreground: #476175;
+    --accent: rgba(38, 198, 190, 0.16);
     --accent-foreground: #dffcf8;
     --destructive: #f97316;
-    --border: rgba(27, 49, 76, 0.1);
-    --input: rgba(17, 38, 66, 0.1);
-    --ring: rgba(38, 198, 190, 0.35);
+    --border: rgba(27, 49, 76, 0.14);
+    --input: rgba(17, 38, 66, 0.12);
+    --ring: rgba(38, 198, 190, 0.38);
     --chart-1: #26c6be;
     --chart-2: #59b7ff;
     --chart-3: #ff9f36;
@@ -81,6 +81,18 @@
     --sidebar-accent-foreground: #102239;
     --sidebar-border: rgba(27, 49, 76, 0.1);
     --sidebar-ring: rgba(38, 198, 190, 0.35);
+    --page-aura-primary: rgba(38, 198, 190, 0.14);
+    --page-aura-secondary: rgba(255, 159, 54, 0.1);
+    --surface-hero-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.99), rgba(237, 245, 251, 0.97));
+    --surface-brand-bg: linear-gradient(180deg, rgba(247, 253, 254, 0.99), rgba(232, 243, 248, 0.97));
+    --surface-panel-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(239, 246, 251, 0.95));
+    --surface-panel-muted-bg: rgba(255, 255, 255, 0.86);
+    --surface-composer-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.99), rgba(239, 246, 251, 0.96));
+    --surface-input-bg: rgba(255, 255, 255, 0.9);
+    --surface-message-assistant-bg: rgba(255, 255, 255, 0.9);
+    --surface-message-user-bg: linear-gradient(180deg, rgba(38, 198, 190, 0.18), rgba(38, 198, 190, 0.12));
+    --surface-shadow-soft: 0 18px 44px rgba(19, 42, 66, 0.14);
+    --surface-shadow-strong: 0 28px 72px rgba(19, 42, 66, 0.18);
 }
 
 .dark {
@@ -115,6 +127,18 @@
     --sidebar-accent-foreground: #edf6ff;
     --sidebar-border: rgba(171, 197, 229, 0.14);
     --sidebar-ring: rgba(38, 198, 190, 0.3);
+    --page-aura-primary: rgba(38, 198, 190, 0.16);
+    --page-aura-secondary: rgba(255, 159, 54, 0.1);
+    --surface-hero-bg: linear-gradient(180deg, rgba(14, 26, 48, 0.96), rgba(10, 18, 34, 0.9));
+    --surface-brand-bg: linear-gradient(180deg, rgba(17, 34, 61, 0.98), rgba(9, 20, 39, 0.92));
+    --surface-panel-bg: linear-gradient(180deg, rgba(13, 24, 44, 0.94), rgba(10, 19, 36, 0.88));
+    --surface-panel-muted-bg: rgba(255, 255, 255, 0.05);
+    --surface-composer-bg: linear-gradient(180deg, rgba(14, 26, 48, 0.95), rgba(10, 18, 35, 0.89));
+    --surface-input-bg: rgba(255, 255, 255, 0.04);
+    --surface-message-assistant-bg: rgba(255, 255, 255, 0.06);
+    --surface-message-user-bg: linear-gradient(180deg, rgba(38, 198, 190, 0.18), rgba(38, 198, 190, 0.1));
+    --surface-shadow-soft: 0 18px 44px rgba(0, 0, 0, 0.24);
+    --surface-shadow-strong: 0 30px 80px rgba(0, 0, 0, 0.34);
 }
 
 html[data-theme="light"] {
@@ -126,36 +150,48 @@ html[data-theme="soft"] {
 }
 
 html[data-theme="light"]:root {
-    --background: #eaf1f6;
-    --foreground: #0b1a28;
-    --card: rgba(255, 255, 255, 0.92);
+    --background: #c9dbe8;
+    --foreground: #081521;
+    --card: rgba(255, 255, 255, 0.98);
     --card-foreground: #102239;
-    --popover: rgba(255, 255, 255, 0.96);
+    --popover: rgba(255, 255, 255, 0.99);
     --popover-foreground: #102239;
     --primary: #26c6be;
     --primary-foreground: #041112;
-    --secondary: rgba(20, 58, 104, 0.08);
+    --secondary: rgba(20, 58, 104, 0.16);
     --secondary-foreground: #102239;
-    --muted: rgba(20, 58, 104, 0.08);
-    --muted-foreground: #55708b;
-    --accent: rgba(38, 198, 190, 0.14);
+    --muted: rgba(20, 58, 104, 0.16);
+    --muted-foreground: #273c4f;
+    --accent: rgba(38, 198, 190, 0.22);
     --accent-foreground: #102239;
     --destructive: #f97316;
-    --border: rgba(27, 49, 76, 0.1);
-    --input: rgba(17, 38, 66, 0.1);
-    --ring: rgba(38, 198, 190, 0.35);
-    --sidebar: rgba(255, 255, 255, 0.96);
+    --border: rgba(17, 37, 60, 0.34);
+    --input: rgba(17, 38, 66, 0.14);
+    --ring: rgba(38, 198, 190, 0.46);
+    --sidebar: rgba(255, 255, 255, 0.98);
     --sidebar-foreground: #102239;
     --sidebar-primary: #26c6be;
     --sidebar-primary-foreground: #041112;
-    --sidebar-accent: rgba(38, 198, 190, 0.14);
+    --sidebar-accent: rgba(38, 198, 190, 0.16);
     --sidebar-accent-foreground: #102239;
-    --sidebar-border: rgba(27, 49, 76, 0.1);
-    --sidebar-ring: rgba(38, 198, 190, 0.35);
+    --sidebar-border: rgba(17, 37, 60, 0.2);
+    --sidebar-ring: rgba(38, 198, 190, 0.4);
+    --page-aura-primary: rgba(38, 198, 190, 0.22);
+    --page-aura-secondary: rgba(255, 159, 54, 0.14);
+    --surface-hero-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.99), rgba(228, 239, 248, 0.98));
+    --surface-brand-bg: linear-gradient(180deg, rgba(245, 251, 253, 0.99), rgba(224, 237, 245, 0.98));
+    --surface-panel-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.99), rgba(229, 239, 247, 0.97));
+    --surface-panel-muted-bg: rgba(241, 247, 252, 0.94);
+    --surface-composer-bg: linear-gradient(180deg, rgba(255, 255, 255, 0.99), rgba(230, 239, 247, 0.98));
+    --surface-input-bg: rgba(248, 252, 255, 0.96);
+    --surface-message-assistant-bg: rgba(244, 249, 253, 0.94);
+    --surface-message-user-bg: linear-gradient(180deg, rgba(38, 198, 190, 0.22), rgba(38, 198, 190, 0.14));
+    --surface-shadow-soft: 0 22px 58px rgba(16, 38, 63, 0.22);
+    --surface-shadow-strong: 0 34px 92px rgba(16, 38, 63, 0.28);
 }
 
 html[data-theme="soft"]:root {
-    --background: #ede7dc;
+    --background: #ece4d7;
     --foreground: #182532;
     --card: rgba(255, 249, 242, 0.94);
     --card-foreground: #182532;
@@ -166,11 +202,11 @@ html[data-theme="soft"]:root {
     --secondary: rgba(43, 143, 156, 0.1);
     --secondary-foreground: #182532;
     --muted: rgba(24, 37, 50, 0.06);
-    --muted-foreground: #5e6e7d;
+    --muted-foreground: #556574;
     --accent: rgba(43, 143, 156, 0.12);
     --accent-foreground: #182532;
     --destructive: #d97706;
-    --border: rgba(24, 37, 50, 0.12);
+    --border: rgba(24, 37, 50, 0.16);
     --input: rgba(24, 37, 50, 0.08);
     --ring: rgba(43, 143, 156, 0.32);
     --sidebar: rgba(255, 250, 244, 0.96);
@@ -181,6 +217,18 @@ html[data-theme="soft"]:root {
     --sidebar-accent-foreground: #182532;
     --sidebar-border: rgba(24, 37, 50, 0.12);
     --sidebar-ring: rgba(43, 143, 156, 0.32);
+    --page-aura-primary: rgba(43, 143, 156, 0.12);
+    --page-aura-secondary: rgba(217, 119, 6, 0.09);
+    --surface-hero-bg: linear-gradient(180deg, rgba(255, 250, 244, 0.98), rgba(241, 232, 220, 0.96));
+    --surface-brand-bg: linear-gradient(180deg, rgba(255, 250, 244, 0.99), rgba(242, 234, 224, 0.97));
+    --surface-panel-bg: linear-gradient(180deg, rgba(255, 248, 240, 0.96), rgba(245, 236, 226, 0.94));
+    --surface-panel-muted-bg: rgba(255, 249, 242, 0.82);
+    --surface-composer-bg: linear-gradient(180deg, rgba(255, 250, 244, 0.98), rgba(242, 234, 224, 0.95));
+    --surface-input-bg: rgba(255, 250, 244, 0.8);
+    --surface-message-assistant-bg: rgba(255, 250, 244, 0.78);
+    --surface-message-user-bg: linear-gradient(180deg, rgba(43, 143, 156, 0.16), rgba(43, 143, 156, 0.1));
+    --surface-shadow-soft: 0 20px 48px rgba(71, 61, 50, 0.14);
+    --surface-shadow-strong: 0 30px 76px rgba(71, 61, 50, 0.19);
 }
 
 @layer base {
@@ -194,7 +242,7 @@ html[data-theme="soft"]:root {
   }
   body {
     @apply min-h-svh w-full bg-background text-foreground antialiased;
-    background-image: radial-gradient(circle at top left, rgba(38, 198, 190, 0.12), transparent 28%), radial-gradient(circle at bottom right, rgba(255, 159, 54, 0.08), transparent 24%);
+    background-image: radial-gradient(circle at top left, var(--page-aura-primary), transparent 28%), radial-gradient(circle at bottom right, var(--page-aura-secondary), transparent 24%);
     overflow-x: clip;
   }
   button,
@@ -209,14 +257,46 @@ html[data-theme="soft"]:root {
 }
 
 @layer components {
-  html[data-theme="light"] .app-surface {
-    color: #162434;
+  .app-surface {
+    color: var(--foreground);
   }
 
-  html[data-theme="light"] .app-panel-surface {
-    background: linear-gradient(180deg, rgba(255,255,255,0.96), rgba(238,245,250,0.94)) !important;
-    border-color: rgba(24,37,50,0.14) !important;
-    box-shadow: 0 24px 72px rgba(19, 42, 66, 0.12) !important;
+  .app-panel-surface {
+    background: var(--surface-panel-bg) !important;
+    border-color: var(--border) !important;
+    box-shadow: var(--surface-shadow-strong) !important;
+  }
+
+  .surface-brand {
+    background: var(--surface-brand-bg);
+  }
+
+  .surface-hero {
+    background: var(--surface-hero-bg);
+  }
+
+  .surface-panel {
+    background: var(--surface-panel-bg);
+  }
+
+  .surface-panel-muted {
+    background: var(--surface-panel-muted-bg);
+  }
+
+  .surface-composer {
+    background: var(--surface-composer-bg);
+  }
+
+  .surface-input {
+    background: var(--surface-input-bg);
+  }
+
+  .surface-message-assistant {
+    background: var(--surface-message-assistant-bg);
+  }
+
+  .surface-message-user {
+    background: var(--surface-message-user-bg);
   }
 
   html[data-theme="light"] .app-surface .text-white {
@@ -231,16 +311,6 @@ html[data-theme="soft"]:root {
   html[data-theme="light"] .app-surface .text-slate-400,
   html[data-theme="light"] .app-surface .text-slate-500 {
     color: #597083 !important;
-  }
-
-  html[data-theme="soft"] .app-surface {
-    color: #1b2b38;
-  }
-
-  html[data-theme="soft"] .app-panel-surface {
-    background: linear-gradient(180deg, rgba(255,251,246,0.98), rgba(242,234,224,0.96)) !important;
-    border-color: rgba(24,37,50,0.14) !important;
-    box-shadow: 0 24px 72px rgba(41, 56, 70, 0.12) !important;
   }
 
   html[data-theme="soft"] .app-surface .text-white {

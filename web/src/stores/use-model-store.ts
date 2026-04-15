@@ -6,6 +6,8 @@ import {
   getRecommendedVisionModel as lookupFallbackVisionModel,
   mockModelRegistry,
 } from "@/config/mock-model-registry"
+import { getDefaultVisionModel } from "@/lib/model-config"
+import { getDefaultGeneralModel } from "@/lib/model-config"
 import { fetchServerModels } from "@/lib/server-api"
 import type { ModelDefinition } from "@/types/chat"
 
@@ -46,23 +48,32 @@ export const useModelStore = create<ModelState>((set, get) => ({
     const normalizedModels = normalizeModels(models)
     const currentSelected = get().selectedModelId
     const selectedStillExists = normalizedModels.some((model) => model.id === currentSelected)
+    const defaultGeneralModel = getDefaultGeneralModel(normalizedModels)
 
     set({
       models: normalizedModels,
-      selectedModelId: selectedStillExists ? currentSelected : normalizedModels[0].id,
+      selectedModelId:
+        selectedStillExists ? currentSelected : defaultGeneralModel?.id ?? normalizedModels[0].id,
       refreshAt,
       modelsLoaded: true,
       modelsError: null,
     })
   },
   async loadModels(refresh = false) {
+    const previousModels = get().models
+    const previousSelectedModelId = get().selectedModelId
+
     try {
       const response = await fetchServerModels(refresh)
       get().setModels(response.models, response.refreshedAt)
     } catch (error) {
+      const shouldKeepPreviousModels =
+        previousModels.length > 0 &&
+        previousModels.some((model) => model.providerId !== "mock")
+
       set({
-        models: mockModelRegistry,
-        selectedModelId: get().selectedModelId || defaultModelId,
+        models: shouldKeepPreviousModels ? previousModels : mockModelRegistry,
+        selectedModelId: shouldKeepPreviousModels ? previousSelectedModelId : defaultModelId,
         modelsLoaded: true,
         modelsError: error instanceof Error ? error.message : "模型加载失败",
       })
@@ -75,11 +86,13 @@ export const useModelStore = create<ModelState>((set, get) => ({
     const availableVisionModels = get().models.filter((model) => model.supportsImageInput)
 
     if (availableVisionModels.length > 0) {
-      const onlineVision = availableVisionModels
-        .filter((model) => model.status !== "offline")
-        .sort((left, right) => (right.recommendedScore || 0) - (left.recommendedScore || 0))
+      const preferredVision = getDefaultVisionModel(availableVisionModels)
 
-      return (onlineVision[0] || availableVisionModels[0]).id
+      if (preferredVision) {
+        return preferredVision.id
+      }
+
+      return availableVisionModels[0].id
     }
 
     return lookupFallbackVisionModel().id

@@ -118,6 +118,28 @@ function makeConversationTitle(input: ComposerPayload) {
   return "新会话"
 }
 
+function isSameInputAsMessage(message: Message | undefined, input: ComposerPayload) {
+  if (!message || message.role !== "user") {
+    return false
+  }
+
+  const messageText = message.parts
+    .filter((part) => part.type === "text")
+    .map((part) => part.text)
+    .join("\n\n")
+    .trim()
+  const inputText = input.text.trim()
+  const messageImage = message.parts.find((part) => part.type === "image")
+  const messageImageId =
+    messageImage?.type === "image" ? messageImage.image.id : null
+  const inputImageId = input.image?.id ?? null
+
+  return (
+    messageText === inputText &&
+    messageImageId === inputImageId
+  )
+}
+
 function placeConversationFirst(order: string[], conversationId: string) {
   return [conversationId, ...order.filter((id) => id !== conversationId)]
 }
@@ -345,8 +367,15 @@ export const useChatStore = create<ChatState>()(
       return
     }
 
-    const userMessage = makeUserMessage(conversationId, model, input)
     const currentMessages = state.messagesByConversationId[conversationId] ?? []
+    const lastMessage = currentMessages[currentMessages.length - 1]
+    const shouldReuseLatestUserMessage = isSameInputAsMessage(lastMessage, input)
+    const userMessage = shouldReuseLatestUserMessage
+      ? (lastMessage as Message)
+      : makeUserMessage(conversationId, model, input)
+    const historyWithUserMessage = shouldReuseLatestUserMessage
+      ? currentMessages
+      : [...currentMessages, userMessage]
     const nextTitle =
       conversation.titleMode === "auto"
         ? makeConversationTitle(input)
@@ -366,7 +395,7 @@ export const useChatStore = create<ChatState>()(
       conversationOrder: placeConversationFirst(currentState.conversationOrder, conversationId),
       messagesByConversationId: {
         ...currentState.messagesByConversationId,
-        [conversationId]: [...currentMessages, userMessage],
+        [conversationId]: historyWithUserMessage,
       },
       activeConversationId: conversationId,
       activeRequestConversationId: conversationId,
@@ -375,7 +404,7 @@ export const useChatStore = create<ChatState>()(
     try {
       const result = await adapter.sendMessage({
         conversation: updatingConversation,
-        history: [...currentMessages, userMessage],
+        history: historyWithUserMessage,
         model,
         input,
       })
@@ -411,6 +440,19 @@ export const useChatStore = create<ChatState>()(
         activeRequestConversationId: null,
       }))
     } catch (error) {
+      if (adapter.id !== "mock") {
+        set((currentState) => ({
+          conversations: setConversationStatus(
+            currentState.conversations,
+            conversationId,
+            "idle"
+          ),
+          activeRequestConversationId: null,
+        }))
+
+        throw error
+      }
+
       const fallbackMessage = makeAssistantMessage(
         conversationId,
         model,

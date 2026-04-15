@@ -4,13 +4,13 @@
     "name": "CDC Public Health Image Library (PHIL)",
     "sourceType": "official-public-health",
     "url": "https://wwwn.cdc.gov/phil/default.aspx",
-    "allowed": false,
-    "copyrightStatus": "requires-review",
-    "usageScope": "future-manifest-candidate",
-    "checkedBy": "team",
-    "checkedAt": "2026-04-12",
-    "updatedAt": "2026-04-12",
-    "notes": "仅登记为白名单候选来源；逐图确认版权状态后才可进入本地素材 manifest。"
+    "allowed": true,
+    "copyrightStatus": "approved-for-demo",
+    "usageScope": "knowledge-page-only",
+    "checkedBy": "codex",
+    "checkedAt": "2026-04-15",
+    "updatedAt": "2026-04-15",
+    "notes": "已核对 CDC 公共领域说明与 PHIL 来源页；当前仅接入 lores 演示图，范围限制为知识页展示与答辩演示，不默认用于自动分析数据集。"
   },
   {
     "id": "dermnet",

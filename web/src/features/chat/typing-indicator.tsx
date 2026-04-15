@@ -10,7 +10,7 @@ export function TypingIndicator() {
         <AvatarImage src={brandAiAvatarSrc} alt="SkinCareAI" className="object-contain p-1" />
         <AvatarFallback>AI</AvatarFallback>
       </Avatar>
-      <div className="flex max-w-sm items-center gap-3 rounded-[24px] border border-white/10 bg-white/6 px-5 py-4 text-sm text-slate-200 shadow-[0_18px_40px_rgba(0,0,0,0.18)]">
+      <div className="surface-message-assistant flex max-w-sm items-center gap-3 rounded-[24px] border border-border/70 px-5 py-4 text-sm text-foreground shadow-[var(--surface-shadow-soft)]">
         <Spinner className="size-4 text-primary" />
         <span>正在生成本轮建议，请稍候…</span>
       </div>

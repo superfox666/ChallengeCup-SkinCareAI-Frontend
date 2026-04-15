@@ -19,7 +19,9 @@ export async function readJsonBody(request) {
     return {}
   }
 
-  return JSON.parse(Buffer.concat(chunks).toString("utf8"))
+  const rawText = Buffer.concat(chunks).toString("utf8").replace(/^\uFEFF/, "")
+
+  return JSON.parse(rawText)
 }
 
 export async function requestJson(url, options = {}, timeoutMs = 30000) {

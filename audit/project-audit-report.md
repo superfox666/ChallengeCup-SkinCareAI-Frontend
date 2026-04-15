@@ -1,5 +1,12 @@
 # SkinCareAI 前端项目审计报告
 
+> 状态说明：这是项目最早期的“从 PyQt 原型迁移到 Web 前端”的初始审计报告，保留作为历史背景参考。
+> 它不再代表当前项目真实状态。
+> 当前阶段请优先以以下文档为准：
+> - `audit/current-phase-summary.md`
+> - `audit/final-qa-checklist.md`
+> - `docs/project-memory.md`
+
 > 审计日期: 2026-04-11
 > 审计人: 前端技术负责人
 > 项目性质: **桌面端 PyQt5 原型 → 网页端前端** 全新构建

@@ -43,6 +43,7 @@ export class OpenAIResponsesAdapter extends ProviderAdapter {
         body: JSON.stringify({
           model: payload.modelConfig.modelId,
           stream: false,
+          instructions: payload.systemPrompt,
           input: payload.messages.map((message) => ({
             role: message.role,
             content: message.content,
@@ -80,6 +81,7 @@ export class OpenAIResponsesAdapter extends ProviderAdapter {
       await this.chat({
         modelConfig,
         messages: [{ role: "user", content: "Reply with OK only." }],
+        systemPrompt: "You are a health check assistant. Reply with OK only.",
       })
 
       const latencyMs = Date.now() - start

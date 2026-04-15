@@ -36,6 +36,11 @@ export class GeminiNativeAdapter extends ProviderAdapter {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
+          system_instruction: payload.systemPrompt
+            ? {
+                parts: [{ text: payload.systemPrompt }],
+              }
+            : undefined,
           contents: [
             {
               role: "user",
@@ -90,6 +95,11 @@ export class GeminiNativeAdapter extends ProviderAdapter {
           "Content-Type": "application/json",
         },
         body: JSON.stringify({
+          system_instruction: payload.systemPrompt
+            ? {
+                parts: [{ text: payload.systemPrompt }],
+              }
+            : undefined,
           contents: [
             {
               role: "user",
@@ -125,6 +135,7 @@ export class GeminiNativeAdapter extends ProviderAdapter {
       await this.chat({
         modelConfig,
         messages: [{ role: "user", content: "Reply with OK only." }],
+        systemPrompt: "You are a health check assistant. Reply with OK only.",
       })
 
       const latencyMs = Date.now() - start

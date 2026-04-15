@@ -18,10 +18,13 @@ export interface ClinicalImageSourceRegistryEntry {
   copyrightStatus:
     | "unknown"
     | "requires-review"
+    | "approved-for-demo"
     | "reference-only"
     | "restricted"
   usageScope:
     | "placeholder-only"
+    | "knowledge-page-only"
+    | "future-analysis-candidate"
     | "future-manifest-candidate"
     | "reference-only"
     | "blocked"

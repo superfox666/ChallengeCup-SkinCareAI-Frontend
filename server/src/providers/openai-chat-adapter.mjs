@@ -27,6 +27,19 @@ function buildVisionContent(input) {
   return content
 }
 
+function buildChatMessagesWithSystem(payload) {
+  const messages = []
+
+  if (payload.systemPrompt) {
+    messages.push({
+      role: "system",
+      content: payload.systemPrompt,
+    })
+  }
+
+  return [...messages, ...payload.messages]
+}
+
 export class OpenAIChatAdapter extends ProviderAdapter {
   async listUpstreamModels() {
     const response = await requestJson(
@@ -62,7 +75,7 @@ export class OpenAIChatAdapter extends ProviderAdapter {
           model: payload.modelConfig.modelId,
           stream: false,
           max_tokens: payload.maxTokens ?? 512,
-          messages: payload.messages,
+          messages: buildChatMessagesWithSystem(payload),
           ...(payload.enableThinking ? { extra_body: { enable_thinking: true } } : {}),
         }),
       },
@@ -102,6 +115,14 @@ export class OpenAIChatAdapter extends ProviderAdapter {
           stream: false,
           max_tokens: payload.maxTokens ?? 512,
           messages: [
+            ...(payload.systemPrompt
+              ? [
+                  {
+                    role: "system",
+                    content: payload.systemPrompt,
+                  },
+                ]
+              : []),
             {
               role: "user",
               content: buildVisionContent(payload.input),
@@ -136,6 +157,7 @@ export class OpenAIChatAdapter extends ProviderAdapter {
       await this.chat({
         modelConfig,
         messages: [{ role: "user", content: "Reply with OK only." }],
+        systemPrompt: "You are a health check assistant. Reply with OK only.",
         maxTokens: 8,
       })
 
