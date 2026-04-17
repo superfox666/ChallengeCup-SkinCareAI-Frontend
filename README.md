@@ -1,98 +1,41 @@
 # SkinCareAI
 
-一个面向皮肤健康咨询与科普展示的 Web 项目，支持文本问诊、图片问诊、会话管理、知识页浏览和演示级多模型切换。
+SkinCareAI 是一个面向皮肤健康咨询、图片问诊、结构化科普展示的 Web 项目。
 
-## 项目简介
+如果你只想先跑起来，直接看 [快速开始](#快速开始)。
 
-SkinCareAI 是一个前后端分离的皮肤健康问诊网页项目，重点放在以下三件事：
+## 目录
 
-- 让用户可以用文本或图片发起皮肤相关咨询。
-- 让问诊链路、会话历史和加载状态足够清楚，适合现场演示。
-- 让知识页、病例图演示集和模型工作台形成完整的展示闭环。
+- [项目背景](#项目背景)
+- [快速开始](#快速开始)
+- [运行核对](#运行核对)
+- [项目结构](#项目结构)
+- [当前能力概览](#当前能力概览)
+- [前端要求对照表](#前端要求对照表)
+- [使用说明](#使用说明)
+- [体验设计与小细节](#体验设计与小细节)
+- [验证与现状](#验证与现状)
+- [已知边界](#已知边界)
+- [建议提交说明](#建议提交说明)
 
-## 功能总览
+## 项目背景
 
-### 基础功能
+这个仓库是在原有项目基础上补出 `web/` 前端工作区后的完整 Web 版本，目标不是只做一个聊天壳，而是把下面几条链路打通：
 
 - 文本问诊
 - 图片问诊
-- 消息流展示
-- 多轮对话历史
-- 明确加载状态
+- 多轮会话管理
+- 结构化科普页
+- 模型工作台与模型切换
+- 专家会诊与演示链路
 
-### 体验增强
+当前版本的重点是：把高频交互集中到聊天主区，把低频说明收进抽屉和弹层，让整套流程适合答辩演示、录屏讲解和团队交接。
 
-- 新建对话
-- 会话搜索
-- 会话时间分组
-- 会话重命名 / 删除
-- 主题切换
-- 图片粘贴 / 拖拽上传
-- 非视觉模型自动 handoff 到视觉模型
+## 快速开始
 
-### 展示加分项
+### 1. 启动后端
 
-- `/knowledge` 结构化知识页
-- 轻量专家会诊
-- 模型工作台
-- 模型分层与推荐
-- 人眼级提示与帮助问号
-
-### 当前特色
-
-- 一个模型一个会话
-- 图文联合输入
-- 会话与模型绑定
-- 默认模型推荐
-- 多模型策略
-- 真实 API 路径 + mock fallback
-- 可直接用于演示和录屏预演
-
-## 技术栈
-
-- 前端：React 19、TypeScript、Vite、React Router、Zustand、Tailwind CSS 4
-- 后端：Node.js、原生 HTTP Server、ESM
-- 模型接入：OpenAI Chat / Responses、Anthropic Messages、Gemini Native、统一 provider registry
-- UI：Radix UI、Lucide、少量 Framer Motion
-
-## 目录结构
-
-```text
-.
-├─ audit/                         验收、QA、调研与集成说明
-├─ docs/                          使用说明、演示说明、持续 memory
-├─ server/                        后端服务与模型适配层
-│  ├─ .env.example               后端环境变量模板
-│  └─ src/
-├─ web/                           前端应用
-│  ├─ .env.example               前端环境变量模板
-│  ├─ public/
-│  │  └─ clinical-images/demo/   示例图片与真实病例图演示目录
-│  └─ src/
-├─ project_source/                原始材料保留目录
-└─ unpacked_code/                 历史解包材料保留目录
-```
-
-## 如何启动前端
-
-```bash
-cd web
-npm install
-npm run dev
-```
-
-默认地址：
-
-- `http://127.0.0.1:5173`
-
-如果端口冲突：
-
-- Vite 会尝试切到下一个可用端口。
-- 如果前端端口变化，直接看终端输出中的本地访问地址。
-
-## 如何启动后端
-
-```bash
+```powershell
 cd server
 npm install
 copy .env.example .env
@@ -103,110 +46,327 @@ npm run dev
 
 - `http://127.0.0.1:8787`
 
-如果端口冲突：
+如果报错 `EADDRINUSE: address already in use 127.0.0.1:8787`：
 
-- 修改 `server/.env` 中的 `PORT`
-- 同时修改 `web/.env.example` 或本地前端环境中的 `VITE_API_BASE_URL`
+- 说明不是代码没改，而是本机已经有一个后端实例在跑。
+- 不要重复开第二个后端，优先复用当前 `8787` 实例，或者先停掉旧实例再重启。
 
-后端常用环境变量：
+检查端口占用：
 
-- `PORT`
-- `HOST`
-- `IKUN_BASE_URL`
-- `IKUN_API_KEY`
-- `FALLBACK_TO_MOCK`
-- `REQUEST_TIMEOUT_MS`
+```powershell
+Get-NetTCPConnection -State Listen -LocalPort 8787
+Get-CimInstance Win32_Process -Filter "ProcessId=<OwningProcess>"
+```
 
-## 如何查看页面
+如需结束旧实例：
 
-前后端都启动后：
+```powershell
+Stop-Process -Id <OwningProcess> -Force
+```
 
-- 聊天页：`http://127.0.0.1:5173/chat`
-- 知识页：`http://127.0.0.1:5173/knowledge`
-- 后端健康检查：`http://127.0.0.1:8787/api/health`
-- 模型列表：`http://127.0.0.1:8787/api/models`
+### 2. 启动前端
 
-## 示例图片放哪里
+```powershell
+cd web
+npm install
+npm run dev
+```
 
-当前演示图片目录：
+默认地址：
 
-- `web/public/clinical-images/demo/acne/`
-- `web/public/clinical-images/demo/eczema-dermatitis/`
-- `web/public/clinical-images/demo/fungal/`
-- `web/public/clinical-images/demo/psoriasis/`
+- `http://127.0.0.1:5173`
 
-当前已接入的真实 demo 图：
+说明：
 
-- `web/public/clinical-images/demo/eczema-dermatitis/cdc-phil-4506-eczema.jpg`
-- `web/public/clinical-images/demo/fungal/cdc-phil-4811-ringworm.jpg`
-- `web/public/clinical-images/demo/fungal/cdc-phil-17271-tinea-barbae.jpg`
+- 前端 dev 端口固定为 `127.0.0.1:5173`
+- 已启用 `--strictPort`
+- 如果 `5173` 被占用，前端会直接报错退出，不会再偷偷跳到别的端口
 
-如果以后补更多真图：
+### 3. 构建与检查
 
-1. 把图片放进对应病种目录。
-2. 更新 `web/src/content/clinical-images/manifest.ts`
-3. 如有新来源，更新 `web/src/content/clinical-images/source-registry.json`
-4. 回归 `/knowledge` 页面和聊天页图片问诊链路。
+```powershell
+cd web
+npm run build
+npm run lint
+```
 
-## 常见演示路径
+当前仓库已实测：
 
-### 文本问诊
+- `npm run build` 通过
+- `npm run lint` 通过
 
-推荐模型：
+## 运行核对
 
-- 主演示：`Qwen 3 VL Flash`
-- 稳定文本备选：`GPT-5.4 mini`
-- 中文文本主备：`Qwen 3.6 Plus`
+每次启动后，先不要急着看旧会话，先核对下面几项：
 
-建议路径：
+1. 聊天页顶部能看到 `聊天工作区 / 知识页`
+2. `/knowledge` 页面能看到完整知识卡片，而不是被裁成精简版
+3. 模型工作台会显示当前模型总数、最近检测时间和 `连通性测试`
+4. 浏览器控制台能看到 `[SkinCareAI runtime]` 相关调试标识
 
-1. 进入聊天页。
-2. 直接输入皮肤相关问题。
-3. 观察消息流、加载状态和回复结构。
-4. 再演示复制回答、复制会话和导出 Markdown。
+如果页面看起来还是旧版本，优先排查：
 
-### 图片问诊
+- 旧的 `vite` 实例还在跑
+- 旧的 `server` 实例还在跑
+- 打开的不是 `127.0.0.1:5173`
+- 浏览器打开的是旧标签页或错误入口
 
-推荐模型：
+## 项目结构
 
-- 主演示：`Qwen 3 VL Flash`
+```text
+.
+├─ audit/                          验收记录、功能矩阵、模型验收表
+├─ docs/                           需求文档、memory、使用说明
+├─ server/                         后端服务与模型注册/适配层
+│  ├─ .env.example
+│  └─ src/
+├─ web/                            Web 前端主应用
+│  ├─ public/
+│  │  └─ clinical-images/demo/     演示图片与病例图目录
+│  ├─ src/
+│  └─ package.json
+├─ project_source/                 原始材料保留目录
+└─ unpacked_code/                  历史解包材料保留目录
+```
 
-建议路径：
+前端关键目录：
 
-1. 在聊天页上传 `web/public/clinical-images/demo/` 中的一张图片。
-2. 补充一句简短问题。
-3. 演示图片预览、图文回复和多轮追问。
+- `web/src/app/`：应用壳层与主布局
+- `web/src/features/chat/`：消息区、输入区、上传区
+- `web/src/features/sidebar/`：抽屉、会话树、会话管理
+- `web/src/features/topbar/`：顶栏、模型工作台、全屏切换
+- `web/src/features/knowledge/`：知识科普页
+- `web/src/stores/`：聊天、模型、UI 状态持久化
 
-### 非视觉模型 handoff
+## 当前能力概览
 
-1. 先切到不支持图片的文本模型。
-2. 再上传图片。
-3. 系统会提示并自动切到推荐视觉模型的新会话。
+### 基础功能
 
-### 知识页
+- 文本输入、发送、流式回复
+- 图片上传、拖拽、粘贴
+- 清晰区分用户消息与 AI 消息
+- 多轮对话历史展示
+- 生成中状态展示
 
-1. 打开 `/knowledge`
-2. 先看首屏导览
-3. 再切精选 / 全部 / 分类
-4. 最后看病例图区块
+### 会话管理
 
-## 注意事项
+- 新建会话
+- 会话搜索
+- 按时间分组
+- 会话重命名
+- 会话标签
+- 会话归档 / 恢复
+- 会话删除
 
-- 项目只处理皮肤相关咨询与科普展示，不替代医生面诊、检查和处方。
-- 一个模型一个会话，切模型会新建会话，不继续沿用旧上下文。
-- 如果后端波动且 `FALLBACK_TO_MOCK=true`，前端仍可走 mock 演示链路。
-- 演示时优先使用聊天页作为主路径，`/knowledge` 作为补充展示。
+### 模型工作台
 
-## 当前已知限制
+- 模型分类浏览
+- 模型状态与延迟展示
+- 每 5 秒自动检测
+- 手动 `连通性测试`
+- 模型全屏浏览
+- 模型全屏内 `去咨询` 一键跳回聊天全屏
 
-- 系统分享已验证浏览器代码路径，但仍建议用真实移动设备确认原生分享面板。
-- `/knowledge` 移动端已收短，但不适合作为长时间手机主讲页面。
-- `qwen-plus-latest` 保留为低成本备选，不建议作为主演示文本模型。
-- 当前真实病例图是首批演示集，不是完整图库。
+### 皮肤问诊增强
 
-## 推荐继续阅读
+- 一个模型一个会话
+- 切换模型自动新建会话
+- 切换模型保留当前文字与图片草稿
+- 非视觉模型收到图片时自动 handoff 到视觉模型
+- 回答风格支持全局语气预设
 
-- [docs/final-usage-guide.md](/f:/ChallengeCup-SkinCareAI-Frontend/docs/final-usage-guide.md)
-- [docs/demo-packaging-guide.md](/f:/ChallengeCup-SkinCareAI-Frontend/docs/demo-packaging-guide.md)
-- [audit/final-qa-checklist.md](/f:/ChallengeCup-SkinCareAI-Frontend/audit/final-qa-checklist.md)
-- [audit/clinical-image-demo-guide.md](/f:/ChallengeCup-SkinCareAI-Frontend/audit/clinical-image-demo-guide.md)
+### 展示与专家功能
+
+- `/knowledge` 结构化科普页
+- 完整知识卡片集
+- 多专家会诊面板
+- 单条 AI 回答右侧导出 Markdown
+- 整个会话复制 / 导出 / 原生分享
+
+### 当前模型清单
+
+当前源码中的 curated registry：
+
+- 总模型数：`31`
+- 视觉模型数：`12`
+
+本轮已处理的模型清单调整：
+
+- 移除两个当前不稳定的 `Gemini` 视觉模型
+- 增加两个当前链路下已验证可用的国外文本模型：
+  - `gpt-4.1`
+  - `grok-4.1`
+
+说明：
+
+- 页面最终显示数量以 `/api/models` 返回结果为准
+- 若你本地还在使用旧后端实例，重启后端后才会看到新的模型列表
+
+## 前端要求对照表
+
+以下对照基于 [docs/前端要求(3).docx](/f:/ChallengeCup-SkinCareAI-Frontend/docs/%E5%89%8D%E7%AB%AF%E8%A6%81%E6%B1%82(3).docx)：
+
+| 要求项 | 当前状态 | 说明 |
+| --- | --- | --- |
+| 文本对话输入框 | 已实现 | 聊天页输入区支持文本发送 |
+| 图像上传按钮 / 拖拽区 | 已实现 | 支持上传、拖拽、粘贴 |
+| 消息流展示 | 已实现 | 用户 / AI 气泡明确区分 |
+| 多轮对话历史 | 已实现 | 当前会话完整历史保留 |
+| 加载状态 | 已实现 | 生成中按钮、流式输出、占位反馈均已接通 |
+| 科普知识板块 | 已实现 | 使用独立 `/knowledge` 页面承载固定知识卡片 |
+| 历史对话侧边栏 | 已实现 | 左上覆盖式抽屉内展示所有会话 |
+| 对话时间分组 | 已实现 | 支持今天 / 昨天 / 近 7 天 / 更早 |
+| 创建新对话 | 已实现 | 抽屉内 `新建会话` 按钮 |
+| 重命名单条对话 | 已实现 | 会话项可直接重命名 |
+| 添加标签 | 已实现 | 会话项支持编辑标签 |
+| 归档 | 已实现 | 会话项支持归档 / 恢复 |
+| 删除 | 已实现 | 会话项支持删除 |
+
+说明：
+
+- 原文里提到的科普板块可采用“固定卡片”或“搜索 + RAG”二选一。
+- 当前版本采用的是固定结构化知识卡片方案，不依赖搜索式 RAG。
+
+## 使用说明
+
+### 1. 进入聊天页
+
+打开：
+
+- `http://127.0.0.1:5173/chat`
+
+你会看到三个核心区域：
+
+- 顶栏
+- 工作区标签页
+- 聊天主区
+
+### 2. 发起文本问诊
+
+1. 直接在底部输入框输入问题
+2. 点击 `发送`
+3. 等待 AI 生成
+4. 可继续多轮追问
+
+### 3. 发起图片问诊
+
+1. 点击上传按钮，或直接拖拽 / 粘贴图片
+2. 在输入框补充部位、时长、症状描述
+3. 发送后等待图文分析结果
+
+如果当前模型不支持图片：
+
+- 系统会自动切到推荐视觉模型
+- 自动新建会话
+- 当前文字和图片草稿会被带过去
+
+### 4. 切换模型
+
+1. 切到 `模型` 标签页
+2. 按分类浏览模型
+3. 选中目标模型
+4. 系统会自动创建新会话，避免上下文串模
+
+补充：
+
+- 如果模型页已经全屏，可以直接点击右上角 `去咨询`
+- 页面会一步跳回聊天标签，并自动进入聊天全屏
+
+### 5. 管理历史会话
+
+点击左上角抽屉按钮后，可以使用：
+
+- `新建会话`
+- 搜索历史会话
+- 重命名会话
+- 编辑标签
+- 归档 / 恢复
+- 删除会话
+
+新增说明：
+
+- 生成回答时，侧边栏仍允许重命名
+- 归档后的会话会进入 `已归档` 分组
+
+### 6. 使用知识页
+
+打开：
+
+- `http://127.0.0.1:5173/knowledge`
+
+这里用于：
+
+- 展示皮肤知识卡片
+- 做结构化科普讲解
+- 演示病例图与分类导览
+
+### 7. 使用专家会诊
+
+入口位置：
+
+- 顶栏 `更多工具`
+- 或聊天主区相关入口
+
+作用：
+
+- 围绕当前问题并排比较多个模型
+- 给出差异化观察与最终总结
+
+### 8. 导出与分享
+
+你可以导出两类内容：
+
+- 当前整段会话：顶栏复制 / 导出 / 分享
+- 单条 AI 问答：AI 回答右侧图标导出 Markdown
+
+## 体验设计与小细节
+
+这个版本刻意做了几件事：
+
+- 顶栏缩高，避免首屏一上来就被说明区吃掉
+- Logo 放大，保证左上角品牌锚点清晰
+- 聊天区优先，模型页和知识页退到辅助角色
+- 低频说明放进抽屉、tooltip、popover，不常驻占地
+- 模型全屏与聊天全屏分开，方便演示不同阶段
+- 会话标签与归档收进列表项，不额外再造一个管理页
+
+## 验证与现状
+
+本地已完成的检查：
+
+- `web` 构建通过
+- `web` lint 通过
+- 浏览器可视检查通过
+  - 抽屉内可看到 `进行中 / 已归档`
+  - 会话标签编辑入口存在
+  - 模型全屏右上角 `去咨询` 可用
+  - 点击 `去咨询` 后会切回聊天全屏
+  - 浏览器控制台无报错
+
+说明：
+
+- 当前根目录 `audit/` 下还有历史验收文档，部分模型数量快照是旧轮次记录
+- 如果你要给队友看最新状态，以当前源码和重新启动后的页面为准
+
+## 已知边界
+
+- 旧会话里的历史英文回复不会因为新提示词自动改写
+- 本地 `blob:` 图片预览不会跨刷新持久化，这是浏览器侧边界
+- 是否显示最新模型列表，取决于你是否真的重启了当前后端实例
+- 医疗相关回答仅供参考，不能替代线下面诊、检查和处方
+
+## 建议提交说明
+
+如果你准备把当前版本推到 GitHub，提交信息可以直接用：
+
+```bash
+git add .
+git commit -m "feat: close sidebar session management and model workspace UX"
+git push
+```
+
+如果你想更突出这轮工作，也可以用：
+
+```bash
+git commit -m "feat: add session archive/tags and consult jump flow"
+```

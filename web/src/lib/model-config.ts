@@ -10,12 +10,12 @@ export const modelCategoryOrder: Array<{
   {
     id: "general",
     label: "通用模型",
-    description: "先看这里。适合第一次使用，也适合不知道该选哪个模型的场景。",
+    description: "优先从这里开始。适合首次使用，也适合不确定该选哪一个模型时直接进入主流程。",
   },
   {
     id: "text",
     label: "文本模型",
-    description: "更适合文字问答、整理解释、护理建议和结构化输出。",
+    description: "更适合日常问答、护理建议、总结整理和结构化输出。",
   },
   {
     id: "vision",
@@ -24,21 +24,27 @@ export const modelCategoryOrder: Array<{
   },
   {
     id: "reasoning",
-    label: "深度推理",
-    description: "更适合复杂分析、多步判断和高难度问题。",
+    label: "推理模型",
+    description: "更适合复杂分析、多步判断和需要更强思考链路的问题。",
   },
   {
     id: "fast",
     label: "低成本快速",
-    description: "更适合追求响应速度、成本友好或高频试用。",
+    description: "更适合速度优先、频繁试用和成本敏感场景。",
   },
 ]
 
 const DEFAULT_GENERAL_MODEL_IDS = [
   "qwen3-vl-flash",
+  "gpt-5-all",
   "gpt-4o-all",
   "gpt-5.4-mini",
-  "qwen3.6-plus",
+  "deepseek-v3.2",
+  "claude-sonnet-4-6",
+  "gpt-4.1",
+  "grok-4.1",
+  "grok-4-fast-reasoning",
+  "grok-3",
   "skin-text-core",
   "skin-text-clinical",
   "skin-vision-insight",
@@ -46,8 +52,11 @@ const DEFAULT_GENERAL_MODEL_IDS = [
 
 const DEFAULT_VISION_MODEL_IDS = [
   "qwen3-vl-flash",
-  "qwen3-vl-plus",
+  "gpt-5-all",
   "gpt-4o-all",
+  "claude-sonnet-4-6-vision",
+  "qwen3-vl-plus",
+  "qwen3-vl-30b-a3b-instruct",
   "qwen3-vl-32b-thinking",
   "skin-vision-insight",
 ] as const
@@ -57,7 +66,7 @@ const DEFAULT_REASONING_MODEL_IDS = [
   "gpt-5.4",
   "claude-sonnet-4-6",
   "claude-opus-4-6-thinking",
-  "o3-pro-all",
+  "grok-4-fast-reasoning",
   "skin-text-clinical",
 ] as const
 
@@ -65,16 +74,25 @@ const DEFAULT_BUDGET_MODEL_IDS = [
   "deepseek-chat",
   "gpt-5.4-nano",
   "gpt-5.4-mini",
-  "qwen3.6-plus",
+  "qwen-plus-latest",
   "skin-text-core",
 ] as const
 
-const PRIMARY_DEMO_MODEL_IDS = ["qwen3-vl-flash", "gpt-5.4-mini", "qwen3.6-plus"] as const
+const PRIMARY_DEMO_MODEL_IDS = [
+  "qwen3-vl-flash",
+  "gpt-5-all",
+  "gpt-5.4-mini",
+  "deepseek-v3.2",
+  "claude-sonnet-4-6",
+  "gpt-4.1",
+  "grok-4.1",
+  "grok-4-fast-reasoning",
+  "grok-3",
+] as const
 
 const DEPRIORITIZED_DEMO_MODEL_IDS = [
   "qwen-plus-latest",
   "claude-opus-4-6-thinking",
-  "o3-pro-all",
 ] as const
 
 const statusWeight = {
@@ -86,6 +104,18 @@ const statusWeight = {
   offline: -1,
 } as const
 
+export function getEffectiveModelStatus(model?: ModelDefinition | null) {
+  if (!model) {
+    return "unknown" as const
+  }
+
+  if (model.status === "unknown" && model.available) {
+    return "available" as const
+  }
+
+  return model.status
+}
+
 export function getModelDisplayName(model?: ModelDefinition | null) {
   if (!model) {
     return "未选择模型"
@@ -94,14 +124,34 @@ export function getModelDisplayName(model?: ModelDefinition | null) {
   return model.displayName || model.name
 }
 
-export function getModelStatusLabel(status?: ModelDefinition["status"]) {
-  if (status === "online") return "在线"
-  if (status === "degraded") return "波动"
-  if (status === "offline") return "离线"
-  if (status === "disabled") return "停用"
-  if (status === "available") return "可用"
+export function getModelProviderLabel(model?: ModelDefinition | null) {
+  const providerId = model?.providerId?.toLowerCase()
 
-  return "待检测"
+  if (providerId === "openai") return "OpenAI"
+  if (providerId === "google") return "Gemini"
+  if (providerId === "anthropic") return "Anthropic"
+  if (providerId === "qwen") return "Qwen"
+  if (providerId === "xai") return "xAI"
+  if (providerId === "deepseek") return "DeepSeek"
+  if (providerId === "kimi") return "Kimi"
+
+  return model?.providerId || "Unknown"
+}
+
+export function getModelStatusLabel(
+  status?: ModelDefinition["status"],
+  available?: boolean
+) {
+  const resolvedStatus =
+    status === "unknown" && available ? "available" : status ?? "unknown"
+
+  if (resolvedStatus === "online") return "在线"
+  if (resolvedStatus === "degraded") return "波动"
+  if (resolvedStatus === "offline") return "离线"
+  if (resolvedStatus === "disabled") return "停用"
+  if (resolvedStatus === "available") return "可用 / 未测速"
+
+  return "状态未知"
 }
 
 export function getModelSpeedMeta(speedLevel?: string) {
@@ -109,22 +159,22 @@ export function getModelSpeedMeta(speedLevel?: string) {
     return {
       label: "响应快",
       shortLabel: "快",
-      description: "适合连续问答和现场演示",
+      description: "适合连续追问、现场演示和轻量高频使用。",
     }
   }
 
   if (speedLevel === "slow") {
     return {
-      label: "深思考",
+      label: "深度思考",
       shortLabel: "慢",
-      description: "速度较慢，但适合复杂问题",
+      description: "速度较慢，但更适合复杂任务和重点展示。",
     }
   }
 
   return {
     label: "均衡",
     shortLabel: "中",
-    description: "速度和质量较平衡",
+    description: "速度和质量更均衡，适合作为常规使用选择。",
   }
 }
 
@@ -133,7 +183,7 @@ export function getModelPriceMeta(priceLevel?: string) {
     return {
       label: "成本友好",
       shortLabel: "省",
-      description: "适合高频使用和试用演示",
+      description: "适合频繁试用和成本敏感场景。",
     }
   }
 
@@ -141,14 +191,14 @@ export function getModelPriceMeta(priceLevel?: string) {
     return {
       label: "成本较高",
       shortLabel: "高",
-      description: "更适合重点展示或复杂场景",
+      description: "更适合重点展示和复杂任务。",
     }
   }
 
   return {
     label: "成本均衡",
     shortLabel: "中",
-    description: "适合常规使用",
+    description: "适合作为常规使用的成本档位。",
   }
 }
 
@@ -170,7 +220,7 @@ export function getNetworkStrength(hint?: string) {
 
 export function getNetworkLabel(hint?: string) {
   if (!hint || hint.includes("待实测")) {
-    return "网络待实测"
+    return "待实测"
   }
 
   if (hint.includes("国内")) {
@@ -185,7 +235,14 @@ export function getNetworkLabel(hint?: string) {
 }
 
 export function isReasoningModel(model: ModelDefinition) {
-  const text = [...(model.capabilities || []), ...(model.capabilitySummary || []), model.summary]
+  const text = [
+    ...(model.capabilities || []),
+    ...(model.capabilitySummary || []),
+    ...(model.recommendedUseCases || []),
+    model.summary,
+    model.description,
+  ]
+    .filter(Boolean)
     .join(" ")
     .toLowerCase()
 
@@ -193,6 +250,7 @@ export function isReasoningModel(model: ModelDefinition) {
     text.includes("推理") ||
     text.includes("思考") ||
     text.includes("复杂") ||
+    text.includes("分析") ||
     model.id.includes("thinking") ||
     model.id.includes("-r1") ||
     model.id.includes("o3")
@@ -214,7 +272,9 @@ function pickDefaultModel(
   preferredIds: readonly string[],
   predicate: (model: ModelDefinition) => boolean
 ) {
-  const availableModels = models.filter((model) => model.status !== "offline" && predicate(model))
+  const availableModels = models.filter(
+    (model) => getEffectiveModelStatus(model) !== "offline" && predicate(model)
+  )
 
   for (const modelId of preferredIds) {
     const matched = availableModels.find((model) => model.id === modelId)
@@ -228,7 +288,7 @@ function pickDefaultModel(
 }
 
 export function getDefaultGeneralModel(models: ModelDefinition[]) {
-  const availableModels = models.filter((model) => model.status !== "offline")
+  const availableModels = models.filter((model) => getEffectiveModelStatus(model) !== "offline")
 
   for (const modelId of DEFAULT_GENERAL_MODEL_IDS) {
     const matched = availableModels.find((model) => model.id === modelId)
@@ -292,7 +352,9 @@ export function sortModelsByPriority(models: ModelDefinition[]) {
       return Number(isDeprioritizedDemoModel(left)) - Number(isDeprioritizedDemoModel(right))
     }
 
-    const statusDiff = (statusWeight[right.status] ?? 0) - (statusWeight[left.status] ?? 0)
+    const statusDiff =
+      (statusWeight[getEffectiveModelStatus(right)] ?? 0) -
+      (statusWeight[getEffectiveModelStatus(left)] ?? 0)
     if (statusDiff !== 0) return statusDiff
 
     const scoreDiff = (right.recommendedScore || 0) - (left.recommendedScore || 0)
@@ -310,24 +372,36 @@ export function getModelPrimaryHint(
   model: ModelDefinition,
   defaultGeneralModelId?: string | null
 ) {
+  if (model.networkHint?.includes("需代理")) {
+    if (model.supportsImageInput && isReasoningModel(model)) {
+      return "适合图文联合分析；当前环境通常需要代理或更稳定的海外链路。"
+    }
+
+    if (model.supportsImageInput) {
+      return "适合图片理解和图文问诊；当前环境通常需要代理或更稳定的海外链路。"
+    }
+
+    return "适合作为海外模型对照；当前环境通常需要代理或更稳定的海外链路。"
+  }
+
   if (model.id === defaultGeneralModelId) {
-    return "适合初次使用，文本和图片较平衡，不确定就选它。"
+    return "适合首次使用，文本和图片都能接住，不确定时优先从它开始。"
   }
 
   if (isDeprioritizedDemoModel(model)) {
-    return "保留为中文低成本备选，但这轮不建议作为答辩主演示文本模型。"
+    return "保留给特定对照或低频演示，不建议作为默认主入口。"
   }
 
   if (model.supportsImageInput && isReasoningModel(model)) {
-    return "适合图文联合分析，也适合更复杂的视觉推理。"
+    return "适合图文联合分析，也适合更复杂的视觉推理问题。"
   }
 
   if (model.supportsImageInput) {
-    return "适合图片理解、图文联合提问和单图演示。"
+    return "适合图片理解、图文联合问诊和单图演示。"
   }
 
   if (isReasoningModel(model)) {
-    return "适合复杂分析、多步思考和重点展示场景。"
+    return "适合复杂分析、多步推理和重点展示场景。"
   }
 
   if (isFastAffordableModel(model)) {
@@ -346,7 +420,7 @@ export function getModelRoleLabel(
   }
 
   if (isDeprioritizedDemoModel(model)) {
-    return "保留备选"
+    return "保留备用"
   }
 
   if (model.supportsImageInput && isReasoningModel(model)) {
@@ -358,7 +432,7 @@ export function getModelRoleLabel(
   }
 
   if (isReasoningModel(model)) {
-    return "深度推理"
+    return "推理模型"
   }
 
   if (isFastAffordableModel(model)) {

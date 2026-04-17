@@ -24,13 +24,29 @@ function now() {
   return new Date().toISOString()
 }
 
+function normalizeTags(tags?: string[]) {
+  return [...new Set((tags ?? []).map((tag) => tag.trim()).filter(Boolean))]
+}
+
+function normalizeConversation(conversation: Conversation): Conversation {
+  const archived = Boolean(conversation.archived)
+
+  return {
+    ...conversation,
+    titleMode: conversation.titleMode ?? "auto",
+    tags: normalizeTags(conversation.tags),
+    archived,
+    archivedAt: archived ? conversation.archivedAt ?? conversation.updatedAt : null,
+  }
+}
+
 function makeConversation(
   model: ModelDefinition,
   handoffFromConversationId?: string
 ): Conversation {
   const timestamp = now()
 
-  return {
+  return normalizeConversation({
     id: createId("conv"),
     title: "新会话",
     titleMode: "auto",
@@ -41,7 +57,10 @@ function makeConversation(
     createdAt: timestamp,
     updatedAt: timestamp,
     handoffFromConversationId,
-  }
+    tags: [],
+    archived: false,
+    archivedAt: null,
+  })
 }
 
 function makeTextPart(text: string): MessagePart | null {
@@ -144,6 +163,23 @@ function placeConversationFirst(order: string[], conversationId: string) {
   return [conversationId, ...order.filter((id) => id !== conversationId)]
 }
 
+function pickNextAvailableConversationId(
+  order: string[],
+  conversations: Record<string, Conversation>,
+  excludedConversationId?: string
+) {
+  return (
+    order.find((id) => {
+      if (id === excludedConversationId) {
+        return false
+      }
+
+      const conversation = conversations[id]
+      return Boolean(conversation) && !conversation.archived
+    }) ?? null
+  )
+}
+
 function sanitizePersistedMessages(messagesByConversationId: Record<string, Message[]>) {
   return Object.fromEntries(
     Object.entries(messagesByConversationId).map(([conversationId, messages]) => [
@@ -186,6 +222,9 @@ interface ChatState {
   createConversation: (model: ModelDefinition, handoffFromConversationId?: string) => string
   activateConversation: (conversationId: string) => void
   renameConversation: (conversationId: string, nextTitle: string) => void
+  updateConversationTags: (conversationId: string, nextTags: string[]) => void
+  archiveConversation: (conversationId: string, fallbackModel: ModelDefinition) => void
+  restoreConversation: (conversationId: string) => void
   deleteConversation: (conversationId: string, fallbackModel: ModelDefinition) => void
   upsertAssistantStream: (options: {
     conversationId: string
@@ -199,6 +238,7 @@ interface ChatState {
     conversationId: string
     model: ModelDefinition
     input: ComposerPayload
+    requestInput?: ComposerPayload
   }) => Promise<void>
 }
 
@@ -223,7 +263,7 @@ function setConversationStatus(
   }
 }
 
-const CHAT_STORE_VERSION = 2
+const CHAT_STORE_VERSION = 3
 
 export const useChatStore = create<ChatState>()(
   persist(
@@ -240,8 +280,11 @@ export const useChatStore = create<ChatState>()(
       return
     }
 
-    if (state.conversationOrder.length > 0) {
-      const nextConversationId = state.conversationOrder.find((id) => state.conversations[id])
+      if (state.conversationOrder.length > 0) {
+      const nextConversationId = pickNextAvailableConversationId(
+        state.conversationOrder,
+        state.conversations
+      )
 
       if (nextConversationId) {
         set({ activeConversationId: nextConversationId })
@@ -304,6 +347,85 @@ export const useChatStore = create<ChatState>()(
       }
     })
   },
+  updateConversationTags: (conversationId, nextTags) => {
+    const normalizedTags = normalizeTags(nextTags)
+
+    set((state) => {
+      const conversation = state.conversations[conversationId]
+
+      if (!conversation) {
+        return state
+      }
+
+      return {
+        conversations: {
+          ...state.conversations,
+          [conversationId]: normalizeConversation({
+            ...conversation,
+            tags: normalizedTags,
+            updatedAt: now(),
+          }),
+        },
+      }
+    })
+  },
+  archiveConversation: (conversationId, fallbackModel) => {
+    const state = get()
+    const conversation = state.conversations[conversationId]
+
+    if (!conversation || conversation.archived) {
+      return
+    }
+
+    const archivedAt = now()
+    const nextConversations = {
+      ...state.conversations,
+      [conversationId]: normalizeConversation({
+        ...conversation,
+        archived: true,
+        archivedAt,
+        updatedAt: archivedAt,
+      }),
+    }
+    const nextActiveConversationId =
+      state.activeConversationId === conversationId
+        ? pickNextAvailableConversationId(state.conversationOrder, nextConversations, conversationId)
+        : state.activeConversationId
+
+    set({
+      conversations: nextConversations,
+      activeConversationId: nextActiveConversationId,
+    })
+
+    if (!nextActiveConversationId) {
+      const newConversationId = get().createConversation(fallbackModel)
+      set({ activeConversationId: newConversationId })
+    }
+  },
+  restoreConversation: (conversationId) => {
+    set((state) => {
+      const conversation = state.conversations[conversationId]
+
+      if (!conversation || !conversation.archived) {
+        return state
+      }
+
+      const restoredAt = now()
+
+      return {
+        conversations: {
+          ...state.conversations,
+          [conversationId]: normalizeConversation({
+            ...conversation,
+            archived: false,
+            archivedAt: null,
+            updatedAt: restoredAt,
+          }),
+        },
+        conversationOrder: placeConversationFirst(state.conversationOrder, conversationId),
+      }
+    })
+  },
   deleteConversation: (conversationId, fallbackModel) => {
     const state = get()
 
@@ -318,7 +440,9 @@ export const useChatStore = create<ChatState>()(
     delete nextMessages[conversationId]
 
     const nextActiveConversationId =
-      state.activeConversationId === conversationId ? nextOrder[0] ?? null : state.activeConversationId
+      state.activeConversationId === conversationId
+        ? pickNextAvailableConversationId(nextOrder, nextConversations)
+        : state.activeConversationId
 
     set({
       conversations: nextConversations,
@@ -359,7 +483,7 @@ export const useChatStore = create<ChatState>()(
       }
     })
   },
-  async submitWithAdapter({ adapter, conversationId, model, input }) {
+  async submitWithAdapter({ adapter, conversationId, model, input, requestInput }) {
     const state = get()
     const conversation = state.conversations[conversationId]
 
@@ -406,7 +530,7 @@ export const useChatStore = create<ChatState>()(
         conversation: updatingConversation,
         history: historyWithUserMessage,
         model,
-        input,
+        input: requestInput ?? input,
       })
 
       const assistantMessage = makeAssistantMessage(
@@ -486,10 +610,7 @@ export const useChatStore = create<ChatState>()(
         conversations: Object.fromEntries(
           Object.entries(state.conversations).map(([conversationId, conversation]) => [
             conversationId,
-            {
-              ...conversation,
-              titleMode: conversation.titleMode ?? "auto",
-            },
+            normalizeConversation(conversation),
           ])
         ),
         conversationOrder: state.conversationOrder,
@@ -504,10 +625,7 @@ export const useChatStore = create<ChatState>()(
           conversations: Object.fromEntries(
             Object.entries(typedState.conversations ?? {}).map(([conversationId, conversation]) => [
               conversationId,
-              {
-                ...conversation,
-                titleMode: conversation.titleMode ?? "auto",
-              },
+              normalizeConversation(conversation as Conversation),
             ])
           ),
           messagesByConversationId: sanitizePersistedMessages(

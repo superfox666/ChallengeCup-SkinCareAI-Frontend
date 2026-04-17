@@ -15,6 +15,7 @@ import {
 import { Badge } from "@/components/ui/badge"
 import { cn } from "@/lib/utils"
 import {
+  getEffectiveModelStatus,
   getModelCapabilityBadges,
   getModelDisplayName,
   getModelPrimaryHint,
@@ -34,10 +35,13 @@ const capabilityIcons = {
   default: ShieldCheckIcon,
 } as const
 
-function getStatusTone(status?: ModelDefinition["status"]) {
+function getStatusTone(model: ModelDefinition) {
+  const status = getEffectiveModelStatus(model)
+
   if (status === "online") return "text-emerald-500"
   if (status === "degraded") return "text-amber-500"
   if (status === "offline" || status === "disabled") return "text-rose-500"
+  if (status === "available") return "text-cyan-500"
 
   return "text-muted-foreground"
 }
@@ -61,16 +65,18 @@ export function ModelRecommendationMeter({ score }: { score?: number }) {
           />
         ))}
       </div>
-      <span className="font-semibold">{normalizedScore > 0 ? normalizedScore.toFixed(1) : "--"}</span>
+      <span className="font-semibold">
+        {normalizedScore > 0 ? normalizedScore.toFixed(1) : "--"}
+      </span>
     </div>
   )
 }
 
 export function ModelStatusBadge({ model }: { model: ModelDefinition }) {
   return (
-    <div className={cn("inline-flex items-center gap-1.5 text-xs font-medium", getStatusTone(model.status))}>
+    <div className={cn("inline-flex items-center gap-1.5 text-xs font-medium", getStatusTone(model))}>
       <CircleIcon className="size-2.5 fill-current" />
-      <span>{getModelStatusLabel(model.status)}</span>
+      <span>{getModelStatusLabel(model.status, model.available)}</span>
     </div>
   )
 }
@@ -165,7 +171,10 @@ export function ModelHeroSummary({
       <div className="flex flex-wrap items-start justify-between gap-3">
         <div className="min-w-0 space-y-1">
           <div className="flex flex-wrap items-center gap-2">
-            <Badge variant="outline" className="h-7 rounded-full border-primary/30 bg-primary/10 px-2.5 text-primary">
+            <Badge
+              variant="outline"
+              className="h-7 rounded-full border-primary/30 bg-primary/10 px-2.5 text-primary"
+            >
               <SparklesIcon data-icon="inline-start" className="size-3.5" />
               {getModelRoleLabel(model, defaultGeneralModelId)}
             </Badge>

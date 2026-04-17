@@ -10,7 +10,6 @@ import {
 import type { KnowledgeEntry } from "@/content/knowledge/types"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { knowledgeCategoryLabels } from "@/content/knowledge"
 
 interface KnowledgeCardProps {
   item: KnowledgeEntry
@@ -20,14 +19,17 @@ const categoryVisuals = {
   tcm: {
     icon: LeafIcon,
     accent: "text-emerald-500",
+    label: "中医基础",
   },
   western: {
     icon: StethoscopeIcon,
     accent: "text-sky-500",
+    label: "西医常见问题",
   },
   integrated: {
     icon: ScaleIcon,
     accent: "text-primary",
+    label: "中西医结合",
   },
 } as const
 
@@ -55,7 +57,7 @@ export function KnowledgeCard({ item }: KnowledgeCardProps) {
                 className="h-7 rounded-full border-border/70 bg-background/75 px-2.5 text-foreground"
               >
                 <Icon data-icon="inline-start" className={categoryVisuals[item.category].accent} />
-                {knowledgeCategoryLabels[item.category]}
+                {categoryVisuals[item.category].label}
               </Badge>
               <Badge
                 variant="outline"
@@ -65,7 +67,9 @@ export function KnowledgeCard({ item }: KnowledgeCardProps) {
               </Badge>
             </div>
             <div>
-              <CardTitle className="text-[1.08rem] leading-[1.18] sm:text-[1.24rem]">{item.name}</CardTitle>
+              <CardTitle className="text-[1.08rem] leading-[1.18] sm:text-[1.24rem]">
+                {item.name}
+              </CardTitle>
               <CardDescription className="mt-2 overflow-hidden text-sm leading-6 text-muted-foreground [display:-webkit-box] [-webkit-box-orient:vertical] [-webkit-line-clamp:3] sm:block sm:leading-7">
                 {item.summary}
               </CardDescription>
@@ -96,7 +100,9 @@ export function KnowledgeCard({ item }: KnowledgeCardProps) {
           </div>
           <div className="rounded-[20px] border border-border/70 bg-background/65 px-3 py-3">
             <div className="text-[11px] uppercase tracking-[0.24em] text-muted-foreground">风险提示</div>
-            <div className="mt-2 text-lg font-semibold text-foreground">{item.redFlags.length + item.whenToSeeDoctor.length}</div>
+            <div className="mt-2 text-lg font-semibold text-foreground">
+              {item.redFlags.length + item.whenToSeeDoctor.length}
+            </div>
           </div>
         </div>
       </CardHeader>

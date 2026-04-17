@@ -46,14 +46,23 @@ export class ModelCatalogService {
     return curated.map((model) => {
       const upstream = upstreamMap[model.modelId] || upstreamMap[model.id]
       const health = healthMap[model.id]
+      const adapter = this.providerRegistry[model.apiFormat]
+      const requiresUpstreamPresence =
+        model.apiFormat === "openai-chat" || model.apiFormat === "openai-responses"
+      const isReachableModel = requiresUpstreamPresence ? Boolean(upstream) : Boolean(adapter)
+      const resolvedStatus = !isReachableModel
+        ? "offline"
+        : upstream && health.status === "offline"
+          ? "degraded"
+          : health.status
 
       return {
         ...model,
         providerId: model.providerId || buildProviderId(upstream?.owned_by),
         supportedEndpointTypes: upstream?.supported_endpoint_types || [],
-        status: upstream ? health.status : "offline",
-        latencyMs: upstream ? health.latencyMs : null,
-        available: Boolean(upstream),
+        status: resolvedStatus,
+        latencyMs: isReachableModel ? health.latencyMs : null,
+        available: isReachableModel,
       }
     })
   }

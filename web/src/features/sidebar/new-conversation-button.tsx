@@ -11,11 +11,11 @@ export function NewConversationButton({ onCreate }: NewConversationButtonProps) 
     <Button
       type="button"
       size="lg"
-      className="h-11 w-full justify-center rounded-2xl shadow-[0_18px_40px_rgba(38,198,190,0.28)]"
+      className="h-10.5 w-full justify-center rounded-2xl shadow-[0_18px_40px_rgba(38,198,190,0.24)]"
       onClick={onCreate}
     >
       <PenSquareIcon data-icon="inline-start" />
-      新建对话
+      新建会话
     </Button>
   )
 }

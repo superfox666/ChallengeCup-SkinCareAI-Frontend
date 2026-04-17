@@ -69,6 +69,9 @@ export interface Conversation {
   createdAt: string
   updatedAt: string
   handoffFromConversationId?: string
+  tags?: string[]
+  archived?: boolean
+  archivedAt?: string | null
 }
 
 export interface ComposerPayload {

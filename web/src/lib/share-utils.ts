@@ -7,6 +7,13 @@ interface ConversationSharePayload {
   messages: Message[]
 }
 
+interface AssistantTurnSharePayload {
+  question: Message | null
+  answer: Message
+  model: ModelDefinition
+  conversationTitle?: string | null
+}
+
 function formatTimestamp(value: string) {
   const date = new Date(value)
 
@@ -97,7 +104,7 @@ export function buildConversationPlainText({
 }: ConversationSharePayload) {
   const exportableMessages = getExportableMessages(messages)
   const header = [
-    `${conversation.title}`,
+    conversation.title,
     `导出时间：${formatTimestamp(new Date().toISOString())}`,
     `当前模型：${getModelDisplayName(model)}`,
     `会话类型：${conversation.sessionType === "vision" ? "图文问诊" : "文本问诊"}`,
@@ -109,6 +116,40 @@ export function buildConversationPlainText({
     formatMessageBody(message, false),
     "",
   ])
+
+  return [...header, ...content].join("\n").trim()
+}
+
+export function buildAssistantTurnMarkdown({
+  question,
+  answer,
+  model,
+  conversationTitle,
+}: AssistantTurnSharePayload) {
+  const header = [
+    `# ${conversationTitle?.trim() || "SkinCareAI 问答摘录"}`,
+    "",
+    `- 导出时间：${formatTimestamp(new Date().toISOString())}`,
+    `- 当前模型：${getModelDisplayName(model)}`,
+    question ? `- 提问时间：${formatTimestamp(question.createdAt)}` : null,
+    `- 回复时间：${formatTimestamp(answer.createdAt)}`,
+    "",
+  ].filter(Boolean) as string[]
+
+  const questionBody = question
+    ? formatMessageBody(question, true)
+    : "_未找到与该回复直接配对的用户提问_"
+
+  const content = [
+    "## 用户问题",
+    "",
+    questionBody,
+    "",
+    "## AI 回复",
+    "",
+    formatMessageBody(answer, true),
+    "",
+  ]
 
   return [...header, ...content].join("\n").trim()
 }
@@ -158,6 +199,27 @@ function sanitizeFilename(value: string) {
 export function getConversationExportFilename(conversation: Conversation) {
   const baseName = sanitizeFilename(conversation.title || "skincareai-conversation")
   return `${baseName || "skincareai-conversation"}.md`
+}
+
+export function getAssistantTurnExportFilename({
+  question,
+  answer,
+  conversationTitle,
+}: Pick<AssistantTurnSharePayload, "question" | "answer" | "conversationTitle">) {
+  const questionText =
+    question
+      ?.parts.filter((part) => part.type === "text")
+      .map((part) => part.text.trim())
+      .find(Boolean) ?? ""
+  const baseName = sanitizeFilename(
+    questionText.slice(0, 24) || conversationTitle || "skincareai-turn"
+  )
+  const timestamp = answer.createdAt
+    .replace(/[:]/g, "-")
+    .replace(/\.\d{3}Z$/, "")
+    .replace("T", "-")
+
+  return `${baseName || "skincareai-turn"}-${timestamp}.md`
 }
 
 export function downloadTextFile(filename: string, text: string, mimeType = "text/markdown;charset=utf-8") {

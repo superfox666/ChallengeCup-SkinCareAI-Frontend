@@ -12,8 +12,11 @@ interface ChatSidebarPanelProps {
   onSelectConversation: (conversationId: string) => void
   onCreateConversation: () => void
   onRenameConversation: (conversationId: string, nextTitle: string) => void
+  onUpdateConversationTags: (conversationId: string, nextTags: string[]) => void
+  onArchiveConversation: (conversationId: string) => void
+  onRestoreConversation: (conversationId: string) => void
   onDeleteConversation: (conversationId: string) => void
-  busy: boolean
+  busyConversationId?: string | null
 }
 
 export function ChatSidebarPanel({
@@ -24,11 +27,14 @@ export function ChatSidebarPanel({
   onSelectConversation,
   onCreateConversation,
   onRenameConversation,
+  onUpdateConversationTags,
+  onArchiveConversation,
+  onRestoreConversation,
   onDeleteConversation,
-  busy,
+  busyConversationId = null,
 }: ChatSidebarPanelProps) {
   return (
-    <div className="flex h-full min-h-0 w-full min-w-0 flex-col gap-5">
+    <div className="flex h-full min-h-0 w-full min-w-0 flex-col gap-4 overflow-hidden pb-3">
       <BrandBlock />
       <NewConversationButton onCreate={onCreateConversation} />
       <ConversationList
@@ -38,8 +44,11 @@ export function ChatSidebarPanel({
         messagesCountById={messagesCountById}
         onSelect={onSelectConversation}
         onRename={onRenameConversation}
+        onUpdateTags={onUpdateConversationTags}
+        onArchive={onArchiveConversation}
+        onRestore={onRestoreConversation}
         onDelete={onDeleteConversation}
-        busy={busy}
+        busyConversationId={busyConversationId}
       />
     </div>
   )

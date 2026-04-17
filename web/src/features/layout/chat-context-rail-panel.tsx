@@ -11,7 +11,7 @@ interface ChatContextRailPanelProps {
 
 export function ChatContextRailPanel({ model, defaultGeneralModel }: ChatContextRailPanelProps) {
   return (
-    <div className="flex h-full min-h-0 w-full min-w-0 flex-col gap-3 overflow-y-auto pr-1">
+    <div className="flex h-full min-h-0 w-full min-w-0 flex-col gap-2.5 overflow-y-auto overscroll-contain pr-2 pb-4">
       <BrandShowcaseCard />
       <ModelCapabilityCard model={model} defaultGeneralModel={defaultGeneralModel} />
       <DisclaimerCard />

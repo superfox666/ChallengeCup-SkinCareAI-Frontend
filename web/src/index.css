@@ -93,6 +93,9 @@
     --surface-message-user-bg: linear-gradient(180deg, rgba(38, 198, 190, 0.18), rgba(38, 198, 190, 0.12));
     --surface-shadow-soft: 0 18px 44px rgba(19, 42, 66, 0.14);
     --surface-shadow-strong: 0 28px 72px rgba(19, 42, 66, 0.18);
+    --notice-bg: rgba(217, 119, 6, 0.12);
+    --notice-border: rgba(180, 83, 9, 0.26);
+    --notice-foreground: #8a4b08;
 }
 
 .dark {
@@ -139,6 +142,9 @@
     --surface-message-user-bg: linear-gradient(180deg, rgba(38, 198, 190, 0.18), rgba(38, 198, 190, 0.1));
     --surface-shadow-soft: 0 18px 44px rgba(0, 0, 0, 0.24);
     --surface-shadow-strong: 0 30px 80px rgba(0, 0, 0, 0.34);
+    --notice-bg: rgba(251, 191, 36, 0.12);
+    --notice-border: rgba(251, 191, 36, 0.26);
+    --notice-foreground: #fde68a;
 }
 
 html[data-theme="light"] {
@@ -188,6 +194,9 @@ html[data-theme="light"]:root {
     --surface-message-user-bg: linear-gradient(180deg, rgba(38, 198, 190, 0.22), rgba(38, 198, 190, 0.14));
     --surface-shadow-soft: 0 22px 58px rgba(16, 38, 63, 0.22);
     --surface-shadow-strong: 0 34px 92px rgba(16, 38, 63, 0.28);
+    --notice-bg: rgba(245, 158, 11, 0.14);
+    --notice-border: rgba(180, 83, 9, 0.3);
+    --notice-foreground: #92400e;
 }
 
 html[data-theme="soft"]:root {
@@ -229,6 +238,9 @@ html[data-theme="soft"]:root {
     --surface-message-user-bg: linear-gradient(180deg, rgba(43, 143, 156, 0.16), rgba(43, 143, 156, 0.1));
     --surface-shadow-soft: 0 20px 48px rgba(71, 61, 50, 0.14);
     --surface-shadow-strong: 0 30px 76px rgba(71, 61, 50, 0.19);
+    --notice-bg: rgba(217, 119, 6, 0.12);
+    --notice-border: rgba(180, 83, 9, 0.24);
+    --notice-foreground: #9a5a15;
 }
 
 @layer base {
@@ -297,6 +309,12 @@ html[data-theme="soft"]:root {
 
   .surface-message-user {
     background: var(--surface-message-user-bg);
+  }
+
+  .notice-pill {
+    border: 1px solid var(--notice-border);
+    background: var(--notice-bg);
+    color: var(--notice-foreground);
   }
 
   html[data-theme="light"] .app-surface .text-white {
